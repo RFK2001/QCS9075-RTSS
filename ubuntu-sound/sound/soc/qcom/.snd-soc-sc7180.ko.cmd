@@ -1,0 +1,1 @@
+savedcmd_sound/soc/qcom/snd-soc-sc7180.ko := aarch64-qcom-linux-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o sound/soc/qcom/snd-soc-sc7180.ko sound/soc/qcom/snd-soc-sc7180.o sound/soc/qcom/snd-soc-sc7180.mod.o

@@ -1,0 +1,1 @@
+savedcmd_sound/soc/qcom/qdsp6/msm_audio_mem.ko := aarch64-qcom-linux-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o sound/soc/qcom/qdsp6/msm_audio_mem.ko sound/soc/qcom/qdsp6/msm_audio_mem.o sound/soc/qcom/qdsp6/msm_audio_mem.mod.o

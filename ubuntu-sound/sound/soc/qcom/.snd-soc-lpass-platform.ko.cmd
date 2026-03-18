@@ -1,0 +1,1 @@
+savedcmd_sound/soc/qcom/snd-soc-lpass-platform.ko := aarch64-qcom-linux-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o sound/soc/qcom/snd-soc-lpass-platform.ko sound/soc/qcom/snd-soc-lpass-platform.o sound/soc/qcom/snd-soc-lpass-platform.mod.o

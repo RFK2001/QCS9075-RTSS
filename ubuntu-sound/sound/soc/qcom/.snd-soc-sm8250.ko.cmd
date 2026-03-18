@@ -1,0 +1,1 @@
+savedcmd_sound/soc/qcom/snd-soc-sm8250.ko := aarch64-qcom-linux-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o sound/soc/qcom/snd-soc-sm8250.ko sound/soc/qcom/snd-soc-sm8250.o sound/soc/qcom/snd-soc-sm8250.mod.o
