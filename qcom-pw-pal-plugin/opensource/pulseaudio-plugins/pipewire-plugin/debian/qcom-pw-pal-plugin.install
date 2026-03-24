@@ -1,0 +1,3 @@
+usr/lib/*/libpipewire-module-pal.so /usr/lib/${DEB_HOST_MULTIARCH}/pipewire-0.3/
+usr/share/wireplumber/main.lua.d/60-disable-alsa.lua /usr/share/wireplumber/main.lua.d/
+usr/share/pipewire/pipewire.conf.d/pw-pal-plugin.conf /usr/share/pipewire/pipewire.conf.d/
