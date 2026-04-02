@@ -1,1 +1,0 @@
-savedcmd_sound/soc/qcom/snd-soc-x1e80100.o := aarch64-qcom-linux-ld -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments   -r -o sound/soc/qcom/snd-soc-x1e80100.o @sound/soc/qcom/snd-soc-x1e80100.mod 

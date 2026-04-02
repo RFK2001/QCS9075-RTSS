@@ -1,1 +1,0 @@
-savedcmd_sound/soc/qcom/snd-soc-qcm6490.ko := aarch64-qcom-linux-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o sound/soc/qcom/snd-soc-qcm6490.ko sound/soc/qcom/snd-soc-qcm6490.o sound/soc/qcom/snd-soc-qcm6490.mod.o

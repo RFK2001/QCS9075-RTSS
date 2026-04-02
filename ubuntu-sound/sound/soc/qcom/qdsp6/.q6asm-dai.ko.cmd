@@ -1,1 +1,0 @@
-savedcmd_sound/soc/qcom/qdsp6/q6asm-dai.ko := aarch64-qcom-linux-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o sound/soc/qcom/qdsp6/q6asm-dai.ko sound/soc/qcom/qdsp6/q6asm-dai.o sound/soc/qcom/qdsp6/q6asm-dai.mod.o

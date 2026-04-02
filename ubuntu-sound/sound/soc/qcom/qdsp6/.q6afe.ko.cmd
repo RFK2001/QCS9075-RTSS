@@ -1,1 +1,0 @@
-savedcmd_sound/soc/qcom/qdsp6/q6afe.ko := aarch64-qcom-linux-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o sound/soc/qcom/qdsp6/q6afe.ko sound/soc/qcom/qdsp6/q6afe.o sound/soc/qcom/qdsp6/q6afe.mod.o

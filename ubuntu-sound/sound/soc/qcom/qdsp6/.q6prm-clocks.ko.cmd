@@ -1,1 +1,0 @@
-savedcmd_sound/soc/qcom/qdsp6/q6prm-clocks.ko := aarch64-qcom-linux-ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o sound/soc/qcom/qdsp6/q6prm-clocks.ko sound/soc/qcom/qdsp6/q6prm-clocks.o sound/soc/qcom/qdsp6/q6prm-clocks.mod.o

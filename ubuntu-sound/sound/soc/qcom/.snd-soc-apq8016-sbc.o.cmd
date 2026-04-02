@@ -1,1 +1,0 @@
-savedcmd_sound/soc/qcom/snd-soc-apq8016-sbc.o := aarch64-qcom-linux-ld -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments   -r -o sound/soc/qcom/snd-soc-apq8016-sbc.o @sound/soc/qcom/snd-soc-apq8016-sbc.mod 
