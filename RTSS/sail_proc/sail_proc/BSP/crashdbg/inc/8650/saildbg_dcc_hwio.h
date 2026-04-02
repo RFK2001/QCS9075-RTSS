@@ -1,0 +1,1569 @@
+#ifndef __SAILDBG_DCC_HWIO_H__
+#define __SAILDBG_DCC_HWIO_H__
+/*
+===========================================================================
+*/
+/**
+    @file saildbg_dcc_hwio.h
+    @brief Auto-generated HWIO interface include file.
+
+    Reference chip release:
+        LeMansAU [lemansau_v1.0_p3q1r51]
+ 
+    This file contains HWIO register definitions for the following modules:
+        SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_RAM
+        SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU
+        SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3
+        SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG
+
+
+    Generation parameters: 
+    { 'filename': 'saildbg_dcc_hwio.h',
+      'header': '#include "msmhwiobase.h"',
+      'modules': [ 'SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_RAM',
+                   'SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU',
+                   'SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3',
+                   'SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG'],
+      'output-offsets': True}
+*/
+/*
+    ===========================================================================
+
+    Copyright (c) 2021 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+
+    Export of this technology or software is regulated by the U.S. Government.
+    Diversion contrary to U.S. law prohibited.
+
+    All ideas, data and information contained in or disclosed by
+    this document are confidential and proprietary information of
+    Qualcomm Technologies, Inc. and all rights therein are expressly reserved.
+    By accepting this material the recipient agrees that this material
+    and the information contained therein are held in confidence and in
+    trust and will not be used, copied, reproduced in whole or in part,
+    nor its contents revealed in any manner to others without the express
+    written permission of Qualcomm Technologies, Inc.
+
+    ===========================================================================
+
+    $Header: //components/dev/bsp.sail/1.0/rmunibyr.bsp.sail.1.0.rmunibyr_safertos1/crashdbg/inc/8650/saildbg_dcc_hwio.h#1 $
+    $DateTime: 2025/07/09 22:36:30 $
+    $Author: rmunibyr $
+
+    ===========================================================================
+*/
+
+#include "msmhwiobase.h"
+
+/*----------------------------------------------------------------------------
+ * MODULE: SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_RAM
+ *--------------------------------------------------------------------------*/
+
+#define SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_RAM_REG_BASE (SAILSS_DBG_SAILSS_SOC_DBG_BASE      + 0x00080000)
+#define SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_RAM_REG_BASE_SIZE 0x40000
+#define SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_RAM_REG_BASE_USED 0x0
+#define SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_RAM_REG_BASE_OFFS 0x00080000
+
+/*----------------------------------------------------------------------------
+ * MODULE: SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU
+ *--------------------------------------------------------------------------*/
+
+#define SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU_REG_BASE (SAILSS_DBG_SAILSS_SOC_DBG_BASE      + 0x000e0000)
+#define SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU_REG_BASE_SIZE 0x3000
+#define SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU_REG_BASE_USED 0x0
+#define SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU_REG_BASE_OFFS 0x000e0000
+
+/*----------------------------------------------------------------------------
+ * MODULE: SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3
+ *--------------------------------------------------------------------------*/
+
+#define SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE                                          (SAILSS_DBG_SAILSS_SOC_DBG_BASE      + 0x000e0000)
+#define SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_SIZE                                     0x3000
+#define SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_USED                                     0x2fe0
+#define SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS                                     0x000e0000
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_GCR0_ADDR                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x0)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_GCR0_OFFS                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x0)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_GCR0_RMSK                                           0x3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_GCR0_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_GCR0_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_GCR0_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_GCR0_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_GCR0_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_GCR0_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_GCR0_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_GCR0_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_GCR0_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_GCR0_AALOG_MODE_DIS_BMSK                            0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_GCR0_AALOG_MODE_DIS_SHFT                              1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_GCR0_AADEN_BMSK                                     0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_GCR0_AADEN_SHFT                                       0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_ADDR                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x8)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_OFFS                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x8)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_RMSK                                         0x10f
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_DYNAMIC_CLK_EN_BMSK                          0x100
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_DYNAMIC_CLK_EN_SHFT                              8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_SCLEIE_BMSK                                    0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_SCLEIE_SHFT                                      3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_SCFGEIE_BMSK                                   0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_SCFGEIE_SHFT                                     2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_SCLERE_BMSK                                    0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_SCLERE_SHFT                                      1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_SCFGERE_BMSK                                   0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SCR0_SCFGERE_SHFT                                     0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_ADDR                                     (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x10)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_OFFS                                     (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x10)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_RMSK                                          0x18f
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_DYNAMIC_CLK_EN_BMSK                           0x100
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_DYNAMIC_CLK_EN_SHFT                               8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_VMIDEN_BMSK                                    0x80
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_VMIDEN_SHFT                                       7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_CLEIE_BMSK                                      0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_CLEIE_SHFT                                        3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_CFGEIE_BMSK                                     0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_CFGEIE_SHFT                                       2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_CLERE_BMSK                                      0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_CLERE_SHFT                                        1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_CFGERE_BMSK                                     0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_CR0_CFGERE_SHFT                                       0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RPU_ACR0_ADDR                                (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x20)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RPU_ACR0_OFFS                                (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x20)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RPU_ACR0_RMSK                                0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RPU_ACR0_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RPU_ACR0_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RPU_ACR0_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RPU_ACR0_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RPU_ACR0_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RPU_ACR0_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RPU_ACR0_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RPU_ACR0_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RPU_ACR0_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RPU_ACR0_SUVMID_BMSK                         0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RPU_ACR0_SUVMID_SHFT                                  0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_GCR0_ADDR                               (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x80)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_GCR0_OFFS                               (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x80)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_GCR0_RMSK                                      0x3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_GCR0_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_GCR0_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_GCR0_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_GCR0_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_GCR0_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_GCR0_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_GCR0_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_GCR0_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_GCR0_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_GCR0_QAD0LOG_MODE_DIS_BMSK                     0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_GCR0_QAD0LOG_MODE_DIS_SHFT                       1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_GCR0_QAD0DEN_BMSK                              0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_GCR0_QAD0DEN_SHFT                                0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_ADDR                                (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x90)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_OFFS                                (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x90)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_RMSK                                     0x10f
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_DYNAMIC_CLK_EN_BMSK                      0x100
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_DYNAMIC_CLK_EN_SHFT                          8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_CLEIE_BMSK                                 0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_CLEIE_SHFT                                   3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_CFGEIE_BMSK                                0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_CFGEIE_SHFT                                  2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_CLERE_BMSK                                 0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_CLERE_SHFT                                   1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_CFGERE_BMSK                                0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_CR0_CFGERE_SHFT                                  0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_GCR0_ADDR                               (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x100)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_GCR0_OFFS                               (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x100)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_GCR0_RMSK                                      0x3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_GCR0_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_GCR0_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_GCR0_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_GCR0_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_GCR0_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_GCR0_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_GCR0_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_GCR0_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_GCR0_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_GCR0_QAD1LOG_MODE_DIS_BMSK                     0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_GCR0_QAD1LOG_MODE_DIS_SHFT                       1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_GCR0_QAD1DEN_BMSK                              0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_GCR0_QAD1DEN_SHFT                                0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_ADDR                                (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x110)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_OFFS                                (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x110)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_RMSK                                     0x10f
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_DYNAMIC_CLK_EN_BMSK                      0x100
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_DYNAMIC_CLK_EN_SHFT                          8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_CLEIE_BMSK                                 0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_CLEIE_SHFT                                   3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_CFGEIE_BMSK                                0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_CFGEIE_SHFT                                  2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_CLERE_BMSK                                 0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_CLERE_SHFT                                   1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_CFGERE_BMSK                                0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_CR0_CFGERE_SHFT                                  0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR3_ADDR                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x3ec)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR3_OFFS                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x3ec)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR3_RMSK                                         0x3ff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR3_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR3_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR3_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR3_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR3_PT_BMSK                                      0x200
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR3_PT_SHFT                                          9
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR3_MV_BMSK                                      0x100
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR3_MV_SHFT                                          8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR3_NVMID_BMSK                                    0xff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR3_NVMID_SHFT                                       0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR2_ADDR                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x3f0)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR2_OFFS                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x3f0)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR2_RMSK                                    0xffffff0f
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR2_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR2_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR2_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR2_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR2_NONSEC_EN_BMSK                          0xff000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR2_NONSEC_EN_SHFT                                  24
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR2_SEC_EN_BMSK                               0xff0000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR2_SEC_EN_SHFT                                     16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR2_VMIDACR_EN_BMSK                             0xff00
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR2_VMIDACR_EN_SHFT                                  8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR2_NUM_QAD_BMSK                                   0xf
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR2_NUM_QAD_SHFT                                     0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR1_ADDR                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x3f4)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR1_OFFS                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x3f4)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR1_RMSK                                    0x3f3f0000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR1_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR1_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR1_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR1_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR1_CLIENT_ADDR_WIDTH_BMSK                  0x3f000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR1_CLIENT_ADDR_WIDTH_SHFT                          24
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR1_CONFIG_ADDR_WIDTH_BMSK                    0x3f0000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR1_CONFIG_ADDR_WIDTH_SHFT                          16
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR0_ADDR                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x3f8)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR0_OFFS                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x3f8)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR0_RMSK                                     0x3ff0027
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR0_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR0_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR0_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR0_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR0_NRG_BMSK                                 0x3ff0000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR0_NRG_SHFT                                        16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR0_CLIENTREQ_HALT_ACK_HW_EN_BMSK                 0x20
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR0_CLIENTREQ_HALT_ACK_HW_EN_SHFT                    5
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR0_XPRESS_CFG_EN_BMSK                             0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR0_XPRESS_CFG_EN_SHFT                               2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR0_XPUTYPE_BMSK                                   0x3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_IDR0_XPUTYPE_SHFT                                     0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REV_ADDR                                     (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x3fc)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REV_OFFS                                     (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x3fc)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REV_RMSK                                     0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REV_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REV_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REV_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REV_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REV_MAJOR_BMSK                               0xf0000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REV_MAJOR_SHFT                                       28
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REV_MINOR_BMSK                                0xfff0000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REV_MINOR_SHFT                                       16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REV_STEP_BMSK                                    0xffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REV_STEP_SHFT                                         0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_LOG_MODE_DIS_ADDR                            (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x400)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_LOG_MODE_DIS_OFFS                            (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x400)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_LOG_MODE_DIS_RMSK                                   0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_LOG_MODE_DIS_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_LOG_MODE_DIS_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_LOG_MODE_DIS_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_LOG_MODE_DIS_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_LOG_MODE_DIS_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_LOG_MODE_DIS_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_LOG_MODE_DIS_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_LOG_MODE_DIS_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_LOG_MODE_DIS_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_LOG_MODE_DIS_LOG_MODE_DIS_BMSK                      0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_LOG_MODE_DIS_LOG_MODE_DIS_SHFT                        0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSr_ADDR(r)                      (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0X500 + (0x4*(r)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSr_OFFS(r)                      (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0X500 + (0x4*(r)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSr_RMSK                         0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSr_MAXr                                  0
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSr_INI(r)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSr_ADDR(r), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSr_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSr_INMI(r,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSr_ADDR(r), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSr_RGFREESTATUS_BMSK            0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSr_RGFREESTATUS_SHFT                     0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSs_ADDR(s)                      (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0X500 + (0x4*(s)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSs_OFFS(s)                      (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0X500 + (0x4*(s)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSs_RMSK                         0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSs_MAXs                                  1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSs_INI(s)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSs_ADDR(s), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSs_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSs_INMI(s,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSs_ADDR(s), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSs_RGFREESTATUS_BMSK            0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_FREESTATUSs_RGFREESTATUS_SHFT                     0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR0_ADDR                                   (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x800)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR0_OFFS                                   (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x800)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR0_RMSK                                   0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR0_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR0_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR0_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR0_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR0_ADDR_31_0_BMSK                         0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR0_ADDR_31_0_SHFT                                  0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR1_ADDR                                   (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x804)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR1_OFFS                                   (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x804)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR1_RMSK                                   0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR1_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR1_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR1_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR1_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR1_ADDR_63_32_BMSK                        0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SEAR1_ADDR_63_32_SHFT                                 0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_ADDR                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x808)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_OFFS                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x808)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_RMSK                                           0xf
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_CLMULTI_BMSK                                   0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_CLMULTI_SHFT                                     3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_CFGMULTI_BMSK                                  0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_CFGMULTI_SHFT                                    2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_CLIENT_BMSK                                    0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_CLIENT_SHFT                                      1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_CFG_BMSK                                       0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESR_CFG_SHFT                                         0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_ADDR                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x80c)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_OFFS                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x80c)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_RMSK                                    0xf
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_CLMULTI_BMSK                            0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_CLMULTI_SHFT                              3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_CFGMULTI_BMSK                           0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_CFGMULTI_SHFT                             2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_CLIENT_BMSK                             0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_CLIENT_SHFT                               1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_CFG_BMSK                                0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESRRESTORE_CFG_SHFT                                  0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_ADDR                                 (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x810)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_OFFS                                 (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x810)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_RMSK                                 0x67ffff0f
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_AC_BMSK                              0x40000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_AC_SHFT                                      30
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_BURSTLEN_BMSK                        0x20000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_BURSTLEN_SHFT                                29
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_ASIZE_BMSK                            0x7000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_ASIZE_SHFT                                   24
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_ALEN_BMSK                              0xff0000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_ALEN_SHFT                                    16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_QAD_BMSK                                 0xff00
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_QAD_SHFT                                      8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_XPRIV_BMSK                                  0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_XPRIV_SHFT                                    3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_XINST_BMSK                                  0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_XINST_SHFT                                    2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_AWRITE_BMSK                                 0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_AWRITE_SHFT                                   1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_XPROTNS_BMSK                                0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR0_XPROTNS_SHFT                                  0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR1_ADDR                                 (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x814)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR1_OFFS                                 (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x814)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR1_RMSK                                 0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR1_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR1_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR1_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR1_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR1_TID_BMSK                             0xff000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR1_TID_SHFT                                     24
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR1_VMID_BMSK                              0xff0000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR1_VMID_SHFT                                    16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR1_BID_BMSK                                 0xe000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR1_BID_SHFT                                     13
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR1_PID_BMSK                                 0x1f00
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR1_PID_SHFT                                      8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR1_MID_BMSK                                   0xff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR1_MID_SHFT                                      0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_ADDR                                 (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x818)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_OFFS                                 (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x818)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_RMSK                                 0xffffff87
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_BAR_BMSK                             0xc0000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_BAR_SHFT                                     30
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_BURST_BMSK                           0x20000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_BURST_SHFT                                   29
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_CACHEABLE_BMSK                       0x10000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_CACHEABLE_SHFT                               28
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_DEVICE_BMSK                           0x8000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_DEVICE_SHFT                                  27
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_DEVICE_TYPE_BMSK                      0x6000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_DEVICE_TYPE_SHFT                             25
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_EARLYWRRESP_BMSK                      0x1000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_EARLYWRRESP_SHFT                             24
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_ERROR_BMSK                             0x800000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_ERROR_SHFT                                   23
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_EXCLUSIVE_BMSK                         0x400000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_EXCLUSIVE_SHFT                               22
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_FULL_BMSK                              0x200000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_FULL_SHFT                                    21
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_SHARED_BMSK                            0x100000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_SHARED_SHFT                                  20
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_WRITETHROUGH_BMSK                       0x80000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_WRITETHROUGH_SHFT                            19
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_INNERNOALLOCATE_BMSK                    0x40000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_INNERNOALLOCATE_SHFT                         18
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_INNERCACHEABLE_BMSK                     0x20000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_INNERCACHEABLE_SHFT                          17
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_INNERSHARED_BMSK                        0x10000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_INNERSHARED_SHFT                             16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_INNERTRANSIENT_BMSK                      0x8000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_INNERTRANSIENT_SHFT                          15
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_INNERWRITETHROUGH_BMSK                   0x4000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_INNERWRITETHROUGH_SHFT                       14
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_PORTMREL_BMSK                            0x2000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_PORTMREL_SHFT                                13
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_ORDEREDRD_BMSK                           0x1000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_ORDEREDRD_SHFT                               12
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_ORDEREDWR_BMSK                            0x800
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_ORDEREDWR_SHFT                               11
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_OOORD_BMSK                                0x400
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_OOORD_SHFT                                   10
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_OOOWR_BMSK                                0x200
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_OOOWR_SHFT                                    9
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_NOALLOCATE_BMSK                           0x100
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_NOALLOCATE_SHFT                               8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_TRANSIENT_BMSK                             0x80
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_TRANSIENT_SHFT                                7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_MEMTYPE_BMSK                                0x7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_SESYNR2_MEMTYPE_SHFT                                  0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR0_ADDR                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x880)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR0_OFFS                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x880)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR0_RMSK                                    0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR0_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR0_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR0_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR0_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR0_ADDR_31_0_BMSK                          0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR0_ADDR_31_0_SHFT                                   0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR0_ADDR                               (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x880)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR0_OFFS                               (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x880)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR0_RMSK                               0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR0_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR0_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR0_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR0_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR0_ADDR_31_0_BMSK                     0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR0_ADDR_31_0_SHFT                              0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR0_ADDR                               (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x880)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR0_OFFS                               (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x880)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR0_RMSK                               0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR0_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR0_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR0_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR0_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR0_ADDR_31_0_BMSK                     0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR0_ADDR_31_0_SHFT                              0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR1_ADDR                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x884)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR1_OFFS                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x884)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR1_RMSK                                    0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR1_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR1_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR1_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR1_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR1_ADDR_63_32_BMSK                         0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_EAR1_ADDR_63_32_SHFT                                  0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR1_ADDR                               (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x884)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR1_OFFS                               (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x884)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR1_RMSK                               0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR1_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR1_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR1_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR1_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR1_ADDR_63_32_BMSK                    0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_EAR1_ADDR_63_32_SHFT                             0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR1_ADDR                               (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x884)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR1_OFFS                               (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x884)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR1_RMSK                               0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR1_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR1_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR1_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR1_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR1_ADDR_63_32_BMSK                    0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_EAR1_ADDR_63_32_SHFT                             0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_ADDR                                     (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x888)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_OFFS                                     (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x888)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_RMSK                                            0xf
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_CLMULTI_BMSK                                    0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_CLMULTI_SHFT                                      3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_CFGMULTI_BMSK                                   0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_CFGMULTI_SHFT                                     2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_CLIENT_BMSK                                     0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_CLIENT_SHFT                                       1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_CFG_BMSK                                        0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESR_CFG_SHFT                                          0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_ADDR                                (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x888)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_OFFS                                (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x888)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_RMSK                                       0xf
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_CLMULTI_BMSK                               0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_CLMULTI_SHFT                                 3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_CFGMULTI_BMSK                              0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_CFGMULTI_SHFT                                2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_CLIENT_BMSK                                0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_CLIENT_SHFT                                  1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_CFG_BMSK                                   0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESR_CFG_SHFT                                     0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_ADDR                                (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x888)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_OFFS                                (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x888)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_RMSK                                       0xf
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_CLMULTI_BMSK                               0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_CLMULTI_SHFT                                 3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_CFGMULTI_BMSK                              0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_CFGMULTI_SHFT                                2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_CLIENT_BMSK                                0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_CLIENT_SHFT                                  1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_CFG_BMSK                                   0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESR_CFG_SHFT                                     0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_ADDR                              (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x88c)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_OFFS                              (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x88c)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_RMSK                                     0xf
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_CLMULTI_BMSK                             0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_CLMULTI_SHFT                               3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_CFGMULTI_BMSK                            0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_CFGMULTI_SHFT                              2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_CLIENT_BMSK                              0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_CLIENT_SHFT                                1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_CFG_BMSK                                 0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESRRESTORE_CFG_SHFT                                   0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_ADDR                         (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x88c)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_OFFS                         (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x88c)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_RMSK                                0xf
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_CLMULTI_BMSK                        0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_CLMULTI_SHFT                          3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_CFGMULTI_BMSK                       0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_CFGMULTI_SHFT                         2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_CLIENT_BMSK                         0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_CLIENT_SHFT                           1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_CFG_BMSK                            0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESRRESTORE_CFG_SHFT                              0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_ADDR                         (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x88c)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_OFFS                         (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x88c)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_RMSK                                0xf
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_CLMULTI_BMSK                        0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_CLMULTI_SHFT                          3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_CFGMULTI_BMSK                       0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_CFGMULTI_SHFT                         2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_CLIENT_BMSK                         0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_CLIENT_SHFT                           1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_CFG_BMSK                            0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESRRESTORE_CFG_SHFT                              0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_ADDR                                  (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x890)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_OFFS                                  (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x890)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_RMSK                                  0x67ffff0f
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_AC_BMSK                               0x40000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_AC_SHFT                                       30
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_BURSTLEN_BMSK                         0x20000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_BURSTLEN_SHFT                                 29
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_ASIZE_BMSK                             0x7000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_ASIZE_SHFT                                    24
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_ALEN_BMSK                               0xff0000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_ALEN_SHFT                                     16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_QAD_BMSK                                  0xff00
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_QAD_SHFT                                       8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_XPRIV_BMSK                                   0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_XPRIV_SHFT                                     3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_XINST_BMSK                                   0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_XINST_SHFT                                     2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_AWRITE_BMSK                                  0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_AWRITE_SHFT                                    1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_XPROTNS_BMSK                                 0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR0_XPROTNS_SHFT                                   0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_ADDR                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x890)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_OFFS                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x890)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_RMSK                             0x67ffff0f
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_AC_BMSK                          0x40000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_AC_SHFT                                  30
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_BURSTLEN_BMSK                    0x20000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_BURSTLEN_SHFT                            29
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_ASIZE_BMSK                        0x7000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_ASIZE_SHFT                               24
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_ALEN_BMSK                          0xff0000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_ALEN_SHFT                                16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_QAD_BMSK                             0xff00
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_QAD_SHFT                                  8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_XPRIV_BMSK                              0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_XPRIV_SHFT                                3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_XINST_BMSK                              0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_XINST_SHFT                                2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_AWRITE_BMSK                             0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_AWRITE_SHFT                               1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_XPROTNS_BMSK                            0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR0_XPROTNS_SHFT                              0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_ADDR                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x890)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_OFFS                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x890)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_RMSK                             0x67ffff0f
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_AC_BMSK                          0x40000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_AC_SHFT                                  30
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_BURSTLEN_BMSK                    0x20000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_BURSTLEN_SHFT                            29
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_ASIZE_BMSK                        0x7000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_ASIZE_SHFT                               24
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_ALEN_BMSK                          0xff0000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_ALEN_SHFT                                16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_QAD_BMSK                             0xff00
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_QAD_SHFT                                  8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_XPRIV_BMSK                              0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_XPRIV_SHFT                                3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_XINST_BMSK                              0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_XINST_SHFT                                2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_AWRITE_BMSK                             0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_AWRITE_SHFT                               1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_XPROTNS_BMSK                            0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR0_XPROTNS_SHFT                              0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR1_ADDR                                  (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x894)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR1_OFFS                                  (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x894)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR1_RMSK                                  0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR1_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR1_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR1_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR1_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR1_TID_BMSK                              0xff000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR1_TID_SHFT                                      24
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR1_VMID_BMSK                               0xff0000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR1_VMID_SHFT                                     16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR1_BID_BMSK                                  0xe000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR1_BID_SHFT                                      13
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR1_PID_BMSK                                  0x1f00
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR1_PID_SHFT                                       8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR1_MID_BMSK                                    0xff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR1_MID_SHFT                                       0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR1_ADDR                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x894)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR1_OFFS                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x894)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR1_RMSK                             0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR1_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR1_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR1_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR1_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR1_TID_BMSK                         0xff000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR1_TID_SHFT                                 24
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR1_VMID_BMSK                          0xff0000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR1_VMID_SHFT                                16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR1_BID_BMSK                             0xe000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR1_BID_SHFT                                 13
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR1_PID_BMSK                             0x1f00
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR1_PID_SHFT                                  8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR1_MID_BMSK                               0xff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR1_MID_SHFT                                  0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR1_ADDR                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x894)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR1_OFFS                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x894)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR1_RMSK                             0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR1_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR1_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR1_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR1_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR1_TID_BMSK                         0xff000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR1_TID_SHFT                                 24
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR1_VMID_BMSK                          0xff0000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR1_VMID_SHFT                                16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR1_BID_BMSK                             0xe000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR1_BID_SHFT                                 13
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR1_PID_BMSK                             0x1f00
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR1_PID_SHFT                                  8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR1_MID_BMSK                               0xff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR1_MID_SHFT                                  0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_ADDR                                  (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x898)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_OFFS                                  (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x898)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_RMSK                                  0xffffff87
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_BAR_BMSK                              0xc0000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_BAR_SHFT                                      30
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_BURST_BMSK                            0x20000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_BURST_SHFT                                    29
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_CACHEABLE_BMSK                        0x10000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_CACHEABLE_SHFT                                28
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_DEVICE_BMSK                            0x8000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_DEVICE_SHFT                                   27
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_DEVICE_TYPE_BMSK                       0x6000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_DEVICE_TYPE_SHFT                              25
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_EARLYWRRESP_BMSK                       0x1000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_EARLYWRRESP_SHFT                              24
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_ERROR_BMSK                              0x800000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_ERROR_SHFT                                    23
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_EXCLUSIVE_BMSK                          0x400000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_EXCLUSIVE_SHFT                                22
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_FULL_BMSK                               0x200000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_FULL_SHFT                                     21
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_SHARED_BMSK                             0x100000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_SHARED_SHFT                                   20
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_WRITETHROUGH_BMSK                        0x80000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_WRITETHROUGH_SHFT                             19
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_INNERNOALLOCATE_BMSK                     0x40000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_INNERNOALLOCATE_SHFT                          18
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_INNERCACHEABLE_BMSK                      0x20000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_INNERCACHEABLE_SHFT                           17
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_INNERSHARED_BMSK                         0x10000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_INNERSHARED_SHFT                              16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_INNERTRANSIENT_BMSK                       0x8000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_INNERTRANSIENT_SHFT                           15
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_INNERWRITETHROUGH_BMSK                    0x4000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_INNERWRITETHROUGH_SHFT                        14
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_PORTMREL_BMSK                             0x2000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_PORTMREL_SHFT                                 13
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_ORDEREDRD_BMSK                            0x1000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_ORDEREDRD_SHFT                                12
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_ORDEREDWR_BMSK                             0x800
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_ORDEREDWR_SHFT                                11
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_OOORD_BMSK                                 0x400
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_OOORD_SHFT                                    10
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_OOOWR_BMSK                                 0x200
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_OOOWR_SHFT                                     9
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_NOALLOCATE_BMSK                            0x100
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_NOALLOCATE_SHFT                                8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_TRANSIENT_BMSK                              0x80
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_TRANSIENT_SHFT                                 7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_MEMTYPE_BMSK                                 0x7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_ESYNR2_MEMTYPE_SHFT                                   0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_ADDR                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x898)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_OFFS                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x898)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_RMSK                             0xffffff87
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_BAR_BMSK                         0xc0000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_BAR_SHFT                                 30
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_BURST_BMSK                       0x20000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_BURST_SHFT                               29
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_CACHEABLE_BMSK                   0x10000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_CACHEABLE_SHFT                           28
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_DEVICE_BMSK                       0x8000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_DEVICE_SHFT                              27
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_DEVICE_TYPE_BMSK                  0x6000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_DEVICE_TYPE_SHFT                         25
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_EARLYWRRESP_BMSK                  0x1000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_EARLYWRRESP_SHFT                         24
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_ERROR_BMSK                         0x800000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_ERROR_SHFT                               23
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_EXCLUSIVE_BMSK                     0x400000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_EXCLUSIVE_SHFT                           22
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_FULL_BMSK                          0x200000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_FULL_SHFT                                21
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_SHARED_BMSK                        0x100000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_SHARED_SHFT                              20
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_WRITETHROUGH_BMSK                   0x80000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_WRITETHROUGH_SHFT                        19
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_INNERNOALLOCATE_BMSK                0x40000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_INNERNOALLOCATE_SHFT                     18
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_INNERCACHEABLE_BMSK                 0x20000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_INNERCACHEABLE_SHFT                      17
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_INNERSHARED_BMSK                    0x10000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_INNERSHARED_SHFT                         16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_INNERTRANSIENT_BMSK                  0x8000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_INNERTRANSIENT_SHFT                      15
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_INNERWRITETHROUGH_BMSK               0x4000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_INNERWRITETHROUGH_SHFT                   14
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_PORTMREL_BMSK                        0x2000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_PORTMREL_SHFT                            13
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_ORDEREDRD_BMSK                       0x1000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_ORDEREDRD_SHFT                           12
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_ORDEREDWR_BMSK                        0x800
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_ORDEREDWR_SHFT                           11
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_OOORD_BMSK                            0x400
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_OOORD_SHFT                               10
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_OOOWR_BMSK                            0x200
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_OOOWR_SHFT                                9
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_NOALLOCATE_BMSK                       0x100
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_NOALLOCATE_SHFT                           8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_TRANSIENT_BMSK                         0x80
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_TRANSIENT_SHFT                            7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_MEMTYPE_BMSK                            0x7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD0_ESYNR2_MEMTYPE_SHFT                              0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_ADDR                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0x898)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_OFFS                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0x898)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_RMSK                             0xffffff87
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_BAR_BMSK                         0xc0000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_BAR_SHFT                                 30
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_BURST_BMSK                       0x20000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_BURST_SHFT                               29
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_CACHEABLE_BMSK                   0x10000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_CACHEABLE_SHFT                           28
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_DEVICE_BMSK                       0x8000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_DEVICE_SHFT                              27
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_DEVICE_TYPE_BMSK                  0x6000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_DEVICE_TYPE_SHFT                         25
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_EARLYWRRESP_BMSK                  0x1000000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_EARLYWRRESP_SHFT                         24
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_ERROR_BMSK                         0x800000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_ERROR_SHFT                               23
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_EXCLUSIVE_BMSK                     0x400000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_EXCLUSIVE_SHFT                           22
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_FULL_BMSK                          0x200000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_FULL_SHFT                                21
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_SHARED_BMSK                        0x100000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_SHARED_SHFT                              20
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_WRITETHROUGH_BMSK                   0x80000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_WRITETHROUGH_SHFT                        19
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_INNERNOALLOCATE_BMSK                0x40000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_INNERNOALLOCATE_SHFT                     18
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_INNERCACHEABLE_BMSK                 0x20000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_INNERCACHEABLE_SHFT                      17
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_INNERSHARED_BMSK                    0x10000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_INNERSHARED_SHFT                         16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_INNERTRANSIENT_BMSK                  0x8000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_INNERTRANSIENT_SHFT                      15
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_INNERWRITETHROUGH_BMSK               0x4000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_INNERWRITETHROUGH_SHFT                   14
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_PORTMREL_BMSK                        0x2000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_PORTMREL_SHFT                            13
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_ORDEREDRD_BMSK                       0x1000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_ORDEREDRD_SHFT                           12
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_ORDEREDWR_BMSK                        0x800
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_ORDEREDWR_SHFT                           11
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_OOORD_BMSK                            0x400
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_OOORD_SHFT                               10
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_OOOWR_BMSK                            0x200
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_OOOWR_SHFT                                9
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_NOALLOCATE_BMSK                       0x100
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_NOALLOCATE_SHFT                           8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_TRANSIENT_BMSK                         0x80
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_TRANSIENT_SHFT                            7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_MEMTYPE_BMSK                            0x7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_QAD1_ESYNR2_MEMTYPE_SHFT                              0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSr_ADDR(r)                     (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0X900 + (0x4*(r)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSr_OFFS(r)                     (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0X900 + (0x4*(r)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSr_RMSK                        0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSr_MAXr                                 0
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSr_INI(r)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSr_ADDR(r), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSr_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSr_INMI(r,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSr_ADDR(r), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSr_RGOWNERSTATUS_BMSK          0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSr_RGOWNERSTATUS_SHFT                   0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSs_ADDR(s)                     (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0X900 + (0x4*(s)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSs_OFFS(s)                     (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0X900 + (0x4*(s)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSs_RMSK                        0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSs_MAXs                                 1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSs_INI(s)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSs_ADDR(s), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSs_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSs_INMI(s,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSs_ADDR(s), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSs_RGOWNERSTATUS_BMSK          0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGN_OWNERSTATUSs_RGOWNERSTATUS_SHFT                   0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_ADDR(n)                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0X1000 + (0x80*(n)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_OFFS(n)                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0X1000 + (0x80*(n)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_RMSK                                     0x107
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_MAXn                                        63
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_INI(n)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_ADDR(n), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_INMI(n,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_ADDR(n), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_OUTI(n,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_ADDR(n),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_OUTMI(n,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_ADDR(n),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_INI(n))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_RG_SEC_APPS_BMSK                         0x100
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_RG_SEC_APPS_SHFT                             8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_RG_OWNER_BMSK                              0x7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR0_RG_OWNER_SHFT                                0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR3_ADDR(n)                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0X100C + (0x80*(n)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR3_OFFS(n)                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0X100C + (0x80*(n)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR3_RMSK                                       0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR3_MAXn                                        63
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR3_INI(n)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR3_ADDR(n), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR3_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR3_INMI(n,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR3_ADDR(n), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR3_OUTI(n,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR3_ADDR(n),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR3_OUTMI(n,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR3_ADDR(n),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR3_INI(n))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR3_SECURE_ACCESS_LOCK_BMSK                    0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_GCR3_SECURE_ACCESS_LOCK_SHFT                      0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR0_ADDR(n)                              (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0X1010 + (0x80*(n)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR0_OFFS(n)                              (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0X1010 + (0x80*(n)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR0_RMSK                                        0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR0_MAXn                                         63
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR0_INI(n)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR0_ADDR(n), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR0_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR0_INMI(n,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR0_ADDR(n), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR0_OUTI(n,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR0_ADDR(n),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR0_OUTMI(n,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR0_ADDR(n),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR0_INI(n))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR0_RGSCLRDEN_APPS_BMSK                         0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR0_RGSCLRDEN_APPS_SHFT                           0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR1_ADDR(n)                              (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0X1014 + (0x80*(n)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR1_OFFS(n)                              (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0X1014 + (0x80*(n)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR1_RMSK                                        0x7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR1_MAXn                                         63
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR1_INI(n)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR1_ADDR(n), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR1_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR1_INMI(n,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR1_ADDR(n), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR1_OUTI(n,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR1_ADDR(n),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR1_OUTMI(n,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR1_ADDR(n),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR1_INI(n))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR1_RGCLRDEN_BMSK                               0x7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR1_RGCLRDEN_SHFT                                 0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR2_ADDR(n)                              (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0X1018 + (0x80*(n)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR2_OFFS(n)                              (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0X1018 + (0x80*(n)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR2_RMSK                                        0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR2_MAXn                                         63
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR2_INI(n)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR2_ADDR(n), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR2_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR2_INMI(n,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR2_ADDR(n), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR2_OUTI(n,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR2_ADDR(n),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR2_OUTMI(n,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR2_ADDR(n),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR2_INI(n))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR2_RGSCLWREN_APPS_BMSK                         0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR2_RGSCLWREN_APPS_SHFT                           0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR3_ADDR(n)                              (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0X101C + (0x80*(n)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR3_OFFS(n)                              (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0X101C + (0x80*(n)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR3_RMSK                                        0x7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR3_MAXn                                         63
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR3_INI(n)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR3_ADDR(n), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR3_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR3_INMI(n,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR3_ADDR(n), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR3_OUTI(n,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR3_ADDR(n),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR3_OUTMI(n,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR3_ADDR(n),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR3_INI(n))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR3_RGCLWREN_BMSK                               0x7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_CR3_RGCLWREN_SHFT                                 0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_RACR_ADDR(n)                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0X1040 + (0x80*(n)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_RACR_OFFS(n)                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0X1040 + (0x80*(n)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_RACR_RMSK                                0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_RACR_MAXn                                        63
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_RACR_INI(n)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_RACR_ADDR(n), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_RACR_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_RACR_INMI(n,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_RACR_ADDR(n), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_RACR_OUTI(n,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_RACR_ADDR(n),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_RACR_OUTMI(n,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_RACR_ADDR(n),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_RACR_INI(n))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_RACR_RE_BMSK                             0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_RACR_RE_SHFT                                      0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_WACR_ADDR(n)                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE      + 0X1060 + (0x80*(n)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_WACR_OFFS(n)                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_REG_BASE_OFFS + 0X1060 + (0x80*(n)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_WACR_RMSK                                0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_WACR_MAXn                                        63
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_WACR_INI(n)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_WACR_ADDR(n), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_WACR_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_WACR_INMI(n,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_WACR_ADDR(n), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_WACR_OUTI(n,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_WACR_ADDR(n),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_WACR_OUTMI(n,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_WACR_ADDR(n),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_WACR_INI(n))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_WACR_WE_BMSK                             0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_XPU3_RGn_WACR_WE_SHFT                                      0
+
+/*----------------------------------------------------------------------------
+ * MODULE: SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG
+ *--------------------------------------------------------------------------*/
+
+#define SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE                                                  (SAILSS_DBG_SAILSS_SOC_DBG_BASE      + 0x000ff000)
+#define SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_SIZE                                             0x1000
+#define SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_USED                                             0x3ec
+#define SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS                                             0x000ff000
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_VERSION_ADDR                                          (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0x0)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_VERSION_OFFS                                          (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0x0)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_VERSION_RMSK                                            0xffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_VERSION_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_VERSION_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_VERSION_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_VERSION_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_VERSION_MAJOR_BMSK                                      0xff0000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_VERSION_MAJOR_SHFT                                            16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_VERSION_MINOR_BMSK                                        0xff00
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_VERSION_MINOR_SHFT                                             8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_VERSION_STEP_BMSK                                           0xff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_VERSION_STEP_SHFT                                              0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_ADDR                                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0x4)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_OFFS                                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0x4)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_RMSK                                                  0x3ff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_QAD_ACCESS_UPDATE_BMSK                                0x200
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_QAD_ACCESS_UPDATE_SHFT                                    9
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_MEMORY_MAP_UPDATE_BMSK                                0x100
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_MEMORY_MAP_UPDATE_SHFT                                    8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_TRANSACTION_TIMEOUT_BMSK                               0x80
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_TRANSACTION_TIMEOUT_SHFT                                  7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_LOOP_OFFSET_FIX_BMSK                                   0x40
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_LOOP_OFFSET_FIX_SHFT                                      6
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_NS_BMSK                                                0x20
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_NS_SHFT                                                   5
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_MSA_BMSK                                               0x10
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_MSA_SHFT                                                  4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_TPDM_PRESENT_BMSK                                       0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_TPDM_PRESENT_SHFT                                         3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_CRC_PRESENT_BMSK                                        0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_CRC_PRESENT_SHFT                                          2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_APU_PRESENT_BMSK                                        0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_APU_PRESENT_SHFT                                          1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_UPDATED_REG_BMSK                                        0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_HW_INFO_UPDATED_REG_SHFT                                          0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_SRAM_SIZE_INFO_ADDR                                      (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0x8)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_SRAM_SIZE_INFO_OFFS                                      (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0x8)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_SRAM_SIZE_INFO_RMSK                                            0xff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_SRAM_SIZE_INFO_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_SRAM_SIZE_INFO_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_SRAM_SIZE_INFO_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_SRAM_SIZE_INFO_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_SRAM_SIZE_INFO_RAM_KB_SIZE_BMSK                                0xff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_SRAM_SIZE_INFO_RAM_KB_SIZE_SHFT                                   0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU_INFO_ADDR                                            (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0xc)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU_INFO_OFFS                                            (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0xc)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU_INFO_RMSK                                                 0xfff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU_INFO_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU_INFO_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU_INFO_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU_INFO_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU_INFO_XPU_VERSION_BMSK                                     0xf00
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU_INFO_XPU_VERSION_SHFT                                         8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU_INFO_NUM_XPU_SEGS_BMSK                                     0xff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_APU_INFO_NUM_XPU_SEGS_SHFT                                        0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_NUM_INFO_ADDR                                         (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0x10)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_NUM_INFO_OFFS                                         (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0x10)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_NUM_INFO_RMSK                                               0x1f
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_NUM_INFO_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_NUM_INFO_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_NUM_INFO_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_NUM_INFO_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_NUM_INFO_NUM_LLS_BMSK                                       0x1f
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_NUM_INFO_NUM_LLS_SHFT                                          0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TIMEOUT_SIGNATURE_ADDR                                   (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0x14)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TIMEOUT_SIGNATURE_OFFS                                   (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0x14)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TIMEOUT_SIGNATURE_RMSK                                   0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TIMEOUT_SIGNATURE_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TIMEOUT_SIGNATURE_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TIMEOUT_SIGNATURE_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TIMEOUT_SIGNATURE_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TIMEOUT_SIGNATURE_SIGNATURE_BMSK                         0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TIMEOUT_SIGNATURE_SIGNATURE_SHFT                                  0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_ADDR                                           (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0x18)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_OFFS                                           (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0x18)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_RMSK                                              0x1ffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_ADDRESS_BMSK                                      0x1fffc
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_ADDRESS_SHFT                                            2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_TRIGGER_BMSK                                          0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_TRIGGER_SHFT                                            1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_ENABLE_BMSK                                           0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_EXEC_CTRL_ENABLE_SHFT                                             0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_STATUS_ADDR                                              (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0x1c)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_STATUS_OFFS                                              (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0x1c)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_STATUS_RMSK                                                0xff0f07
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_STATUS_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_STATUS_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_STATUS_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_STATUS_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_STATUS_TRIGGERED_LL_BMSK                                   0xff0000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_STATUS_TRIGGERED_LL_SHFT                                         16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_STATUS_LINK_LIST_SEL_BMSK                                     0xf00
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_STATUS_LINK_LIST_SEL_SHFT                                         8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_STATUS_SEQ_FSM_STATE_BMSK                                       0x7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_STATUS_SEQ_FSM_STATE_SHFT                                         0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_ADDR                                                 (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0x20)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_OFFS                                                 (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0x20)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_RMSK                                                  0xfff0001
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_OUT(v)            \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_ADDR,v)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_OUTM(m,v) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_ADDR,m,v,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_IN)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_HVMID_BMSK                                            0xf800000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_HVMID_SHFT                                                   23
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_HINNERSHARED_BMSK                                      0x400000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_HINNERSHARED_SHFT                                            22
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_HMEMTYPE_BMSK                                          0x380000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_HMEMTYPE_SHFT                                                19
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_HNOALLOCATE_BMSK                                        0x40000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_HNOALLOCATE_SHFT                                             18
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_HSHARED_BMSK                                            0x20000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_HSHARED_SHFT                                                 17
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_HTRANSIENT_BMSK                                         0x10000
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_HTRANSIENT_SHFT                                              16
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_CGC_ALWAYS_ON_BMSK                                          0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_CGC_ALWAYS_ON_SHFT                                            0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CURRENT_ADDR                                         (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0x24)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CURRENT_OFFS                                         (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0x24)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CURRENT_RMSK                                         0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CURRENT_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CURRENT_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CURRENT_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CURRENT_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CURRENT_ADDRESS_BMSK                                 0xfffffffc
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CURRENT_ADDRESS_SHFT                                          2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CURRENT_BUS_TYPE_BMSK                                       0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CURRENT_BUS_TYPE_SHFT                                         1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CURRENT_ACCESS_DIR_BMSK                                     0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CURRENT_ACCESS_DIR_SHFT                                       0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CURRENT_ADDR                                         (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0x28)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CURRENT_OFFS                                         (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0x28)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CURRENT_RMSK                                             0x7fff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CURRENT_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CURRENT_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CURRENT_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CURRENT_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CURRENT_ADDRESS_BMSK                                     0x7fff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CURRENT_ADDRESS_SHFT                                          0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_VALUE_ADDR                                           (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0x2c)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_VALUE_OFFS                                           (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0x2c)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_VALUE_RMSK                                                  0x3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_VALUE_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_VALUE_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_VALUE_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_VALUE_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_VALUE_VALUE_BMSK                                            0x3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_VALUE_VALUE_SHFT                                              0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TO_CNTR_VAL_ADDR                                      (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0x30)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TO_CNTR_VAL_OFFS                                      (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0x30)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TO_CNTR_VAL_RMSK                                      0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TO_CNTR_VAL_IN                    \
+                in_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TO_CNTR_VAL_ADDR)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TO_CNTR_VAL_INM(m)            \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TO_CNTR_VAL_ADDR, m)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TO_CNTR_VAL_VALUE_BMSK                                0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TO_CNTR_VAL_VALUE_SHFT                                         0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_ADDR(m)                                         (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0X34 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_OFFS(m)                                         (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0X34 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_RMSK                                                  0x1f
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_MAXm                                                     7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_INI(m)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_ADDR(m), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_INMI(m,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_ADDR(m), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_OUTI(m,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_ADDR(m),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_OUTMI(m,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_ADDR(m),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_INI(m))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_M_BIT_BMSK                                            0x10
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_M_BIT_SHFT                                               4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_S_BIT_BMSK                                             0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_S_BIT_SHFT                                               3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_NS_BMSK                                                0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_NS_SHFT                                                  2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_MSA_BMSK                                               0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_MSA_SHFT                                                 1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_ACTIVE_BMSK                                            0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_LOCKm_ACTIVE_SHFT                                              0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_ADDR(m)                                       (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0X38 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_OFFS(m)                                       (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0X38 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_RMSK                                               0x111
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_MAXm                                                   7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_INI(m)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_ADDR(m), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_INMI(m,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_ADDR(m), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_OUTI(m,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_ADDR(m),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_OUTMI(m,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_ADDR(m),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_INI(m))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_HW_TRIGGER_EN_BMSK                                 0x100
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_HW_TRIGGER_EN_SHFT                                     8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_SINK_BMSK                                           0x10
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_SINK_SHFT                                              4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_FUNC_BMSK                                            0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CONFIGm_FUNC_SHFT                                              0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BASEm_ADDR(m)                                         (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0X3C + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BASEm_OFFS(m)                                         (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0X3C + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BASEm_RMSK                                                0x7fff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BASEm_MAXm                                                     7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BASEm_INI(m)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BASEm_ADDR(m), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BASEm_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BASEm_INMI(m,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BASEm_ADDR(m), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BASEm_OUTI(m,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BASEm_ADDR(m),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BASEm_OUTMI(m,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BASEm_ADDR(m),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BASEm_INI(m))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BASEm_ADDRESS_BMSK                                        0x7fff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BASEm_ADDRESS_SHFT                                             0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FD_BASEm_ADDR(m)                                         (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0X40 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FD_BASEm_OFFS(m)                                         (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0X40 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FD_BASEm_RMSK                                                0x7fff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FD_BASEm_MAXm                                                     7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FD_BASEm_INI(m)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FD_BASEm_ADDR(m), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FD_BASEm_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FD_BASEm_INMI(m,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FD_BASEm_ADDR(m), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FD_BASEm_OUTI(m,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FD_BASEm_ADDR(m),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FD_BASEm_OUTMI(m,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FD_BASEm_ADDR(m),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FD_BASEm_INI(m))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FD_BASEm_ADDRESS_BMSK                                        0x7fff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FD_BASEm_ADDRESS_SHFT                                             0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TIMEOUTm_ADDR(m)                                      (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0X44 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TIMEOUTm_OFFS(m)                                      (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0X44 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TIMEOUTm_RMSK                                         0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TIMEOUTm_MAXm                                                  7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TIMEOUTm_INI(m)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TIMEOUTm_ADDR(m), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TIMEOUTm_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TIMEOUTm_INMI(m,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TIMEOUTm_ADDR(m), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TIMEOUTm_OUTI(m,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TIMEOUTm_ADDR(m),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TIMEOUTm_OUTMI(m,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TIMEOUTm_ADDR(m),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TIMEOUTm_INI(m))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TIMEOUTm_VALUE_BMSK                                   0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_TIMEOUTm_VALUE_SHFT                                            0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TRANS_TIMEOUTm_ADDR(m)                                   (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0X48 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TRANS_TIMEOUTm_OFFS(m)                                   (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0X48 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TRANS_TIMEOUTm_RMSK                                          0xffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TRANS_TIMEOUTm_MAXm                                               7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TRANS_TIMEOUTm_INI(m)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TRANS_TIMEOUTm_ADDR(m), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TRANS_TIMEOUTm_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TRANS_TIMEOUTm_INMI(m,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TRANS_TIMEOUTm_ADDR(m), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TRANS_TIMEOUTm_OUTI(m,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TRANS_TIMEOUTm_ADDR(m),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TRANS_TIMEOUTm_OUTMI(m,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TRANS_TIMEOUTm_ADDR(m),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TRANS_TIMEOUTm_INI(m))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TRANS_TIMEOUTm_VALUE_BMSK                                    0xffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_TRANS_TIMEOUTm_VALUE_SHFT                                         0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_ADDR(m)                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0X4C + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_OFFS(m)                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0X4C + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_RMSK                                       0xf
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_MAXm                                         7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_INI(m)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_ADDR(m), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_INMI(m,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_ADDR(m), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_OUTI(m,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_ADDR(m),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_OUTMI(m,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_ADDR(m),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_INI(m))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_TRANS_TO_ERROR_BMSK                        0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_TRANS_TO_ERROR_SHFT                          3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_LL_TO_ERROR_BMSK                           0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_LL_TO_ERROR_SHFT                             2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_CRC_ERROR_BMSK                             0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_CRC_ERROR_SHFT                               1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_TASK_DONE_BMSK                             0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_ENABLEm_TASK_DONE_SHFT                               0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_ADDR(m)                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0X50 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_OFFS(m)                             (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0X50 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_RMSK                                       0xf
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_MAXm                                         7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_INI(m)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_ADDR(m), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_INMI(m,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_ADDR(m), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_OUTI(m,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_ADDR(m),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_OUTMI(m,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_ADDR(m),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_INI(m))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_TRANS_TO_ERROR_BMSK                        0x8
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_TRANS_TO_ERROR_SHFT                          3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_LL_TO_ERROR_BMSK                           0x4
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_LL_TO_ERROR_SHFT                             2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_CRC_ERROR_BMSK                             0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_CRC_ERROR_SHFT                               1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_TASK_DONE_BMSK                             0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_INTERRUPT_STATUSm_TASK_DONE_SHFT                               0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CAPTUREDm_ADDR(m)                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0X54 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CAPTUREDm_OFFS(m)                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0X54 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CAPTUREDm_RMSK                                       0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CAPTUREDm_MAXm                                                7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CAPTUREDm_INI(m)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CAPTUREDm_ADDR(m), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CAPTUREDm_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CAPTUREDm_INMI(m,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CAPTUREDm_ADDR(m), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CAPTUREDm_ADDRESS_BMSK                               0xfffffffc
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CAPTUREDm_ADDRESS_SHFT                                        2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CAPTUREDm_BUS_TYPE_BMSK                                     0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CAPTUREDm_BUS_TYPE_SHFT                                       1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CAPTUREDm_ACCESS_DIR_BMSK                                   0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_FDA_CAPTUREDm_ACCESS_DIR_SHFT                                     0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CAPTUREDm_ADDR(m)                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0X58 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CAPTUREDm_OFFS(m)                                    (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0X58 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CAPTUREDm_RMSK                                           0xffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CAPTUREDm_MAXm                                                7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CAPTUREDm_INI(m)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CAPTUREDm_ADDR(m), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CAPTUREDm_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CAPTUREDm_INMI(m,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CAPTUREDm_ADDR(m), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CAPTUREDm_ADDRESS_BMSK                                   0xffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LLA_CAPTUREDm_ADDRESS_SHFT                                        0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CRC_CAPTUREDm_ADDR(m)                                 (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0X5C + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CRC_CAPTUREDm_OFFS(m)                                 (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0X5C + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CRC_CAPTUREDm_RMSK                                    0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CRC_CAPTUREDm_MAXm                                             7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CRC_CAPTUREDm_INI(m)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CRC_CAPTUREDm_ADDR(m), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CRC_CAPTUREDm_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CRC_CAPTUREDm_INMI(m,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CRC_CAPTUREDm_ADDR(m), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CRC_CAPTUREDm_VALUE_BMSK                              0xffffffff
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_CRC_CAPTUREDm_VALUE_SHFT                                       0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_SW_TRIGGERm_ADDR(m)                                   (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0X60 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_SW_TRIGGERm_OFFS(m)                                   (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0X60 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_SW_TRIGGERm_RMSK                                             0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_SW_TRIGGERm_MAXm                                               7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_SW_TRIGGERm_INI(m)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_SW_TRIGGERm_ADDR(m), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_SW_TRIGGERm_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_SW_TRIGGERm_INMI(m,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_SW_TRIGGERm_ADDR(m), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_SW_TRIGGERm_OUTI(m,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_SW_TRIGGERm_ADDR(m),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_SW_TRIGGERm_OUTMI(m,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_SW_TRIGGERm_ADDR(m),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_SW_TRIGGERm_INI(m))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_SW_TRIGGERm_SET_BMSK                                         0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_SW_TRIGGERm_SET_SHFT                                           0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_ADDR(m)                            (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0X64 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_OFFS(m)                            (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0X64 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_RMSK                                      0x3
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_MAXm                                        7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_INI(m)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_ADDR(m), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_INMI(m,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_ADDR(m), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_OUTI(m,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_ADDR(m),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_OUTMI(m,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_ADDR(m),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_INI(m))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_AHBM_READ_DATA_ERROR_BMSK                 0x2
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_AHBM_READ_DATA_ERROR_SHFT                   1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_APBM_READ_DATA_ERROR_BMSK                 0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_LL_BUS_ACCESS_STATUSm_APBM_READ_DATA_ERROR_SHFT                   0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CTI_TRIGm_ADDR(m)                                        (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0X68 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CTI_TRIGm_OFFS(m)                                        (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0X68 + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CTI_TRIGm_RMSK                                                  0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CTI_TRIGm_MAXm                                                    7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CTI_TRIGm_INI(m)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CTI_TRIGm_ADDR(m), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CTI_TRIGm_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CTI_TRIGm_INMI(m,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CTI_TRIGm_ADDR(m), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CTI_TRIGm_OUTI(m,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CTI_TRIGm_ADDR(m),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CTI_TRIGm_OUTMI(m,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CTI_TRIGm_ADDR(m),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CTI_TRIGm_INI(m))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CTI_TRIGm_CTI_TRIGGER_EN_BMSK                                   0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CTI_TRIGm_CTI_TRIGGER_EN_SHFT                                     0
+
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_OUTPUTm_ADDR(m)                                      (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE      + 0X6C + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_OUTPUTm_OFFS(m)                                      (SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_CFG_REG_BASE_OFFS + 0X6C + (0x80*(m)))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_OUTPUTm_RMSK                                                0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_OUTPUTm_MAXm                                                  7
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_OUTPUTm_INI(m)                \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_OUTPUTm_ADDR(m), HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_OUTPUTm_RMSK)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_OUTPUTm_INMI(m,mask)        \
+                in_dword_masked(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_OUTPUTm_ADDR(m), mask)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_OUTPUTm_OUTI(m,val)        \
+                out_dword(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_OUTPUTm_ADDR(m),val)
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_OUTPUTm_OUTMI(m,mask,val) \
+                out_dword_masked_ns(HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_OUTPUTm_ADDR(m),mask,val,HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_OUTPUTm_INI(m))
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_OUTPUTm_OUTPUT_BMSK                                         0x1
+#define HWIO_SAILSS_DBG_SAILSS_DBG_QDSS_DCC_DCC_QAD_OUTPUTm_OUTPUT_SHFT                                           0
+
+
+#endif /* __SAILDBG_DCC_HWIO_H__ */

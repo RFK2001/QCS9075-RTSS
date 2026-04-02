@@ -1,0 +1,10 @@
+<config>
+  <image_tree>
+    <name>SAIL.SI.1.2</name>
+    <build_id>SAIL.SI.1.2-00075-AU.LEMANS-1</build_id>
+    <branch_point_revision>None</branch_point_revision>
+    <revision>00075</revision>
+    <spin>1</spin>
+    <client>AU.LEMANS</client>
+  </image_tree>
+</config>

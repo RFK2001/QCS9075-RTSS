@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<configuration>
+  <parser_instructions>
+      <!-- NOTE: entries here are used by the parser when generating output -->
+      <!-- NOTE: each filename must be on it's own line as in variable=value-->
+      WRITE_PROTECT_BOUNDARY_IN_KB=4
+      SECTOR_SIZE_IN_BYTES=4096
+      PERFORMANCE_BOUNDARY_IN_KB=4
+      ALIGN_PARTITIONS_TO_PERFORMANCE_BOUNDARY=true
+      GROW_LAST_PARTITION_TO_FILL_DISK=false
+  </parser_instructions>
+
+  <!-- NOTE: "physical_partition" are listed in order and apply to UFS devices that have physical partitions -->
+
+  <!-- This is LUN 0 - HLOS LUN" -->
+  <physical_partition>
+    <partition label="SAIL_DLP"              size_in_kb="4"    type="e71077eb-c60d-46ac-a6a0-130dd47925fc" filename="sail_nor_dlp.bin"/>
+    <partition label="SAIL_HYP"              size_in_kb="900"  type="8701faa8-baa0-43cf-9c90-3b30495c558e" filename="sailhyp.elf"/>
+    <partition label="SAIL_SW1"              size_in_kb="1024" type="48f990b1-4e61-4b16-9f76-2244ee819eb3" filename="sailsw1.elf"/>
+    <partition label="SAIL_SW2"              size_in_kb="2048" type="e96d074b-6921-49f2-bd7c-c6a0a4bb72e1" filename="sailsw2.elf"/>
+    <partition label="SAIL_SW3"              size_in_kb="2048" type="dbba35e0-bc57-453f-9b0c-e8c0193a3e9d" filename="sailsw3.elf"/>
+    <partition label="SAIL_SW4"              size_in_kb="1024" type="77458ffe-3bc4-41cc-999e-8a4f4bcb56f8" filename="sailsw4.elf"/>
+    <partition label="SAIL_SEC_ELF"          size_in_kb="24"   type="8498942c-6f0e-41e5-957e-206e4df63c1e" filename=""/>
+    <partition label="SAIL_DBG_POLICY"       size_in_kb="28"   type="19a02f73-e542-4ce9-af87-be5209f4cbaa" filename=""/>
+    <partition label="SAIL_HYP_BKUP"         size_in_kb="900"  type="ccd55b90-28b7-4d96-993f-ac93a512f1eb" filename="sailhyp.elf"/>
+    <partition label="SAIL_SW1_BKUP"         size_in_kb="1024" type="025416ff-75ca-475a-9c62-e4c90e4acc2d" filename="sailsw1.elf"/>
+    <partition label="SAIL_SW2_BKUP"         size_in_kb="2048" type="a866cb7e-3e25-4c2e-95cd-2dfae9290fba" filename="sailsw2.elf"/>
+    <partition label="SAIL_SW3_BKUP"         size_in_kb="2048" type="58af8cc0-33e0-4216-a59a-0356488db42e" filename="sailsw3.elf"/>
+    <partition label="SAIL_SW4_BKUP"         size_in_kb="1024" type="4a2f5eb6-d0ca-4525-a0f8-04d5dd55b846" filename="sailsw4.elf"/>
+    <partition label="SAIL_SEC_ELF_BKUP"     size_in_kb="24"   type="a9eb764c-8a63-4ec0-aa9f-9ee2a53e5a88" filename=""/>
+    <partition label="SAIL_DBG_POLICY_BKUP"  size_in_kb="28"   type="04bc082a-6e31-438c-889c-fbeb791ecaec" filename=""/>
+    <partition label="SAIL_OTA_REBOOT"       size_in_kb="8"    type="bb7f4519-795e-471d-ac09-2d84c56cd253" filename=""/>
+    <partition label="SAIL_OTA_METADATA"     size_in_kb="16"   type="e60b7926-9899-45b1-9758-c95af5657199" filename=""/>
+    <partition label="SAIL_OTA_REBOOT_BKUP"  size_in_kb="8"    type="b5b5a557-ea43-461e-9be2-a028c9b841f4" filename=""/>
+    <partition label="MD_BIST_PATTERN2"      size_in_kb="100"  type="487bd3fa-5af2-48a5-a79b-68ff44cd7c35" filename=""/>
+    <partition label="MD_BIST_PATTERN2_BKUP" size_in_kb="100"  type="f02c1c93-6cbe-4d60-9724-c51154f8eb88" filename=""/>
+    <partition label="SAIL_TGB_MARKER"       size_in_kb="8"    type="1f063844-27c8-4a6b-aee1-fea622246306" filename=""/>
+    <partition label="SAIL_TGB_MARKER_BKUP"  size_in_kb="8"    type="c6fba11c-3562-4e87-b0f6-baae13c8eb21" filename=""/>
+    <partition label="SAIL_PMIC_LOG"         size_in_kb="4"    type="5fd6ab83-6d6a-48ac-8d74-4d743d15a0b1" filename=""/>
+    <partition label="SAIL_EFS"              size_in_kb="5120" type="66768379-5905-40d3-96bc-56222766ec6f" filename=""/>
+    <partition label="SAIL_OEM_PARTITION_1"  size_in_kb="16"   type="8ac02a9f-6c8c-43a2-ade1-54d482abc23a" filename=""/>
+    <partition label="SAIL_RAM_DUMP"         size_in_kb="5120" type="46117b39-6a0f-4cf9-b70a-71c09a62ba72" filename=""/>
+    <partition label="MD_CRASH_DUMP_IN_SAIL" size_in_kb="1024" type="7c6d2499-3a54-4709-aa10-d3f2ff498686" filename=""/>
+    <partition label="SAIL_NOC_ERR_LOG"      size_in_kb="8"    type="c45bc0f4-7869-4286-acdd-144e70c3f6b3" filename=""/>
+    <partition label="SAIL_NOR_TEST_EL1"     size_in_kb="8"    type="c4a1da4a-190a-4b9a-b02d-055dd1b717ed" filename=""/>
+    <partition label="SAIL_NOR_TEST_EL2"     size_in_kb="8"    type="503e59a3-66c6-4386-9999-00a44a94c039" filename=""/>
+    <partition label="SAIL_SLT"              size_in_kb="8"    type="a222073a-f734-4b61-8d2c-2d1aba7733bf" filename=""/>
+    <partition label="SAIL_CODE_COVERAGE"    size_in_kb="3072" type="826282df-047f-49c5-bd85-9f8f7e285657" filename=""/>
+    <partition label="SAIL_DLP_BKUP"         size_in_kb="4"    type="7b361e53-ac16-4c81-86b2-ae5cbfab198a" filename="sail_nor_dlp.bin"/>
+  </physical_partition>
+</configuration>

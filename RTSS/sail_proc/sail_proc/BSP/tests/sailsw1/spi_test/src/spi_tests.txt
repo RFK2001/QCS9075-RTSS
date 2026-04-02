@@ -1,0 +1,1383 @@
+/*
+===================================================================================================
+*/
+/**
+    @file  spi_test.c
+    @brief This file contains test application for SPI Mcal driver
+
+*/
+/*
+    ===============================================================================================
+
+    Copyright (c) 2022-2023 Qualcomm Technologies, Inc.
+    All Rights Reserved.
+    Confidential and Proprietary - Qualcomm Technologies, Inc.
+
+    Export of this technology or software is regulated by the U.S. Government.
+    Diversion contrary to U.S. law prohibited.
+
+    All ideas, data and information contained in or disclosed by
+    this document are confidential and proprietary information of
+    Qualcomm Technologies, Inc. and all rights therein are expressly reserved.
+    By accepting this material the recipient agrees that this material
+    and the information contained therein are held in confidence and in
+    trust and will not be used, copied, reproduced in whole or in part,
+    nor its contents revealed in any manner to others without the express
+    written permission of Qualcomm Technologies, Inc.
+
+    ===============================================================================================
+
+    $Header:   $
+    $DateTime:  $
+    $Author:   $
+
+    ===============================================================================================
+*/
+/*=================================================================================================
+**                      Include Section                                       **
+==================================================================================================*/
+#include "debug_log.h"
+#include "SafeRTOS_API.h"
+#include "types.h"
+#include "Spi.h"
+#include "spi_hal.h"
+#include "Spi_Cfg.h"
+#include "safertos_init.h"
+#include "common_functions.h"
+#include "tests.h"
+#include "Spi_PBcfg.h"
+#include <libfdt.h>
+#include "fdt_utils.h"
+/*=================================================================================================
+ *                                  PRIVATE Macros
+ *================================================================================================*/
+#define USS_SEQ00_CBKWAIT_MSK	BIT( 0 )
+#define USS_SEQ01_CBKWAIT_MSK	BIT( 1 )
+#define USS_SEQ02_CBKWAIT_MSK	BIT( 2 )
+#define USS_SEQ03_CBKWAIT_MSK	BIT( 3 )
+#define USS_SEQ04_CBKWAIT_MSK	BIT( 4 )
+#define USS_SEQ05_CBKWAIT_MSK	BIT( 5 )
+#define USS_SEQ06_CBKWAIT_MSK	BIT( 6 )
+#define USS_SEQ07_CBKWAIT_MSK	BIT( 7 )
+#define USS_SEQ08_CBKWAIT_MSK	BIT( 8 )
+#define USS_SEQ09_CBKWAIT_MSK	BIT( 9 )
+#define CAN_SEQ10_CBKWAIT_MSK	BIT( 10 )
+#define CAN_SEQ11_CBKWAIT_MSK	BIT( 11 )
+#define CAN_SEQ12_CBKWAIT_MSK	BIT( 12 )
+#define CAN_SEQ13_CBKWAIT_MSK	BIT( 13 )
+
+#define LOOPBACK_SEQ14_CBKWAIT_MSK	BIT( 14 )
+/* total number of functionality cases */
+#define testSPI_FUNCTLTY_TEST_CASES        1U
+#define testSPI_TOTAL_TEST_CASES		   9U
+
+#define spiCANTRX_SCRATCH_REG_ADDR  0xF
+#define spiCANTRX_SCRATCH_REG_VAL   0x77
+#define MAX_CAN_TRX_TRANS_LEN       4U
+#define CAN_ADDR_SHIFT_VALUE        1U
+#define CAN_WRITE_CNTRL             1U
+#define MAX_LB_TRANS_LEN            50U
+#define spiTEST_CONST_SET			1U
+#define spiTEST_CONST_CLEAR			0U
+#define spiSE4LOOPBACK_ADDR			0xF199022CU
+
+#ifdef SPI_UT_ENABLE
+TEST_FUNC void UT_Configure_Sequence( void );
+TEST_FUNC void UT_Read_Write_FiFo( void );
+TEST_FUNC void UT_ConfigureChannel( void );
+TEST_FUNC void UT_ControlClock( void );
+TEST_FUNC void UT_DeviceTreeParam( void );
+TEST_FUNC void UT_BusTransferErr( void );
+TEST_FUNC void UT_UpdateChannelStatus(void);
+#endif
+
+TEST_DATA uint8 ucTrxDeviceId[MAX_CAN_TRX_TRANS_LEN] = {0x0, 0x54, 0x43, 0x41};
+
+typedef enum
+{
+    SPI_FAIL = 0,
+    SPI_PASS
+}SpiTestStatusType_e;
+
+TEST_FUNC static void prvSPITestDebugPrint( SpiTestStatusType_e result, const char * TestMsg, uint16_t usTestCaseNum );
+TEST_FUNC void AppSimTest_DummyEBInit( void * outBuf, void * inBuf, unsigned char data );
+TEST_FUNC SpiTestStatusType_e vSPIDVTestFunctionality(uint8 cpu_id);
+TEST_FUNC SpiTestStatusType_e vSPITestFunctionality(void);
+/*=================================================================================================
+ *                                  			Out EBs
+ *================================================================================================*/
+/*  Tx Buffers as we have 12 SW channels */
+#ifdef SAIL_USSTEST_ENABLED
+SPI_DATA Spi_DataBufferType defOutEB00[168U];
+SPI_DATA Spi_DataBufferType defOutEB01[168U];
+SPI_DATA Spi_DataBufferType defOutEB02[168U];
+SPI_DATA Spi_DataBufferType defOutEB03[168U];
+SPI_DATA Spi_DataBufferType defOutEB04[168U];
+SPI_DATA Spi_DataBufferType defOutEB05[168U];
+SPI_DATA Spi_DataBufferType defOutEB06[168U];
+SPI_DATA Spi_DataBufferType defOutEB07[168U];
+SPI_DATA Spi_DataBufferType defOutEB08[168U];
+SPI_DATA Spi_DataBufferType defOutEB09[168U];
+#else
+/* CAN Buffers*/
+SPI_DATA Spi_DataBufferType defOutEB10[MAX_CAN_TRX_TRANS_LEN];
+SPI_DATA Spi_DataBufferType defOutEB11[MAX_CAN_TRX_TRANS_LEN];
+#endif
+/*==================================================================================================
+ *                                  			In EBs
+ *================================================================================================*/
+/*  Rx Buffers as we have 12 SW channels */
+#ifdef SAIL_USSTEST_ENABLED
+SPI_DATA Spi_DataBufferType defInEB00[168U];
+SPI_DATA Spi_DataBufferType defInEB01[168U];
+SPI_DATA Spi_DataBufferType defInEB02[168U];
+SPI_DATA Spi_DataBufferType defInEB03[168U];
+SPI_DATA Spi_DataBufferType defInEB04[168U];
+SPI_DATA Spi_DataBufferType defInEB05[168U];
+SPI_DATA Spi_DataBufferType defInEB06[168U];
+SPI_DATA Spi_DataBufferType defInEB07[168U];
+SPI_DATA Spi_DataBufferType defInEB08[168U];
+SPI_DATA Spi_DataBufferType defInEB09[168U];
+#else
+/* CAN Buffers*/
+SPI_DATA Spi_DataBufferType defInEB10[MAX_CAN_TRX_TRANS_LEN];
+SPI_DATA Spi_DataBufferType defInEB11[MAX_CAN_TRX_TRANS_LEN];
+#endif
+
+/* 168 bytes dummy data simulation type Tx and Rx SPI LoopBack Test */
+typedef struct
+{
+   unsigned char start;
+   unsigned char size;
+   unsigned char msgcntr;
+   unsigned char data[164U];
+   unsigned char end;
+}xUSS_Seq_t;
+
+/* Event group parameters */
+TEST_DATA static eventGroupType xEventGroupUssBuffer  = { 0U };
+TEST_DATA eventGroupHandleType  xEventGroupUssHandle  = NULL;
+TEST_DATA eventBitsType xEvBitsSet             		= { 0U };
+
+/*******************************************************************************
+**                  Private Function definition                               **
+*******************************************************************************/
+SPI_DATA Spi_DataBufferType InputBuffer[MAX_LB_TRANS_LEN];
+SPI_DATA Spi_DataBufferType OutputBuffer[MAX_LB_TRANS_LEN];
+uint8 ucWriteBuf[255]  = {0x00};
+uint8 ucReadBuf[255]   = {0xbb};
+TEST_FUNC SpiTestStatusType_e TC_SPI_012( TestCaseType TCType, uint8 cpu_id )
+{
+
+	SpiTestStatusType_e ulTestStatus = SPI_PASS;
+	uint8 ucCount = 0;
+	Std_ReturnType Std_Return = E_OK;
+
+	*(uint32*)spiSE4LOOPBACK_ADDR = 0x01;
+
+	for (int i =0; i < MAX_LB_TRANS_LEN; i++)
+	{
+		InputBuffer[i] = i;
+		OutputBuffer[i] =  0x0;
+	}
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_18, InputBuffer, OutputBuffer, MAX_LB_TRANS_LEN );
+	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_14 );
+	if( E_OK != Std_Return )
+	{
+		if(TCType == UARTFRAMEWORK)
+		{
+		    DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_14): failed!\r\n" );
+		}
+	}
+	else
+	{
+		if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, LOOPBACK_SEQ14_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+		{
+			if(TCType == UARTFRAMEWORK)
+			{
+			    DEBUG_LOG(SAIL_INFO,"xEventGroupWaitBits(LOOPBACK_SEQ14_CBKWAIT_MSK) failed!\r\n");
+			}
+		}
+		else
+		{
+			for(ucCount = 0; ucCount < MAX_LB_TRANS_LEN; ucCount++)
+			{
+				if( OutputBuffer[ucCount] != InputBuffer[ucCount] )
+				{
+					ulTestStatus = SPI_FAIL;
+					break;
+				}
+			}
+		}
+	}
+    if(TCType == UARTFRAMEWORK)
+    {
+	    prvSPITestDebugPrint( ulTestStatus, "Test - SE4 Loopback ", 12 );
+    }
+    else if(TCType ==DVFRAMEWORK)
+    {
+    	if(ulTestStatus == SPI_FAIL)
+    	{
+    		DebugPrint_DVTask(DVTASK_FAILED,1);
+    	}
+    }
+
+	*(uint32*)spiSE4LOOPBACK_ADDR = 0x0;
+	return ulTestStatus;
+}
+
+TEST_FUNC SpiTestStatusType_e TC_SPI_020( )
+{
+
+	SpiTestStatusType_e ulTestStatus = SPI_PASS;
+
+	if(E_OK != Spi_DeInit())
+	{
+		DEBUG_LOG( SAIL_INFO,"Deinit failed\r\n" );
+		ulTestStatus = SPI_FAIL;
+	}
+
+	( void ) xTaskDelay( 1000 );
+
+	if(ulTestStatus == SPI_PASS)
+	{
+		Spi_Init(&Spi_Config);
+	}
+
+    prvSPITestDebugPrint( ulTestStatus, "Spi Deinit_Init Test ", 20 );
+
+    return ulTestStatus;
+}
+#ifdef SAIL_CANTEST_ENABLED
+/*>>>>>>>>>>>>>>> [TC_SPI_001] Test - Read TCAN0 Device ID  <<<<<<<<<<<<<<<*/
+TEST_FUNC SpiTestStatusType_e TC_SPI_001( TestCaseType TCType, uint8 cpu_id )
+{
+	SpiTestStatusType_e ulTestStatus = SPI_PASS;
+	uint8 ucCount = 0;
+	Std_ReturnType Std_Return = E_OK;
+
+	/* Read CAN TRX0 device ID*/
+	/* CAN Trx Channel config*/
+	defOutEB10[0] = 0x0;
+	defInEB10[0] = 0x0;
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_10, defOutEB10, defInEB10, 4 );
+	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_10 );
+	if( E_OK != Std_Return )
+	{
+		if(TCType == UARTFRAMEWORK)
+		{
+		    DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_10): failed!\r\n" );
+		}
+	}
+	else
+	{
+		if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, CAN_SEQ10_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+		{
+			if(TCType == UARTFRAMEWORK)
+			{
+			    DEBUG_LOG(SAIL_INFO,"xEventGroupWaitBits(USS_SEQ10_CBKWAIT_MSK) failed!\r\n");
+			}
+		}
+		else
+		{
+			for(ucCount = 1; ucCount < MAX_CAN_TRX_TRANS_LEN; ucCount++)
+			{
+				if( defInEB10[ucCount] != ucTrxDeviceId[ucCount] )
+				{
+					ulTestStatus = SPI_FAIL;
+					break;
+				}
+			}
+		}
+	}
+    if(TCType == UARTFRAMEWORK)
+    {
+	    prvSPITestDebugPrint( ulTestStatus, "Test - Read TCAN0 Device ID", 1 );
+    }
+    else if(TCType ==DVFRAMEWORK)
+    {
+    	if(ulTestStatus == SPI_FAIL)
+    	{
+    		DebugPrint_DVTask(DVTASK_FAILED,1);
+    	}
+    }
+	return ulTestStatus;
+}
+
+/*>>>>>>>>>>>>>>> [TC_SPI_002] Test - Write and Read TCAN0 SPI Scratch Register  <<<<<<<<<<<<<<<*/
+TEST_FUNC SpiTestStatusType_e TC_SPI_002( TestCaseType TCType, uint8 cpu_id )
+{
+	SpiTestStatusType_e ulTestStatus = SPI_FAIL;
+	uint8 ucCount = 0;
+	Std_ReturnType Std_Return = E_OK;
+
+	/* Write into CAN TRX1 SPI scratch register*/
+	defOutEB10[0] = spiCANTRX_SCRATCH_REG_ADDR << CAN_ADDR_SHIFT_VALUE | CAN_WRITE_CNTRL;
+	defOutEB10[1] =  spiCANTRX_SCRATCH_REG_VAL;
+
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_10, defOutEB10, defInEB10, 2 );
+	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_10 );
+	if( E_OK != Std_Return )
+	{
+	    if(TCType == UARTFRAMEWORK)
+	    {
+		    DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_10): failed!\r\n" );
+	    }
+	}
+	else
+	{
+		if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, CAN_SEQ10_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+		{
+		    if(TCType == UARTFRAMEWORK)
+		    {
+			    DEBUG_LOG(SAIL_INFO,"xEventGroupWaitBits(USS_SEQ10_CBKWAIT_MSK) failed!\r\n");
+		    }
+		}
+	}
+
+	/* Read the CAN TRX1 SPI scratch register*/
+	defOutEB10[0] = spiCANTRX_SCRATCH_REG_ADDR << CAN_ADDR_SHIFT_VALUE;
+	defInEB10[0] = 0x00;
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_10, defOutEB10, defInEB10, 2 );
+	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_10 );
+	if( E_OK != Std_Return )
+	{
+	    if(TCType == UARTFRAMEWORK)
+	    {
+		    DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_10): failed!\n" );
+	    }
+	}
+	else
+	{
+		 if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, CAN_SEQ10_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+		 {
+			if(TCType == UARTFRAMEWORK)
+			{
+			    DEBUG_LOG(SAIL_INFO,"xEventGroupWaitBits(USS_SEQ10_CBKWAIT_MSK) failed!\n");
+			}
+		 }
+		 else
+		 {
+			 if( defInEB10[1] == spiCANTRX_SCRATCH_REG_VAL )
+			 {
+			 	ulTestStatus = SPI_PASS;
+			 }
+		 }
+	}
+    if(TCType == UARTFRAMEWORK)
+    {
+    	 prvSPITestDebugPrint( ulTestStatus, "Test - Write/Read TCAN0 Scratch register", 2 );
+    }
+    else if(TCType == DVFRAMEWORK)
+    {
+    	if(ulTestStatus == SPI_FAIL)
+    	{
+    		DebugPrint_DVTask(DVTASK_FAILED,2);
+    	}
+    }
+    return ulTestStatus;
+}
+
+/*>>>>>>>>>>>>>>> [TC_SPI_003] Test - Read TCAN1 Device ID  <<<<<<<<<<<<<<<*/
+TEST_FUNC SpiTestStatusType_e TC_SPI_003( TestCaseType TCType, uint8 cpu_id )
+{
+	SpiTestStatusType_e ulTestStatus = SPI_PASS;
+	uint8 ucCount = 0;
+	Std_ReturnType Std_Return = E_OK;
+
+	defOutEB11[0] = 0x0;
+	defInEB11[0] = 0x0;
+	/* Read CAN TRX1 device ID*/
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_11, defOutEB11, defInEB11, 4 );
+	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_11 );
+	if( E_OK != Std_Return )
+	{
+	    if(TCType == UARTFRAMEWORK)
+	    {
+		DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_11): failed!\n" );
+	    }
+	}
+	else
+	{
+		if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, CAN_SEQ11_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+		{
+		    if(TCType == UARTFRAMEWORK)
+		    {
+			DEBUG_LOG(SAIL_INFO,"xEventGroupWaitBits(USS_SEQ11_CBKWAIT_MSK) failed!\n");
+		    }
+		}
+		else
+		{
+			for(ucCount = 1; ucCount < MAX_CAN_TRX_TRANS_LEN; ucCount++)
+			{
+				if( defInEB11[ucCount] != ucTrxDeviceId[ucCount] )
+				{
+					ulTestStatus = SPI_FAIL;
+					break;
+				}
+			}
+		}
+	}
+    if(TCType == UARTFRAMEWORK)
+    {
+    	prvSPITestDebugPrint( ulTestStatus, "Test - Read TCAN1 Device ID", 3 );
+    }
+    else if(TCType == DVFRAMEWORK)
+    {
+    	if(ulTestStatus == SPI_FAIL)
+    	{
+    		DebugPrint_DVTask(DVTASK_FAILED,3);
+    	}
+    }
+
+	return ulTestStatus;
+}
+
+/*>>>>>>>>>>>>>>> [TC_SPI_004] Test - Write and Read TCAN0 SPI Scratch Register  <<<<<<<<<<<<<<<*/
+TEST_FUNC SpiTestStatusType_e TC_SPI_004( TestCaseType TCType, uint8 cpu_id )
+{
+	SpiTestStatusType_e ulTestStatus = SPI_FAIL;
+	uint8 ucCount = 0;
+	Std_ReturnType Std_Return = E_OK;
+
+	/* Write into CAN TRX1 SPI scratch register*/
+	defOutEB11[0] = spiCANTRX_SCRATCH_REG_ADDR << CAN_ADDR_SHIFT_VALUE | CAN_WRITE_CNTRL;
+	defOutEB11[1] =  spiCANTRX_SCRATCH_REG_VAL;
+
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_11, defOutEB11, defInEB11, 2 );
+	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_11 );
+	if( E_OK != Std_Return )
+	{
+	    if(TCType == UARTFRAMEWORK)
+	    {
+		DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_11): failed!\n" );
+	    }
+	}
+	else
+	{
+		if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, CAN_SEQ11_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+		{
+		    if(TCType == UARTFRAMEWORK)
+		    {
+			DEBUG_LOG(SAIL_INFO,"xEventGroupWaitBits(USS_SEQ11_CBKWAIT_MSK) failed!\n");
+		    }
+		}
+	}
+
+	/* Read the CAN TRX1 SPI scratch register*/
+	defOutEB11[0] = spiCANTRX_SCRATCH_REG_ADDR << CAN_ADDR_SHIFT_VALUE;
+	defInEB11[0] = 0x00;
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_11, defOutEB11, defInEB11, 2 );
+	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_11 );
+	if( E_OK != Std_Return )
+	{
+	    if(TCType == UARTFRAMEWORK)
+	    {
+		DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_11): failed!\r\n" );
+		}
+	}
+	else
+	{
+		 if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, CAN_SEQ11_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+		 {
+			    if(TCType == UARTFRAMEWORK)
+			    {
+			 DEBUG_LOG(SAIL_INFO,"xEventGroupWaitBits(USS_SEQ11_CBKWAIT_MSK) failed!\r\n");
+			    }
+		 }
+		 else
+		 {
+			 if( defInEB11[1] == spiCANTRX_SCRATCH_REG_VAL )
+			 {
+			 	ulTestStatus = SPI_PASS;
+			 }
+		 }
+	}
+    if(TCType == UARTFRAMEWORK)
+    {
+    	prvSPITestDebugPrint( ulTestStatus, "Test - Write/Read TCAN1 Scratch register", 4 );
+    }
+    else if(TCType == DVFRAMEWORK)
+    {
+    	if(ulTestStatus == SPI_FAIL)
+    	{
+    		DebugPrint_DVTask(DVTASK_FAILED,4);
+    	}
+    }
+
+
+    return ulTestStatus;
+}
+#endif
+#ifdef SAIL_CANTEST_L2_ENABLED
+/*>>>>>>>>>>>>>>> [TC_SPI_005] Test - Read TCAN0 ID in multiple transfer <<<<<<<<<<<<<<<*/
+TEST_FUNC SpiTestStatusType_e TC_SPI_005( void )
+{
+	SpiTestStatusType_e ulTestStatus = SPI_PASS;
+	uint8 ucCount = 0;
+	Std_ReturnType Std_Return = E_OK;
+
+	uint8 buf0[4] = {0}, buf1[4]= {0}, buf2[4] = {0}, buf3[4] = {0} , buf4[4] = {0}, buf5[4]= {0}, buf6[4]= {0}, buf7[4] = {0};
+	uint8 outbuf0[4] = {0}, outbuf1[4]= {0}, outbuf2[4] = {0}, outbuf3[4] = {0};
+	uint8 outbuf4[4] = {0}, outbuf5[4]= {0}, outbuf6[4]= {0}, outbuf7[4] = {0};
+	/* Read CAN TRX1 device ID*/
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_10, buf0, outbuf0, 4 );
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_11, buf1, outbuf1, 4 );
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_12, buf2, outbuf2, 4 );
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_13, buf3, outbuf3, 4 );
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_14, buf4, outbuf4, 4 );
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_15, buf5, outbuf5, 4 );
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_16, buf6, outbuf6, 4 );
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_17, buf7, outbuf7, 4 );
+
+	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_12 );
+	if( E_OK != Std_Return )
+	{
+		DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_12): failed!\n" );
+	}
+	else
+	{
+		if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, CAN_SEQ12_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+		{
+			DEBUG_LOG(SAIL_INFO,"xEventGroupWaitBits(USS_SEQ12_CBKWAIT_MSK) failed!\n");
+		}
+		else
+		{
+			for(ucCount = 1; ucCount < MAX_CAN_TRX_TRANS_LEN; ucCount++)
+			{
+				if( outbuf6[ucCount] != ucTrxDeviceId[ucCount] )
+				{
+					ulTestStatus = SPI_FAIL;
+					break;
+				}
+			}
+		}
+	}
+
+	prvSPITestDebugPrint( ulTestStatus, "Test - Read TCAN0 Device ID multiple", 5 );
+
+	return ulTestStatus;
+}
+
+TEST_FUNC SpiTestStatusType_e TC_SPI_006( void )
+{
+	SpiTestStatusType_e ulTestStatus = SPI_PASS;
+	uint8 ucCount = 0;
+	Std_ReturnType Std_Return = E_OK;
+
+	uint8 buf0[4] = {0}, buf1[4]= {0}, buf2[4] = {0}, buf3[4] = {0} , buf4[4] = {0}, buf5[4]= {0}, buf6[4]= {0}, buf7[4] = {0};
+	uint8 outbuf0[4] = {0}, outbuf1[4]= {0}, outbuf2[4] = {0}, outbuf3[4] = {0};
+	uint8 outbuf4[4] = {0}, outbuf5[4]= {0}, outbuf6[4]= {0}, outbuf7[4] = {0};
+	/* Read CAN TRX1 device ID*/
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_10, buf0, outbuf0, 4 );
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_11, buf1, outbuf1, 4 );
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_12, buf2, outbuf2, 4 );
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_13, buf3, outbuf3, 4 );
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_14, buf4, outbuf4, 4 );
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_15, buf5, outbuf5, 4 );
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_16, buf6, outbuf6, 4 );
+	Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_17, buf7, outbuf7, 4 );
+
+	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_13 );
+	if( E_OK != Std_Return )
+	{
+		DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_13): failed!\n" );
+	}
+	else
+	{
+		if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, CAN_SEQ13_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+		{
+			DEBUG_LOG(SAIL_INFO,"xEventGroupWaitBits(USS_SEQ13_CBKWAIT_MSK) failed!\n");
+		}
+		else
+		{
+			for(ucCount = 1; ucCount < MAX_CAN_TRX_TRANS_LEN; ucCount++)
+			{
+				if( outbuf7[ucCount] != ucTrxDeviceId[ucCount] )
+				{
+					ulTestStatus = SPI_FAIL;
+					break;
+				}
+			}
+		}
+	}
+
+	prvSPITestDebugPrint( ulTestStatus, "Test - Read TCAN1 Device ID multiple", 6 );
+
+	return ulTestStatus;
+}
+#endif
+
+#ifdef SPI_UT_ENABLE
+/*>>>>>>>>>>>>>>> [TC_SPI_007] Test -  SPI transfer in FIFO mode <<<<<<<<<<<<<<<*/
+TEST_FUNC SpiTestStatusType_e TC_SPI_007( void)
+{
+
+	SpiTestStatusType_e ulTestStatus = SPI_PASS;
+	uint8 ucCount = 0;
+	Std_ReturnType Std_Return = E_OK;
+
+	for (int i =0; i < MAX_LB_TRANS_LEN; i++)
+	{
+		InputBuffer[i] = i;
+		OutputBuffer[i] =  0x0;
+	}
+
+	xSPIChannelCfg[SPI_CAN_TRX_CHANNEL_0].ucSPIBitsPerWord = 0x8;
+	xSPITransfer(SPI_CAN_TRX_CHANNEL_0,ucWriteBuf,ucReadBuf,4);
+
+	prvSPITestDebugPrint( ulTestStatus, "Test - Spi_Init in FiFO mode", 7 );
+
+	return ulTestStatus;
+}
+/*>>>>>>>>>>>>>>> [TC_SPI_007] Test -  SPI transfer in Polling mode <<<<<<<<<<<<<<<*/
+TEST_FUNC SpiTestStatusType_e TC_SPI_008( void )
+{
+	SpiTestStatusType_e ulTestStatus = SPI_PASS;
+	void *pDTB = NULL;
+	int32_t offset = 0, root_offset = 0;
+	uint8 val = 0x0;
+	const char *path;
+	Spi_DeInit();
+
+	/*DeInit without initializing*/
+	xSPIDeInit();
+
+	pDTB = fdt_get_dtb();
+	if (NULL != pDTB)
+	{
+		root_offset = fdt_path_offset(pDTB, "/aliases");
+		path = (const char*)fdt_getprop(pDTB, root_offset, "spi0" , NULL);
+		offset = fdt_path_offset(pDTB, path);
+		(void)fdt_setprop_u32(pDTB, offset, "access-mode",val);
+	}
+
+	/*Init in polling mode*/
+	Spi_Init(&Spi_Config);
+
+	xSPITransfer(SPI_CAN_TRX_CHANNEL_0,ucWriteBuf,ucReadBuf,4);
+
+	prvSPITestDebugPrint( ulTestStatus, "Test - SPI transfer in Polling mode", 8 );
+
+	return ulTestStatus;
+}
+
+/*>>>>>>>>>>>>>>> [TC_SPI_009] Test - SPI transfer in DMA mode  <<<<<<<<<<<<<<<*/
+TEST_FUNC SpiTestStatusType_e TC_SPI_009( void )
+{
+	SpiTestStatusType_e ulTestStatus = SPI_FAIL;
+	Std_ReturnType RetVal = E_OK;
+	void *pDTB = NULL;
+	int32_t offset = 0, root_offset = 0;
+	uint8 val = 0x2;
+	const char *path;
+
+	Spi_DeInit();
+
+	pDTB = fdt_get_dtb();
+	if (NULL != pDTB)
+	{
+		root_offset = fdt_path_offset(pDTB, "/aliases");
+		path = (const char*)fdt_getprop(pDTB, root_offset, "spi0" , NULL);
+		offset = fdt_path_offset(pDTB, path);
+		(void)fdt_setprop_u32(pDTB, offset, "access-mode",val);
+	}
+
+	/*Init in dma mode */
+	Spi_Init(&Spi_Config);
+
+	xSPITransfer(SPI_CAN_TRX_CHANNEL_0,ucWriteBuf,ucReadBuf,4);
+
+	if( RetVal == E_NOT_OK )
+	{
+		ulTestStatus = SPI_PASS;
+		prvSPITestDebugPrint( ulTestStatus, "Test - SPI transfer in DMA mode", 9);
+	}
+
+	return ulTestStatus;
+}
+
+/*>>>>>>>>>>>>>>> [TC_SPI_011] Test - xSPITransfer in polling mode return failure <<<<<<<<<<<<<<<*/
+TEST_FUNC SpiTestStatusType_e TC_SPI_011( void )
+{
+	SpiTestStatusType_e ulTestStatus = SPI_PASS;
+	Std_ReturnType RetVal = E_OK;
+	volatile uint8 stop = 0x1;
+	void *pDTB = NULL;
+	int32_t offset = 0, root_offset = 0;
+	uint8 val = 0x1;
+	const char *path;
+
+	while(stop)
+	{
+
+	}
+	Spi_DeInit();
+
+	pDTB = fdt_get_dtb();
+	if (NULL != pDTB)
+	{
+		root_offset = fdt_path_offset(pDTB, "/aliases");
+		path = (const char*)fdt_getprop(pDTB, root_offset, "spi0" , NULL);
+		offset = fdt_path_offset(pDTB, path);
+		(void)fdt_setprop_u32(pDTB, offset, "slave",val);
+		(void)fdt_setprop_u32(pDTB, offset, "access-mode",0);
+	}
+
+	Spi_Init(&Spi_Config);
+
+	/*return SPI transfer error in polling mode*/
+	xSPITransfer(SPI_CAN_TRX_CHANNEL_0, ucWriteBuf,ucReadBuf,4);
+
+	return ulTestStatus;
+}
+
+/*>>>>>>>>>>>>>>> [TC_SPI_013] Test - xSPITransfer wih invalid parameter  <<<<<<<<<<<<<<<*/
+TEST_FUNC SpiTestStatusType_e TC_SPI_013( void )
+{
+	SpiTestStatusType_e ulTestStatus = SPI_FAIL;
+	Std_ReturnType RetVal = E_OK;
+	uint8 *writbuf = NULL;
+	uint8 *ritbuf = NULL;
+
+	xSPITransfer(0x15,ucWriteBuf,ucReadBuf,10);
+
+	xSPITransfer(SPI_TEST_CHANNEL,writbuf,ucReadBuf,100);
+
+	xSPITransfer(SPI_TEST_CHANNEL,ucWriteBuf,ritbuf,100);
+
+	/*Change xXferState to busy*/
+	UT_UpdateChannelStatus();
+
+	xSPITransfer(SPI_TEST_CHANNEL,ucWriteBuf,ucReadBuf,100);
+
+	return ulTestStatus;
+}
+/*>>>>>>>>>>>>>>> [TC_SPI_014] Test - prvSPIPackingConfig wih different bitsize <<<<<<<<<<<<<<<*/
+TEST_FUNC SpiTestStatusType_e TC_SPI_014( void )
+{
+	SpiTestStatusType_e ulTestStatus = SPI_FAIL;
+	UT_Configure_Sequence();
+
+	return ulTestStatus;
+}
+
+/*>>>>>>>>>>>>>>> [TC_SPI_015] Test - FiFO read and write <<<<<<<<<<<<<<<*/
+TEST_FUNC SpiTestStatusType_e TC_SPI_015( void )
+{
+	SpiTestStatusType_e ulTestStatus = SPI_FAIL;
+
+	UT_Read_Write_FiFo();
+	return ulTestStatus;
+}
+
+/*>>>>>>>>>>>>>>> [TC_SPI_016] Test - prvSPIConfigureChannel wih differnt spi params  <<<<<<<<<<<<<<<*/
+TEST_FUNC SpiTestStatusType_e TC_SPI_016( void )
+{
+	SpiTestStatusType_e ulTestStatus = SPI_FAIL;
+
+	UT_ConfigureChannel();
+
+	return ulTestStatus;
+}
+
+/*>>>>>>>>>>>>>>> [TC_SPI_017] Test - Disable/Enable clock wih invalid parameter  <<<<<<<<<<<<<<<*/
+TEST_FUNC SpiTestStatusType_e TC_SPI_017( void )
+{
+	SpiTestStatusType_e ulTestStatus = SPI_PASS;
+	volatile uint8 stop1 = 0x1;
+
+	while(stop1)
+	{
+
+	}
+
+	UT_ControlClock();
+
+	return ulTestStatus;
+}
+
+/*>>>>>>>>>>>>>>> [TC_SPI_018] Test - Load device tree settings with different parameter  <<<<<<<<<<<<<<<*/
+TEST_FUNC SpiTestStatusType_e TC_SPI_018( void )
+{
+	SpiTestStatusType_e ulTestStatus = SPI_FAIL;
+
+	volatile uint8 stop1 = 0x1;
+
+	while(stop1)
+	{
+
+	}
+	UT_DeviceTreeParam();
+
+	return ulTestStatus;
+}
+
+/*>>>>>>>>>>>>>>> [TC_SPI_011] Test - Spi_Init invalid DTS/clock failure/  <<<<<<<<<<<<<<<*/
+TEST_FUNC SpiTestStatusType_e TC_SPI_019( void )
+{
+	SpiTestStatusType_e ulTestStatus = SPI_PASS;
+	volatile uint8 stop = 0x1;
+
+	while(stop)
+	{
+
+	}
+	Spi_DeInit();
+	/*Change DTS Params*/
+	xSPIInit();
+
+	/* return error for clock enablement*/
+	xSPIInit();
+
+	stop = 0x1;
+	while(stop)
+	{
+
+	}
+	/* change serial engine init return val as failure at the starting*/
+	xSPIInit();
+
+	UT_BusTransferErr();
+
+	return ulTestStatus;
+}
+#endif
+
+#ifdef SAIL_USSTEST_ENABLED
+TEST_FUNC SpiTestStatusType_e TC_SPI_010( void )
+{
+	SpiTestStatusType_e ulTestStatus = SPI_PASS;
+	uint8 ucCount = 0;
+	Std_ReturnType Std_Return = E_NOT_OK;
+
+	for(int i=0; i< 168;i++)
+		{
+			defOutEB00[i] = 0x55;
+			defOutEB01[i] = 0x66;
+			defOutEB02[i] = 0x77;
+			defOutEB03[i] = 0x88;
+			defOutEB04[i] = 0x99;
+			defOutEB05[i] = 0xAA;
+			defOutEB06[i] = 0xBB;
+			defOutEB07[i] = 0xCC;
+			defOutEB08[i] = 0xDD;
+			defOutEB09[i] = 0xEE;
+		}
+		Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_0, defOutEB00, defInEB00, 168);
+		Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_1, defOutEB01, defInEB01, 168 );
+		Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_2, defOutEB02, defInEB02, 168 );
+		Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_3, defOutEB03, defInEB03, 168 );
+		Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_4, defOutEB04, defInEB04, 168 );
+		Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_5, defOutEB05, defInEB05, 168 );
+		Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_6, defOutEB06, defInEB06, 168 );
+		Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_7, defOutEB07, defInEB07, 168 );
+		Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_8, defOutEB08, defInEB08, 168 );
+		Std_Return |= Spi_SetupEB( SpiConf_SpiChannel_SpiChannel_9, defOutEB09, defInEB09, 168 );
+
+		AppSimTest_DummyEBInit( defOutEB00, defInEB00, 'a');
+    	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_0 );
+    	if( E_OK != Std_Return )
+    	{
+    		 DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_0): failed!\n" );
+    	}
+    	else
+    	{
+    		if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, USS_SEQ00_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+    		{
+    			DEBUG_LOG(SAIL_INFO,"xEventGroupWaitBits(USS_SEQ00_CBKWAIT_MSK) failed!\n");
+    		}
+    	}
+
+    	AppSimTest_DummyEBInit( defOutEB00, defInEB00, 'a');
+		AppSimTest_DummyEBInit( defOutEB01, defInEB01, 'b');
+    	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_1 );
+    	if( E_OK != Std_Return )
+    	{
+    		DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_1): failed!\n" );
+    	}
+    	else
+    	{
+    		if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, USS_SEQ01_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+    		{
+    			DEBUG_LOG(SAIL_INFO,"xEventGroupWaitBits(USS_SEQ01_CBKWAIT_MSK) failed!\n");
+    		}
+    	}
+
+		AppSimTest_DummyEBInit( defOutEB00, defInEB00, 'a');
+		AppSimTest_DummyEBInit( defOutEB01, defInEB01, 'b');
+		AppSimTest_DummyEBInit( defOutEB02, defInEB02, 'c');
+		Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_2 );
+    	if( E_OK != Std_Return )
+    	{
+    		DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_2): failed!\n" );
+    	}
+    	else
+    	{
+    		if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, USS_SEQ02_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+    		{
+    			DEBUG_LOG(SAIL_INFO,"xEventGroupWaitBits(USS_SEQ02_CBKWAIT_MSK) failed!\n");
+    		}
+    	}
+
+		AppSimTest_DummyEBInit( defOutEB00, defInEB00, 'a');
+		AppSimTest_DummyEBInit( defOutEB01, defInEB01, 'b');
+		AppSimTest_DummyEBInit( defOutEB02, defInEB02, 'c');
+		AppSimTest_DummyEBInit( defOutEB03, defInEB03, 'd');
+    	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_3 );
+    	if( E_OK != Std_Return )
+    	{
+    		DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_3): failed!\n" );
+    	}
+    	else
+    	{
+     		if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, USS_SEQ03_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+    		{
+    			DEBUG_LOG(SAIL_INFO, "xEventGroupWaitBits(USS_SEQ03_CBKWAIT_MSK) failed!\n");
+    		}
+    	}
+
+		AppSimTest_DummyEBInit( defOutEB00, defInEB00, 'a');
+		AppSimTest_DummyEBInit( defOutEB01, defInEB01, 'b');
+		AppSimTest_DummyEBInit( defOutEB02, defInEB02, 'c');
+		AppSimTest_DummyEBInit( defOutEB03, defInEB03, 'd');
+		AppSimTest_DummyEBInit( defOutEB04, defInEB04, 'e');
+    	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_4 );
+    	if( E_OK != Std_Return )
+    	{
+    		DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_4): failed!\n" );
+    	}
+    	else
+    	{
+    		if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, USS_SEQ04_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+    		{
+    			DEBUG_LOG(SAIL_INFO,"xEventGroupWaitBits(USS_SEQ04_CBKWAIT_MSK) failed!\n");
+    		}
+   	   	}
+
+		AppSimTest_DummyEBInit( defOutEB00, defInEB00, 'a');
+		AppSimTest_DummyEBInit( defOutEB01, defInEB01, 'b');
+		AppSimTest_DummyEBInit( defOutEB02, defInEB02, 'c');
+		AppSimTest_DummyEBInit( defOutEB03, defInEB03, 'd');
+		AppSimTest_DummyEBInit( defOutEB04, defInEB04, 'e');
+		AppSimTest_DummyEBInit( defOutEB05, defInEB05, 'f');
+    	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_5 );
+    	if( E_OK != Std_Return )
+    	{
+    		DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_5): failed!\n" );
+    	}
+    	else
+    	{
+    		if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, USS_SEQ05_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+    		{
+    			DEBUG_LOG(SAIL_INFO, "xEventGroupWaitBits(USS_SEQ05_CBKWAIT_MSK) failed!\n");
+    		}
+    	}
+
+		AppSimTest_DummyEBInit( defOutEB00, defInEB00, 'a');
+		AppSimTest_DummyEBInit( defOutEB01, defInEB01, 'b');
+		AppSimTest_DummyEBInit( defOutEB02, defInEB02, 'c');
+		AppSimTest_DummyEBInit( defOutEB03, defInEB03, 'd');
+		AppSimTest_DummyEBInit( defOutEB04, defInEB04, 'e');
+		AppSimTest_DummyEBInit( defOutEB05, defInEB05, 'f');
+		AppSimTest_DummyEBInit( defOutEB06, defInEB06, 'g');
+    	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_6 );
+    	if( E_OK != Std_Return )
+    	{
+    		DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_6): failed!\n" );
+    	}
+    	else
+    	{
+    		if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, USS_SEQ06_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+    		{
+    			DEBUG_LOG(SAIL_INFO,"xEventGroupWaitBits(USS_SEQ06_CBKWAIT_MSK) failed!\n");
+    		}
+    	}
+
+		AppSimTest_DummyEBInit( defOutEB00, defInEB00, 'a');
+		AppSimTest_DummyEBInit( defOutEB01, defInEB01, 'b');
+		AppSimTest_DummyEBInit( defOutEB02, defInEB02, 'c');
+		AppSimTest_DummyEBInit( defOutEB03, defInEB03, 'd');
+		AppSimTest_DummyEBInit( defOutEB04, defInEB04, 'e');
+		AppSimTest_DummyEBInit( defOutEB05, defInEB05, 'f');
+		AppSimTest_DummyEBInit( defOutEB06, defInEB06, 'g');
+		AppSimTest_DummyEBInit( defOutEB07, defInEB07, 'h');
+    	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_7 );
+    	if( E_OK != Std_Return )
+    	{
+    		DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_7): failed!\n" );
+    	}
+    	else
+    	{
+    		if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, USS_SEQ07_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+    		{
+    			DEBUG_LOG(SAIL_INFO,"xEventGroupWaitBits(USS_SEQ07_CBKWAIT_MSK) failed!\n");
+    		}
+    	}
+
+		AppSimTest_DummyEBInit( defOutEB00, defInEB00, 'a');
+		AppSimTest_DummyEBInit( defOutEB01, defInEB01, 'b');
+		AppSimTest_DummyEBInit( defOutEB02, defInEB02, 'c');
+		AppSimTest_DummyEBInit( defOutEB03, defInEB03, 'd');
+		AppSimTest_DummyEBInit( defOutEB04, defInEB04, 'e');
+		AppSimTest_DummyEBInit( defOutEB05, defInEB05, 'f');
+		AppSimTest_DummyEBInit( defOutEB06, defInEB06, 'g');
+		AppSimTest_DummyEBInit( defOutEB07, defInEB07, 'h');
+		AppSimTest_DummyEBInit( defOutEB08, defInEB08, 'i');
+    	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_8 );
+    	if( E_OK != Std_Return )
+    	{
+    		DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_8): failed!\n" );
+    	}
+    	else
+    	{
+    		if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, USS_SEQ08_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+    		{
+    			DEBUG_LOG(SAIL_INFO, "xEventGroupWaitBits(USS_SEQ08_CBKWAIT_MSK) failed!\n");
+    		}
+    	}
+
+		AppSimTest_DummyEBInit( defOutEB00, defInEB00, 'a');
+		AppSimTest_DummyEBInit( defOutEB01, defInEB01, 'b');
+		AppSimTest_DummyEBInit( defOutEB02, defInEB02, 'c');
+		AppSimTest_DummyEBInit( defOutEB03, defInEB03, 'd');
+		AppSimTest_DummyEBInit( defOutEB04, defInEB04, 'e');
+		AppSimTest_DummyEBInit( defOutEB05, defInEB05, 'f');
+		AppSimTest_DummyEBInit( defOutEB06, defInEB06, 'g');
+		AppSimTest_DummyEBInit( defOutEB07, defInEB07, 'h');
+		AppSimTest_DummyEBInit( defOutEB08, defInEB08, 'i');
+		AppSimTest_DummyEBInit( defOutEB09, defInEB09, 'j');
+
+    	Std_Return = Spi_AsyncTransmit( SpiConf_SpiSequence_SpiSequence_9 );
+    	if( E_OK != Std_Return )
+    	{
+    		DEBUG_LOG(SAIL_INFO,"Spi_AsyncTransmit(SpiConf_SpiSequence_SpiSequence_9): failed!\n" );
+    	}
+    	else
+    	{
+    		if( pdPASS != ( xEventGroupWaitBits(  xEventGroupUssHandle, USS_SEQ09_CBKWAIT_MSK, pdTRUE, pdFALSE , &xEvBitsSet, safertosapiMAX_DELAY ) ) )
+    		{
+    			DEBUG_LOG(SAIL_INFO,"xEventGroupWaitBits(USS_SEQ09_CBKWAIT_MSK) failed!\n");
+    		}
+    	}
+    	   return ulTestStatus;
+}
+#endif
+
+/*==================================================================================================
+ *                                  CBKs interface for Upper layer
+ *================================================================================================*/
+#ifdef SAIL_USSTEST_ENABLED
+TEST_FUNC void TestSpiEndTransNotifSeq0( void )
+{
+	portBaseType xCreateResult = xEventGroupSetBitsFromISR( xEventGroupUssHandle, USS_SEQ00_CBKWAIT_MSK );
+}
+
+TEST_FUNC void TestSpiEndTransNotifSeq1( void )
+{
+
+	portBaseType xCreateResult = xEventGroupSetBitsFromISR( xEventGroupUssHandle, USS_SEQ01_CBKWAIT_MSK);
+}
+
+TEST_FUNC void TestSpiEndTransNotifSeq2( void )
+{
+	portBaseType xCreateResult = xEventGroupSetBitsFromISR( xEventGroupUssHandle, USS_SEQ02_CBKWAIT_MSK );
+}
+
+TEST_FUNC void TestSpiEndTransNotifSeq3( void )
+{
+	portBaseType xCreateResult = xEventGroupSetBitsFromISR( xEventGroupUssHandle, USS_SEQ03_CBKWAIT_MSK );
+}
+
+TEST_FUNC void TestSpiEndTransNotifSeq4( void )
+{
+	portBaseType xCreateResult = xEventGroupSetBitsFromISR( xEventGroupUssHandle, USS_SEQ04_CBKWAIT_MSK);
+}
+
+TEST_FUNC void TestSpiEndTransNotifSeq5( void )
+{
+
+	portBaseType xCreateResult = xEventGroupSetBitsFromISR( xEventGroupUssHandle, USS_SEQ05_CBKWAIT_MSK);
+}
+
+TEST_FUNC void TestSpiEndTransNotifSeq6( void )
+{
+	portBaseType xCreateResult = xEventGroupSetBitsFromISR( xEventGroupUssHandle, USS_SEQ06_CBKWAIT_MSK);
+}
+
+TEST_FUNC void TestSpiEndTransNotifSeq7( void )
+{
+	portBaseType xCreateResult = xEventGroupSetBitsFromISR( xEventGroupUssHandle, USS_SEQ07_CBKWAIT_MSK);
+}
+
+TEST_FUNC void TestSpiEndTransNotifSeq8( void )
+{
+	portBaseType xCreateResult = xEventGroupSetBitsFromISR( xEventGroupUssHandle, USS_SEQ08_CBKWAIT_MSK );
+}
+
+TEST_FUNC void TestSpiEndTransNotifSeq9( void )
+{
+
+	portBaseType xCreateResult = xEventGroupSetBitsFromISR( xEventGroupUssHandle, USS_SEQ09_CBKWAIT_MSK );
+}
+#endif
+
+#ifdef SAIL_CANTEST_ENABLED
+TEST_FUNC void CAN_TRX1SpiEndTransNotifSeq10( void )
+{
+	portBaseType xCreateResult = xEventGroupSetBitsFromISR( xEventGroupUssHandle, CAN_SEQ10_CBKWAIT_MSK );
+}
+
+TEST_FUNC void CAN_TRX2SpiEndTransNotifSeq11( void )
+{
+	portBaseType xCreateResult = xEventGroupSetBitsFromISR( xEventGroupUssHandle, CAN_SEQ11_CBKWAIT_MSK );
+}
+#endif
+
+#ifdef SAIL_CANTEST_L2_ENABLED
+TEST_FUNC void CAN_TRX1SpiEndTransNotifSeq12( void )
+{
+	portBaseType xCreateResult = xEventGroupSetBitsFromISR( xEventGroupUssHandle, CAN_SEQ12_CBKWAIT_MSK );
+}
+
+TEST_FUNC void CAN_TRX2SpiEndTransNotifSeq13( void )
+{
+	portBaseType xCreateResult = xEventGroupSetBitsFromISR( xEventGroupUssHandle, CAN_SEQ13_CBKWAIT_MSK );
+}
+#endif
+TEST_FUNC void SE_HW_LoopBack_Validation_Notif( void )
+{
+	portBaseType xCreateResult = xEventGroupSetBitsFromISR( xEventGroupUssHandle, LOOPBACK_SEQ14_CBKWAIT_MSK );
+}
+
+
+TEST_FUNC void AppSimTest_DummyEBInit( void * outBuf, void * inBuf, unsigned char data )
+{
+#if 0
+	//dummy testdata for SPI slave --> data loopback through ext device
+	xUSS_Seq_t xUSS_Seq;
+	unsigned char LusIdx;
+	xUSS_Seq.start    = 0x55;
+    xUSS_Seq.size     = sizeof(xUSS_Seq);
+    xUSS_Seq.msgcntr  = 0xFF;
+	xUSS_Seq.end      = 0x55;
+	for( LusIdx = 0U; LusIdx < 164U; LusIdx++)
+	{
+		xUSS_Seq.data[LusIdx] = data;
+	}
+	(void)memset( inBuf,  0U, 168U );
+	(void)memset( outBuf, 0U, 168U );
+	(void)memcpy( outBuf, ( const void *)&xUSS_Seq, sizeof(xUSS_Seq_t) );
+	return ;
+#endif
+}
+
+TEST_FUNC SpiTestStatusType_e vSPITestFunctionality(void)
+{
+    SpiTestStatusType_e result  = SPI_FAIL;
+    uint8 ucTestCaseCnt =  0U;
+    uint8 ucTotalTestCase = 0U;
+    uint8 ulcpu_ID = get_curr_phys_cpu_num();
+#ifdef SPI_UT_ENABLE
+        ucTotalTestCase = testSPI_TOTAL_TEST_CASES;
+        ucTestCaseCnt = testSPI_TOTAL_TEST_CASES;
+#else
+        ucTotalTestCase = testSPI_FUNCTLTY_TEST_CASES;
+        ucTestCaseCnt = testSPI_FUNCTLTY_TEST_CASES;
+#endif
+
+    if( SPI_PASS != TC_SPI_012(UARTFRAMEWORK, ulcpu_ID ) )
+    {
+    	ucTestCaseCnt--;
+    }
+
+#ifdef SAIL_CANTEST_ENABLED
+    if( SPI_PASS != TC_SPI_001(UARTFRAMEWORK, ulcpu_ID ) )
+    {
+        ucTestCaseCnt--;
+    }
+    if( SPI_PASS != TC_SPI_002(UARTFRAMEWORK, ulcpu_ID ) )
+    {
+        ucTestCaseCnt--;
+    }
+    if( SPI_PASS != TC_SPI_003(UARTFRAMEWORK, ulcpu_ID ) )
+    {
+        ucTestCaseCnt--;
+    }
+    if( SPI_PASS != TC_SPI_004(UARTFRAMEWORK, ulcpu_ID ) )
+    {
+        ucTestCaseCnt--;
+    }
+#endif
+
+#ifdef SAIL_CANTEST_L2_ENABLED
+    if( SPI_PASS != TC_SPI_005(UARTFRAMEWORK, ulcpu_ID ) )
+    {
+        ucTestCaseCnt--;
+    }
+    if( SPI_PASS != TC_SPI_006(UARTFRAMEWORK, ulcpu_ID ) )
+    {
+        ucTestCaseCnt--;
+    }
+#endif
+
+#ifdef SPI_UT_ENABLE
+    if( SPI_PASS != TC_SPI_007( ) )
+    {
+        ucTestCaseCnt--;
+    }
+
+    if( SPI_PASS != TC_SPI_008( ) )
+    {
+        ucTestCaseCnt--;
+    }
+
+    if( SPI_PASS != TC_SPI_009( ) )
+    {
+        ucTestCaseCnt--;
+    }
+
+    if( SPI_PASS != TC_SPI_011( ) )
+    {
+        ucTestCaseCnt--;
+    }
+    if( SPI_PASS != TC_SPI_013( ) )
+    {
+        ucTestCaseCnt--;
+    }
+
+    if( SPI_PASS != TC_SPI_014( ) )
+    {
+        ucTestCaseCnt--;
+    }
+
+    if( SPI_PASS != TC_SPI_015( ) )
+    {
+        ucTestCaseCnt--;
+    }
+
+    if( SPI_PASS != TC_SPI_016( ) )
+    {
+        ucTestCaseCnt--;
+    }
+
+    if( SPI_PASS != TC_SPI_017( ) )
+    {
+        ucTestCaseCnt--;
+    }
+
+    if( SPI_PASS != TC_SPI_018( ) )
+    {
+        ucTestCaseCnt--;
+    }
+
+    if( SPI_PASS != TC_SPI_019( ) )
+    {
+        ucTestCaseCnt--;
+    }
+    if( SPI_PASS != TC_SPI_020( ) )
+    {
+        ucTestCaseCnt--;
+    }
+#endif
+
+#ifdef SAIL_USSTEST_ENABLED
+    if( SPI_PASS != TC_SPI_010( ) )
+    {
+        ucTestCaseCnt--;
+    }
+#endif
+    if( ucTotalTestCase == ucTestCaseCnt )
+    {
+        DEBUG_LOG( SAIL_WARNING, "[SPI tests Passed]\r\n" );
+        result =  SPI_PASS;
+    }
+    else
+    {
+        DEBUG_LOG( SAIL_INFO, "[SPI tests Failed]\r\n" );
+        result =  SPI_FAIL;
+    }
+
+    return result;
+}
+
+TEST_FUNC SpiTestStatusType_e vSPIDVTestFunctionality(uint8 cpu_id)
+{
+    SpiTestStatusType_e result  = SPI_FAIL;
+    uint8 ucTestCaseCnt =  0U;
+    uint8 ucTotalTestCase = 0U;
+
+    ucTotalTestCase = testSPI_FUNCTLTY_TEST_CASES;
+    ucTestCaseCnt = testSPI_FUNCTLTY_TEST_CASES;
+
+    if( SPI_PASS != TC_SPI_012(DVFRAMEWORK, cpu_id ) )
+    {
+    	ucTestCaseCnt--;
+    }
+
+/*    if( ucTotalTestCase == ucTestCaseCnt )
+    {
+        DEBUG_LOG( SAIL_INFO, "[SPI DV tests Passed]\r\n" );
+        result =  SPI_PASS;
+    }
+    else
+    {
+        DEBUG_LOG( SAIL_INFO, "[SPI DV tests Failed]\r\n" );
+        result =  SPI_FAIL;
+    }*/
+
+    return result;
+}
+
+TEST_FUNC static void prvSPITestDebugPrint ( SpiTestStatusType_e result, const char * TestMsg, uint16_t usTestCaseNum )
+{
+    if( SPI_PASS == result )
+    {
+        DEBUG_LOG( SAIL_INFO,"[TC_SPI_%03d] Passed: %s\r\n", usTestCaseNum, TestMsg );
+    }
+    else
+    {
+        DEBUG_LOG( SAIL_INFO,"[TC_SPI_%03d] Failed: %s\r\n", usTestCaseNum, TestMsg);
+    }
+}
+
+TEST_FUNC TESTerrorType_e xTestSPIWrapper(void)
+{
+    TESTerrorType_e xRetStatus = MODULE_TEST_FAILED;
+    portBaseType xResult;
+	
+    xResult = xEventGroupCreate( &xEventGroupUssBuffer, &xEventGroupUssHandle);
+
+    if( pdPASS != xResult )
+    {
+        DEBUG_LOG( SAIL_DEBUG, "SPI Mcal Test Task Event Group Creation Failed.\r\n" );
+    }
+
+    if(SPI_PASS == vSPITestFunctionality() )
+    {
+        xRetStatus = MODULE_TEST_PASSED;
+    }
+
+    return xRetStatus;
+}
+
+TEST_FUNC TESTerrorType_e xSPIDVTestWrapper(void)
+{
+    TESTerrorType_e xRetStatus = MODULE_TEST_FAILED;
+    portBaseType xResult;
+    uint8 ulcpu_ID = get_curr_phys_cpu_num();
+
+    xResult = xEventGroupCreate( &xEventGroupUssBuffer, &xEventGroupUssHandle);
+
+    if( pdPASS != xResult )
+    {
+        DEBUG_LOG( SAIL_DEBUG, "SPI Mcal Test Task Event Group Creation Failed.\r\n" );
+    }
+
+    if(SPI_PASS == vSPIDVTestFunctionality(ulcpu_ID))
+    {
+        xRetStatus = MODULE_TEST_PASSED;
+    }
+//    vLcWriteLogCode( SPI_DV_TEST ,PASS ,&log_data , 1);
+    return xRetStatus;
+}

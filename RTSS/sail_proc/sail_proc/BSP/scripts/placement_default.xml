@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<driver_placement>
+	<directory path="BSP/acmu" format="old">
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/dispatcher" format="old">
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/cdt" format="old">
+		<component sw="sailhyp"/>
+	</directory>
+	<directory path="BSP/bist" format="old">
+		<component sw="sailhyp"/>
+	</directory>
+	<directory path="BSP/can" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw2"/>
+	</directory>
+	<directory path="BSP/can_trcv" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw2"/>
+	</directory>
+	<directory path="BSP/can_mailbox" format="old">
+                <component sw="sailhyp"/>
+                <component sw="sailsw2"/>
+    </directory>
+	<directory path="BSP/chipinfo" format="old">
+		<component sw="sailjtagprogrammer"/>
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/clock" format="old">
+		<component sw="sailjtagprogrammer"/>
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/common_src" format="old">
+		<component sw="sailjtagprogrammer"/>
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/cpr" format="old">
+		<component sw="sailhyp"/>
+	</directory>
+	<directory path="BSP/crashdbg" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/crc" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/data" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/ddrmilestone" format="old">
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/dhrystone" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/dma_crc" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/el_entry" format="old">
+		<component sw="sailjtagprogrammer"/>
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/fdt" format="old">
+		<component sw="sailjtagprogrammer"/>
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/fusa" format="old">
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/gpio" format="old">
+		<component sw="sailjtagprogrammer"/>
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+<component sw="sailsw4"/>
+
+	</directory>
+	<directory path="BSP/gpt" format="old">
+		<component sw="sailjtagprogrammer"/>
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/i2c" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/icb" format="old">
+		<component sw="sailhyp"/>
+        <component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/interrupts" format="old">
+		<component sw="sailjtagprogrammer"/>
+		<component sw="sailhyp"/>
+	</directory>
+	<directory path="BSP/ipcc" format="old">
+		<component sw="sailjtagprogrammer"/>
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/isd" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/LogCode" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/mailboxExt" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/mailboxInt" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/mailboxLib" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+    <directory path="BSP/gpt_timer" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+        <component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+        <component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/Mcal" format="old">
+		<component sw="sailsw2"/>
+	</directory>
+	<directory path="BSP/McalCfg" format="old">
+		<component sw="sailsw2"/>
+	</directory>
+	<directory path="BSP/mdlogcollector" format="old">
+		<component sw="sailsw1"/>
+	</directory>
+	<directory path="BSP/memheap" format="old">
+		<component sw="sailjtagprogrammer"/>
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/monitor" format="old">
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/monitor" format="old">
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/osal" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/pmic" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/psail" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/FaultHandler" format="old">
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/pmu" format="old">
+		<component sw="sailsw1"/>
+	</directory>
+	<directory path="BSP/pvl" format="old">
+		<component sw="sailhyp"/>
+	</directory>
+	<directory path="BSP/pwr_controller" format="old">
+		<component sw="sailjtagprogrammer"/>
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+	</directory>
+	<directory path="BSP/qbfw" format="old">
+		<component sw="sailhyp"/>
+	</directory>
+	<directory path="BSP/qfprom" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/sail_diagnostics" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/sail_fs" format="old">
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/sail_gpio_time_sync" format="old">
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/sail_bootcfg" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/sailheap" format="old">
+		<component sw="sailjtagprogrammer"/>
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/sailsafertos" format="old">
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/fusereader" format="old">
+		<component sw="sailsw2"/>
+	</directory>
+	<directory path="BSP/sail_updater" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+	</directory>
+	<directory path="BSP/sailjtagprogrammer" format="old">
+		<component sw="sailjtagprogrammer"/>
+	</directory>
+	<directory path="BSP/security/accesscontrol" format="old">
+		<component sw="sailhyp"/>
+	</directory>
+	<directory path="BSP/security/accesscontrol/test" format="old">
+		<component sw="sailhyp"/>
+	</directory>
+	<directory path="BSP/security/accesscontrol/vmidmt" format="old">
+		<component sw="sailhyp"/>
+	</directory>
+	<directory path="BSP/security/accesscontrol/xpu" format="old">
+		<component sw="sailhyp"/>
+	</directory>
+	<directory path="BSP/security/hwkm" format="old">
+		<component sw="sailhyp"/>
+	</directory>
+	<directory path="BSP/security/mpu" format="old">
+		<component sw="sailhyp"/>
+	</directory>
+	<directory path="BSP/security/prng_fips_hybrid" format="old">
+		<component sw="sailhyp"/>
+	</directory>
+	<directory path="BSP/security/sail_auth" format="old">
+		<component sw="sailhyp"/>
+	</directory>
+	<directory path="BSP/security/secure_storage" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/security/syscall" format="old">
+		<component sw="sailhyp"/>
+	</directory>
+	<directory path="BSP/security/uclib" format="old">
+		<component sw="sailhyp"/>
+	</directory>
+	<directory path="BSP/sleep" format="old">
+		<component sw="sailjtagprogrammer"/>
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/spi" format="old">
+		<component sw="sailsw2"/>
+	</directory>
+	<directory path="BSP/spinor" format="old">
+		<component sw="sailjtagprogrammer"/>
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/startup" format="old">
+		<component sw="sailjtagprogrammer"/>
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/tests" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/time" format="old">
+		<component sw="sailjtagprogrammer"/>
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/trusens" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/tsens" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/uart" format="old">
+		<component sw="sailjtagprogrammer"/>
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	<component sw="sailsw4"/>
+	</directory>
+	<directory path="BSP/vsens" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/wdt" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	</directory>
+	<directory path="BSP/xbl" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+	</directory>
+	<directory path="oem/test" format="old">
+		<component sw="sailhyp"/>
+		<component sw="sailsw1"/>
+		<component sw="sailsw2"/>
+		<component sw="sailsw3"/>
+	</directory>
+</driver_placement>

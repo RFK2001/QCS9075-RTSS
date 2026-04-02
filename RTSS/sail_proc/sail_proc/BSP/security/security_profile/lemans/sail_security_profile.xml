@@ -1,0 +1,1411 @@
+<tns:profile xmlns:tns="http://www.qualcomm.com/sectools" id="SAIL PBL HYP" minimum_sectools_version="1.20" schema_version="1.5">
+    <platform_binding_values>
+        <soc_hw_versions>
+            <value>0x6019</value>
+        </soc_hw_versions>
+    </platform_binding_values>
+    <authentication>
+        <image_list>
+            <image id="SAIL-HYP" authenticator_oem="SAIL-PBL">
+                <sw_id>0x54</sw_id>
+            </image>
+            <image id="SAIL-SW1" authenticator_oem="SAIL-HYP">
+                <sw_id>0x55</sw_id>
+            </image>
+            <image id="SEC-ELF" authenticator_oem="SAIL-HYP">
+                <sw_id>0x2B</sw_id>
+            </image>
+            <image id="DEBUG-POLICY" authenticator_oem="SAIL-HYP">
+                <sw_id>0x200</sw_id>
+            </image>
+            <image id="DEBUG-POLICY-QTI" authenticator_oem="SAIL-HYP" authenticator_qti="SAIL-HYP">
+                <sw_id>0x200</sw_id>
+            </image>
+        </image_list>
+        <authenticators>
+            <authenticator id="SAIL-PBL">
+                <supported_image_formats>
+                    <image_format id="ELF-V6">
+                        <file_type>ELF</file_type>
+                        <elf_properties>
+                            <elf_class>
+                                <default_elf_class>32</default_elf_class>
+                                <supported_elf_classes>
+                                    <value>32</value>
+                                    <value>64</value>
+                                </supported_elf_classes>
+                            </elf_class>
+                            <contains_preamble>false</contains_preamble>
+                        </elf_properties>
+                        <hash_table_segment_properties>
+                            <hash_table_segment_placements>
+                                <default_hash_table_segment_placement>START</default_hash_table_segment_placement>
+                                <supported_hash_table_segment_placements>
+                                    <value>START</value>
+                                </supported_hash_table_segment_placements>
+                            </hash_table_segment_placements>
+                            <hash_table_segment_alignment>0x1000</hash_table_segment_alignment>
+                            <hash_pages>false</hash_pages>
+                            <segment_hash_algorithms>
+                                <default_segment_hash_algorithm>SHA384</default_segment_hash_algorithm>
+                                <supported_segment_hash_algorithms>
+                                    <value>SHA384</value>
+                                    <value>SHA256</value>
+                                </supported_segment_hash_algorithms>
+                            </segment_hash_algorithms>
+                            <hash_table_segment_version>6</hash_table_segment_version>
+                            <hash_table_segment_metadata_versions>
+                                <default_hash_table_segment_metadata_version>0.0</default_hash_table_segment_metadata_version>
+                                <supported_hash_table_segment_metadata_versions>
+                                    <value>0.0</value>
+                                </supported_hash_table_segment_metadata_versions>
+                            </hash_table_segment_metadata_versions>
+                        </hash_table_segment_properties>
+                    </image_format>
+                </supported_image_formats>
+                <default_image_format>ELF-V6</default_image_format>
+                <supported_oem_signing_features>
+                    <supports_vouch_for>false</supports_vouch_for>
+                    <default_signature_format>ECDSA384</default_signature_format>
+                    <signature_formats>
+                        <signature_format id="ECDSA384">
+                            <signature_algorithm>ECDSA</signature_algorithm>
+                            <signature_hash_algorithms>
+                                <default_signature_hash_algorithm>SHA384</default_signature_hash_algorithm>
+                                <supported_signature_hash_algorithms>
+                                    <value>SHA384</value>
+                                </supported_signature_hash_algorithms>
+                            </signature_hash_algorithms>
+                            <ecdsa_curves>
+                                <default_ecdsa_curve>SECP384R1</default_ecdsa_curve>
+                                <supported_ecdsa_curves>
+                                    <value>SECP384R1</value>
+                                </supported_ecdsa_curves>
+                            </ecdsa_curves>
+                        </signature_format>
+                        <signature_format id="RSA256">
+                            <signature_algorithm>RSA</signature_algorithm>
+                            <signature_hash_algorithms>
+                                <default_signature_hash_algorithm>SHA256</default_signature_hash_algorithm>
+                                <supported_signature_hash_algorithms>
+                                    <value>SHA256</value>
+                                </supported_signature_hash_algorithms>
+                            </signature_hash_algorithms>
+                            <rsa_paddings>
+                                <default_rsa_padding>PSS</default_rsa_padding>
+                                <supported_rsa_paddings>
+                                    <value>PSS</value>
+                                </supported_rsa_paddings>
+                            </rsa_paddings>
+                            <key_sizes>
+                                <default_key_size>2048</default_key_size>
+                                <supported_key_sizes>
+                                    <value>2048</value>
+                                    <value>4096</value>
+                                </supported_key_sizes>
+                            </key_sizes>
+                            <exponents>
+                                <default_exponent>65537</default_exponent>
+                                <supported_exponents>
+                                    <value>65537</value>
+                                </supported_exponents>
+                            </exponents>
+                        </signature_format>
+                    </signature_formats>
+                    <serial_bind>
+                        <supported>true</supported>
+                        <supports_single_serial>true</supports_single_serial>
+                        <supports_multi_serials>true</supports_multi_serials>
+                    </serial_bind>
+                    <debug>
+                        <supported>true</supported>
+                        <supports_single_serial>false</supports_single_serial>
+                        <supports_multi_serials>false</supports_multi_serials>
+                    </debug>
+                    <uie_key_switch_enable>
+                        <supported>false</supported>
+                        <supports_single_serial>false</supports_single_serial>
+                        <supports_multi_serials>false</supports_multi_serials>
+                    </uie_key_switch_enable>
+                    <root_revoke_activation_enable>
+                        <supported>true</supported>
+                        <supports_single_serial>false</supports_single_serial>
+                        <supports_multi_serials>false</supports_multi_serials>
+                    </root_revoke_activation_enable>
+                    <supports_root_revoke_activation_enable_as_combined>true</supports_root_revoke_activation_enable_as_combined>
+                    <crash_dump>
+                        <supported>false</supported>
+                        <supports_single_serial>false</supports_single_serial>
+                        <supports_multi_serials>false</supports_multi_serials>
+                    </crash_dump>
+                    <supports_oem_id_product_id_independent>true</supports_oem_id_product_id_independent>
+                    <supports_anti_rollback_version>true</supports_anti_rollback_version>
+                    <mrc_specs>
+                        <default_mrc_spec>2.0</default_mrc_spec>
+                        <supported_mrc_specs>
+                            <value>2.0</value>
+                        </supported_mrc_specs>
+                    </mrc_specs>
+                    <certificate_chain_depths>
+                        <default_certificate_chain_depth>2</default_certificate_chain_depth>
+                        <supported_certificate_chain_depths>
+                            <value>2</value>
+                        </supported_certificate_chain_depths>
+                    </certificate_chain_depths>
+                    <platform_bindings>
+                        <default_platform_bindings>
+                            <value>SOC-HW-VER</value>
+                        </default_platform_bindings>
+                        <supported_platform_bindings>
+                            <value>SOC-HW-VER</value>
+                            <value>JTAG-ID</value>
+                        </supported_platform_bindings>
+                    </platform_bindings>
+                    <requires_secondary_software_id>false</requires_secondary_software_id>
+                    <requires_feature_id>false</requires_feature_id>
+                </supported_oem_signing_features>
+                <supported_oem_encryption_features>
+                    <default_encryption_format>UIE</default_encryption_format>
+                    <supported_encryption_formats>
+                        <encryption_format id="UIE">
+                            <encryption_type>UIE</encryption_type>
+                            <encryption_specs>
+                                <default_encryption_spec>UIE-1.0-L2-1.1</default_encryption_spec>
+                                <supported_encryption_specs>
+                                    <value>UIE-1.0-L2-1.0</value>
+                                    <value>UIE-1.0-L2-1.1</value>
+                                </supported_encryption_specs>
+                            </encryption_specs>
+                            <root_key_types>
+                                <default_root_key_type>OTP-OEM</default_root_key_type>
+                                <supported_root_key_types>
+                                    <value>OTP-OEM</value>
+                                    <value>OTP-QTI</value>
+                                    <value>RTL-QTI</value>
+                                </supported_root_key_types>
+                            </root_key_types>
+                            <supports_encrypted_segment_indices>true</supports_encrypted_segment_indices>
+                        </encryption_format>
+                    </supported_encryption_formats>
+                </supported_oem_encryption_features>
+            </authenticator>
+            <authenticator id="SAIL-HYP">
+                <supported_image_formats>
+                    <image_format id="ELF-V6">
+                        <file_type>ELF</file_type>
+                        <elf_properties>
+                            <elf_class>
+                                <default_elf_class>32</default_elf_class>
+                                <supported_elf_classes>
+                                    <value>32</value>
+                                    <value>64</value>
+                                </supported_elf_classes>
+                            </elf_class>
+                            <contains_preamble>false</contains_preamble>
+                        </elf_properties>
+                        <hash_table_segment_properties>
+                            <hash_table_segment_placements>
+                                <default_hash_table_segment_placement>START</default_hash_table_segment_placement>
+                                <supported_hash_table_segment_placements>
+                                    <value>START</value>
+                                </supported_hash_table_segment_placements>
+                            </hash_table_segment_placements>
+                            <hash_table_segment_alignment>0x1000</hash_table_segment_alignment>
+                            <hash_pages>false</hash_pages>
+                            <segment_hash_algorithms>
+                                <default_segment_hash_algorithm>SHA384</default_segment_hash_algorithm>
+                                <supported_segment_hash_algorithms>
+                                    <value>SHA384</value>
+                                    <value>SHA256</value>
+                                </supported_segment_hash_algorithms>
+                            </segment_hash_algorithms>
+                            <hash_table_segment_version>6</hash_table_segment_version>
+                            <hash_table_segment_metadata_versions>
+                                <default_hash_table_segment_metadata_version>0.0</default_hash_table_segment_metadata_version>
+                                <supported_hash_table_segment_metadata_versions>
+                                    <value>0.0</value>
+                                </supported_hash_table_segment_metadata_versions>
+                            </hash_table_segment_metadata_versions>
+                        </hash_table_segment_properties>
+                    </image_format>
+                </supported_image_formats>
+                <default_image_format>ELF-V6</default_image_format>
+                <supported_oem_signing_features>
+                    <supports_vouch_for>false</supports_vouch_for>
+                    <default_signature_format>ECDSA384</default_signature_format>
+                    <signature_formats>
+                        <signature_format id="ECDSA384">
+                            <signature_algorithm>ECDSA</signature_algorithm>
+                            <signature_hash_algorithms>
+                                <default_signature_hash_algorithm>SHA384</default_signature_hash_algorithm>
+                                <supported_signature_hash_algorithms>
+                                    <value>SHA384</value>
+                                </supported_signature_hash_algorithms>
+                            </signature_hash_algorithms>
+                            <ecdsa_curves>
+                                <default_ecdsa_curve>SECP384R1</default_ecdsa_curve>
+                                <supported_ecdsa_curves>
+                                    <value>SECP384R1</value>
+                                </supported_ecdsa_curves>
+                            </ecdsa_curves>
+                        </signature_format>
+                        <signature_format id="RSA256">
+                            <signature_algorithm>RSA</signature_algorithm>
+                            <signature_hash_algorithms>
+                                <default_signature_hash_algorithm>SHA256</default_signature_hash_algorithm>
+                                <supported_signature_hash_algorithms>
+                                    <value>SHA256</value>
+                                </supported_signature_hash_algorithms>
+                            </signature_hash_algorithms>
+                            <rsa_paddings>
+                                <default_rsa_padding>PSS</default_rsa_padding>
+                                <supported_rsa_paddings>
+                                    <value>PSS</value>
+                                </supported_rsa_paddings>
+                            </rsa_paddings>
+                            <key_sizes>
+                                <default_key_size>2048</default_key_size>
+                                <supported_key_sizes>
+                                    <value>2048</value>
+                                    <value>4096</value>
+                                </supported_key_sizes>
+                            </key_sizes>
+                            <exponents>
+                                <default_exponent>65537</default_exponent>
+                                <supported_exponents>
+                                    <value>65537</value>
+                                </supported_exponents>
+                            </exponents>
+                        </signature_format>
+                    </signature_formats>
+                    <serial_bind>
+                        <supported>true</supported>
+                        <supports_single_serial>true</supports_single_serial>
+                        <supports_multi_serials>true</supports_multi_serials>
+                    </serial_bind>
+                    <debug>
+                        <supported>false</supported>
+                        <supports_single_serial>false</supports_single_serial>
+                        <supports_multi_serials>false</supports_multi_serials>
+                    </debug>
+                    <uie_key_switch_enable>
+                        <supported>false</supported>
+                        <supports_single_serial>false</supports_single_serial>
+                        <supports_multi_serials>false</supports_multi_serials>
+                    </uie_key_switch_enable>
+                    <root_revoke_activation_enable>
+                        <supported>false</supported>
+                        <supports_single_serial>false</supports_single_serial>
+                        <supports_multi_serials>false</supports_multi_serials>
+                    </root_revoke_activation_enable>
+                    <supports_root_revoke_activation_enable_as_combined>false</supports_root_revoke_activation_enable_as_combined>
+                    <crash_dump>
+                        <supported>false</supported>
+                        <supports_single_serial>false</supports_single_serial>
+                        <supports_multi_serials>false</supports_multi_serials>
+                    </crash_dump>
+                    <supports_oem_id_product_id_independent>true</supports_oem_id_product_id_independent>
+                    <supports_anti_rollback_version>true</supports_anti_rollback_version>
+                    <mrc_specs>
+                        <default_mrc_spec>2.0</default_mrc_spec>
+                        <supported_mrc_specs>
+                            <value>2.0</value>
+                        </supported_mrc_specs>
+                    </mrc_specs>
+                    <certificate_chain_depths>
+                        <default_certificate_chain_depth>2</default_certificate_chain_depth>
+                        <supported_certificate_chain_depths>
+                            <value>2</value>
+                        </supported_certificate_chain_depths>
+                    </certificate_chain_depths>
+                    <platform_bindings>
+                        <default_platform_bindings>
+                            <value>SOC-HW-VER</value>
+                        </default_platform_bindings>
+                        <supported_platform_bindings>
+                            <value>SOC-HW-VER</value>
+                            <value>JTAG-ID</value>
+                        </supported_platform_bindings>
+                    </platform_bindings>
+                    <requires_secondary_software_id>false</requires_secondary_software_id>
+                    <requires_feature_id>false</requires_feature_id>
+                </supported_oem_signing_features>
+                <supported_qti_signing_features>
+                    <supports_vouch_for>false</supports_vouch_for>
+                    <default_signature_format>ECDSA384</default_signature_format>
+                    <signature_formats>
+                        <signature_format id="ECDSA384">
+                            <signature_algorithm>ECDSA</signature_algorithm>
+                            <signature_hash_algorithms>
+                                <default_signature_hash_algorithm>SHA384</default_signature_hash_algorithm>
+                                <supported_signature_hash_algorithms>
+                                    <value>SHA384</value>
+                                </supported_signature_hash_algorithms>
+                            </signature_hash_algorithms>
+                            <ecdsa_curves>
+                                <default_ecdsa_curve>SECP384R1</default_ecdsa_curve>
+                                <supported_ecdsa_curves>
+                                    <value>SECP384R1</value>
+                                </supported_ecdsa_curves>
+                            </ecdsa_curves>
+                        </signature_format>
+                    </signature_formats>
+                    <serial_bind>
+                        <supported>true</supported>
+                        <supports_single_serial>true</supports_single_serial>
+                        <supports_multi_serials>true</supports_multi_serials>
+                    </serial_bind>
+                    <debug>
+                        <supported>true</supported>
+                        <supports_single_serial>true</supports_single_serial>
+                        <supports_multi_serials>false</supports_multi_serials>
+                    </debug>
+                    <uie_key_switch_enable>
+                        <supported>false</supported>
+                        <supports_single_serial>false</supports_single_serial>
+                        <supports_multi_serials>false</supports_multi_serials>
+                    </uie_key_switch_enable>
+                    <root_revoke_activation_enable>
+                        <supported>false</supported>
+                        <supports_single_serial>false</supports_single_serial>
+                        <supports_multi_serials>false</supports_multi_serials>
+                    </root_revoke_activation_enable>
+                    <supports_root_revoke_activation_enable_as_combined>false</supports_root_revoke_activation_enable_as_combined>
+                    <crash_dump>
+                        <supported>false</supported>
+                        <supports_single_serial>false</supports_single_serial>
+                        <supports_multi_serials>false</supports_multi_serials>
+                    </crash_dump>
+                    <supports_oem_id_product_id_independent>true</supports_oem_id_product_id_independent>
+                    <supports_anti_rollback_version>false</supports_anti_rollback_version>
+                    <certificate_chain_depths>
+                        <default_certificate_chain_depth>3</default_certificate_chain_depth>
+                        <supported_certificate_chain_depths>
+                            <value>3</value>
+                        </supported_certificate_chain_depths>
+                    </certificate_chain_depths>
+                    <platform_bindings>
+                        <default_platform_bindings>
+                            <value>SOC-HW-VER</value>
+                        </default_platform_bindings>
+                        <supported_platform_bindings>
+                            <value>SOC-HW-VER</value>
+                            <value>JTAG-ID</value>
+                        </supported_platform_bindings>
+                    </platform_bindings>
+                    <requires_secondary_software_id>false</requires_secondary_software_id>
+                    <requires_feature_id>false</requires_feature_id>
+                </supported_qti_signing_features>
+                <supported_oem_encryption_features>
+                    <default_encryption_format>UIE</default_encryption_format>
+                    <supported_encryption_formats>
+                        <encryption_format id="UIE">
+                            <encryption_type>UIE</encryption_type>
+                            <encryption_specs>
+                                <default_encryption_spec>UIE-1.0-L2-1.1</default_encryption_spec>
+                                <supported_encryption_specs>
+                                    <value>UIE-1.0-L2-1.0</value>
+                                    <value>UIE-1.0-L2-1.1</value>
+                                </supported_encryption_specs>
+                            </encryption_specs>
+                            <root_key_types>
+                                <default_root_key_type>OTP-OEM</default_root_key_type>
+                                <supported_root_key_types>
+                                    <value>OTP-OEM</value>
+                                    <value>OTP-QTI</value>
+                                    <value>RTL-QTI</value>
+                                </supported_root_key_types>
+                            </root_key_types>
+                            <supports_encrypted_segment_indices>true</supports_encrypted_segment_indices>
+                        </encryption_format>
+                    </supported_encryption_formats>
+                </supported_oem_encryption_features>
+            </authenticator>
+        </authenticators>
+    </authentication>
+    <debugging>
+        <legacy>
+            <oem_image_id>DEBUG-POLICY</oem_image_id>
+            <qti_image_id>DEBUG-POLICY-QTI</qti_image_id>
+            <debug_policy_revisions>
+                <default_debug_policy_revision>7</default_debug_policy_revision>
+                <supported_debug_policy_revisions>
+                    <value>7</value>
+                </supported_debug_policy_revisions>
+            </debug_policy_revisions>
+            <phy_addr>0x082FC000</phy_addr>
+            <debug_policy_segment_placements>
+                <default_debug_policy_segment_placement>START</default_debug_policy_segment_placement>
+                <supported_debug_policy_segment_placements>
+                    <value>START</value>
+                    <value>END</value>
+                </supported_debug_policy_segment_placements>
+            </debug_policy_segment_placements>
+            <debug_policy_segment_alignment>0x1000</debug_policy_segment_alignment>
+            <elf_class>
+                <default_elf_class>32</default_elf_class>
+                <supported_elf_classes>
+                    <value>32</value>
+                    <value>64</value>
+                </supported_elf_classes>
+            </elf_class>
+            <supported_debug_options>
+                <debug_option id="SAIL-SECURE-CRASH-DUMPS" requires_serial_bind="true">
+                    <bits>1</bits>
+                    <description>Enable SAIL secure (hypervisor) crash dumps.</description>
+                </debug_option>
+                <debug_option id="SAIL-JTAG-DEBUG" requires_serial_bind="true">
+                    <bits>2</bits>
+                    <description>Enable JTAG debugging and traces for all execution levels.</description>
+                </debug_option>
+                <debug_option id="SAIL-HYPERVISOR-LOGS" requires_serial_bind="true">
+                    <bits>3</bits>
+                    <description>Enable SAIL hypervisor logging.</description>
+                </debug_option>
+                <debug_option id="SAIL-HYPERVISOR-JTAG-DEBUG" requires_serial_bind="true">
+                    <bits>9</bits>
+                    <description>Enable JTAG debugging and traces for SAIL hypervisor.</description>
+                </debug_option>
+                <debug_option id="SAIL-HYPERVISOR-TRACES" requires_serial_bind="true">
+                    <bits>10</bits>
+                    <description>Enable traces for SAIL hypervisor.</description>
+                </debug_option>
+                <debug_option id="SAIL-CORE-0-JTAG-DEBUG" requires_serial_bind="true">
+                    <bits>11</bits>
+                    <description>Enable JTAG debugging and traces for SAIL Core 0.</description>
+                </debug_option>
+                <debug_option id="SAIL-CORE-0-TRACES" requires_serial_bind="true">
+                    <bits>12</bits>
+                    <description>Enable traces for SAIL Core 0.</description>
+                </debug_option>
+                <debug_option id="SAIL-CORE-1-JTAG-DEBUG" requires_serial_bind="true">
+                    <bits>13</bits>
+                    <description>Enable JTAG debugging and traces for SAIL Core 1.</description>
+                </debug_option>
+                <debug_option id="SAIL-CORE-1-TRACES" requires_serial_bind="true">
+                    <bits>14</bits>
+                    <description>Enable traces for SAIL Core 1.</description>
+                </debug_option>
+                <debug_option id="SAIL-CORE-2-JTAG-DEBUG" requires_serial_bind="true">
+                    <bits>15</bits>
+                    <description>Enable JTAG debugging and traces for SAIL Core 2.</description>
+                </debug_option>
+                <debug_option id="SAIL-CORE-2-TRACES" requires_serial_bind="true">
+                    <bits>16</bits>
+                    <description>Enable traces for SAIL Core 2.</description>
+                </debug_option>
+                <debug_option id="SAIL-CORE-3-JTAG-DEBUG" requires_serial_bind="true">
+                    <bits>17</bits>
+                    <description>Enable JTAG debugging and traces for SAIL Core 3.</description>
+                </debug_option>
+                <debug_option id="SAIL-CORE-3-TRACES" requires_serial_bind="true">
+                    <bits>18</bits>
+                    <description>Enable traces for SAIL Core 3.</description>
+                </debug_option>
+                <debug_option id="SAIL-NONSECURE-CRASH-DUMPS" requires_serial_bind="false">
+                    <bits>24</bits>
+                    <description>Enable SAIL non-secure (non-hypervisor) crash dumps.</description>
+                </debug_option>
+            </supported_debug_options>
+        </legacy>
+    </debugging>
+    <fuse_blowing>
+        <image_id>SEC-ELF</image_id>
+        <fuse_regions>
+            <fuse_region id="WRITE_PERMISSIONS">
+                <fuse_row address="0xf8700058">
+                    <fuse>
+                        <name>READ_PERMISSIONS_WRITE_DISABLE</name>
+                        <description>Disables further QFPROM changes to this region. Blow this bit after the region has been completely provisioned.</description>
+                        <bits>3</bits>
+                    </fuse>
+                    <fuse>
+                        <name>WRITE_PERMISSIONS_WRITE_DISABLE</name>
+                        <description>Disables further QFPROM changes to the this region. Blow this bit after the region has been completely provisioned.</description>
+                        <bits>4</bits>
+                    </fuse>
+                    <fuse>
+                        <name>FEC_ENABLES_WRITE_DISABLE</name>
+                        <description>Disables further QFPROM changes to this region. Blow this bit after the region has been completely provisioned.</description>
+                        <bits>5</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_CONFIGURATION_WRITE_DISABLE</name>
+                        <description>Disables further QFPROM changes to this region. Blow this bit after the region has been completely provisioned.</description>
+                        <bits>6</bits>
+                    </fuse>
+                    <fuse>
+                        <name>PUBLIC_KEY_HASH_0_WRITE_DISABLE</name>
+                        <description>Disables further QFPROM changes to this region. Blow this bit after the region has been completely provisioned.</description>
+                        <bits>20</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT_WRITE_DISABLE</name>
+                        <description>Disables further QFPROM changes to this region. Blow this bit after the region has been completely provisioned. Once blown no further changes possible to QFPROM sheet via sec.elf.</description>
+                        <bits>27</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SPARE_30_WRITE_DISABLE</name>
+                        <description>Disables further QFPROM changes to the this region. Blow this bit after the region has been completely provisioned.</description>
+                        <bits>32</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SPARE_31_WRITE_DISABLE</name>
+                        <description>Disables further QFPROM changes to the this region. Blow this bit after the region has been completely provisioned.</description>
+                        <bits>33</bits>
+                    </fuse>
+                </fuse_row>
+            </fuse_region>
+            <fuse_region id="FEC_ENABLES">
+                <fuse_row address="0xf8700060">
+                    <fuse>
+                        <name>OEM_SECURE_BOOT_FEC_ENABLE</name>
+                        <description>FEC supported. This fuse is used to enable the Forward Error Correction for this region (if applicable).</description>
+                        <bits>27</bits>
+                    </fuse>
+                </fuse_row>
+            </fuse_region>
+            <fuse_region id="OEM_CONFIG">
+                <fuse_row address="0xf8700068">
+                    <fuse>
+                        <name>E_DLOAD_DISABLE</name>
+                        <description>SW only use for boot. Disable the removable SD and then USB downloader in Apps PBL error handler, as well as the method to force download during code boot via magic cookies in IMEM.</description>
+                        <bits>0</bits>
+                    </fuse>
+                    <fuse>
+                        <name>ENUM_TIMEOUT</name>
+                        <description>SW only use for boot. BOOT ROM must support USB enumeration timeout. Timeout applies to both enumeration for FLCB (fast low current boot) and USB download mode. If USB is not enumerated within time (90 seconds), quit USB enumeration If USB suspend or disconnected after enumeration, start timer again.</description>
+                        <bits>1</bits>
+                    </fuse>
+                    <fuse>
+                        <name>FORCE_DLOAD_DISABLE</name>
+                        <description>SW only use for boot. To disable method to force boot from USB via GPIO or magic number in RAM.</description>
+                        <bits>2</bits>
+                    </fuse>
+                    <fuse>
+                        <name>FAST_BOOT</name>
+                        <description>These fuses are used by boot code to specify which device has priority to be booted from. For QAM8650P, the mapping is as follows:
+
+Following change is needed for fast boot options: 
+0: Default OSPI.</description>
+                        <bits>9:5</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SPI_CLK_BOOT_FREQ</name>
+                        <description>Default is 37.5 MHz and when blown 19.2 MHz.</description>
+                        <bits>11</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SW_FUSE_PROG_DISABLE</name>
+                        <description>This fuse disables the ability to write fuses through the software interface.</description>
+                        <bits>12</bits>
+                    </fuse>
+                    <fuse>
+                        <name>PBL_FDL_TIMEOUT_RESET_FEATURE_ENABLE.</name>
+                        <description>Fuse bit to reset device if PBL enters into EDL mode unintentionally.</description>
+                        <bits>13</bits>
+                    </fuse>
+                    <fuse>
+                        <name>WDOG_EN</name>
+                        <description>Combined with GPIO Wdog disable (connects to MPM). Prevents the Watch Dog from being disabled by the GPIO.</description>
+                        <bits>14</bits>
+                    </fuse>
+                    <fuse>
+                        <name>PBL_LOG_DISABLE</name>
+                        <description>SW only use for boot. Control logging mechanism in Boot ROM (If blown, Logging is disabled &amp; mandated for external parts).</description>
+                        <bits>15</bits>
+                    </fuse>
+                    <fuse>
+                        <name>ROOT_CERT_TOTAL_NUM</name>
+                        <description>Defines the total root cert number supported from the certificate (Upto 4 roots).</description>
+                        <bits>18:17</bits>
+                    </fuse>
+                    <fuse>
+                        <name>USB_SS_DISABLE</name>
+                        <description>Used to disable USB SS enumeration during Boot.</description>
+                        <bits>22</bits>
+                    </fuse>
+                    <fuse>
+                        <name>MSS_HASH_INTEGRITY_CHECK_ENABLE</name>
+                        <description>Enables Hash computation/verification of individual ELF segments in PBL.</description>
+                        <bits>24</bits>
+                    </fuse>
+                    <fuse>
+                        <name>DEBUG_POLICY_DISABLE</name>
+                        <description>Debug Policy is bypassed when this bit is 1. Debug Policy provides a means to re-enable debug capabilities under OEM-specified selectable conditions.</description>
+                        <bits>28</bits>
+                    </fuse>
+                    <fuse>
+                        <name>ALL_DEBUG_DISABLE</name>
+                        <description>This fuse permanently disables all debug of the chip. This should only be blown once the OEM is done with their development and testing. No RMAs are possible after this fuse is blown.</description>
+                        <bits>29</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_DBGEN</name>
+                        <description>SAIL DBGEN.</description>
+                        <bits>50</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_NIDEN</name>
+                        <description>SAIL NIDEN.</description>
+                        <bits>51</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_HIDEN</name>
+                        <description>SAIL HIDEN.</description>
+                        <bits>52</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_HNIDEN</name>
+                        <description>SAIL HNIDEN.</description>
+                        <bits>53</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_C0_DBGEN</name>
+                        <description>SAIL C0 DBGEN.</description>
+                        <bits>54</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_C0_NIDEN</name>
+                        <description>SAIL C0 NIDEN.</description>
+                        <bits>55</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_CPU_SCAN_EN</name>
+                        <description>SAIL CPU SCAN EN.</description>
+                        <bits>56</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_DCC_SCAN_EN</name>
+                        <description>SAIL DCC SCAN EN.</description>
+                        <bits>57</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_C1_DBGEN</name>
+                        <description>SAIL C1 DBGEN.</description>
+                        <bits>58</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_C1_NIDEN</name>
+                        <description>SAIL C1 NIDEN.</description>
+                        <bits>59</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_C2_DBGEN</name>
+                        <description>SAIL C2 DBGEN.</description>
+                        <bits>60</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_C2_NIDEN</name>
+                        <description>SAIL C2 NIDEN.</description>
+                        <bits>61</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700070">
+                    <fuse>
+                        <name>TZ_SW_CRYPTO_FIPS_ENABLE</name>
+                        <description>Enable FIPS mode for TZ software crypto. Disable by default and blow to enable.</description>
+                        <bits>4</bits>
+                    </fuse>
+                    <fuse>
+                        <name>TZ_SW_CRYPTO_FIPS_OVERRIDE</name>
+                        <description>Override TZ_SW_CRYPTO_FIPS_ENABLE fuse. Non-override by default and blow to override the TZ_SW_CRYPTO_FIPS_ENABLE fuse to disable the FIPS feature in TZ.</description>
+                        <bits>7</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SPARE_REG30_SECURE</name>
+                        <description>This fuse determines if the corresponding OEM spare region is treated as secure. If blown, it indicates secure, and the region has the properties of a customer private key, and is not readable through SW while debug is enabled. Qualcomm doesn’t recommend using OEM SPARE regions for storing security keys, since these regions are only accessible by the SW.</description>
+                        <bits>14</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SPARE_REG31_SECURE</name>
+                        <description>This fuse determines if the corresponding OEM spare region is treated as secure. If blown, it indicates secure, and the region has the properties of a customer private key, and is not readable through SW while debug is enabled. Qualcomm doesn’t recommend using OEM SPARE regions for storing security keys, since these regions are only accessible by the SW.</description>
+                        <bits>15</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SEGMENT_HASH_FUNCTION_SELECT0</name>
+                        <description>SEGMENT_HASH_FUNCTION_SELECT_0 is used to determine segment hash computation algorithm with MRC 0 Indexed Root Certificate enabled. 0 means SHA384, 1 means SHA256.</description>
+                        <bits>16</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SEGMENT_HASH_FUNCTION_SELECT1</name>
+                        <description>SEGMENT_HASH_FUNCTION_SELECT_1 is used to determine segment hash computation algorithm with MRC 1 Indexed Root Certificate enabled. 0 means SHA384, 1 means SHA256.</description>
+                        <bits>17</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SEGMENT_HASH_FUNCTION_SELECT2</name>
+                        <description>SEGMENT_HASH_FUNCTION_SELECT_2 is used to determine segment hash computation algorithm with MRC 2 Indexed Root Certificate enabled. 0 means SHA384, 1 means SHA256.</description>
+                        <bits>18</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SEGMENT_HASH_FUNCTION_SELECT3</name>
+                        <description>SEGMENT_HASH_FUNCTION_SELECT_3 is used to determine segment hash computation algorithm with MRC 3 Indexed Root Certificate enabled. 0 means SHA384, 1 means SHA256.</description>
+                        <bits>19</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_DEBUG_BUS_DISABLE</name>
+                        <description>SAIL DEBUG BUS.</description>
+                        <bits>23</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_C3_DBGEN</name>
+                        <description>SAIL C3 DBGEN.</description>
+                        <bits>24</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_C3_NIDEN</name>
+                        <description>SAIL C3 NIDEN.</description>
+                        <bits>25</bits>
+                    </fuse>
+                    <fuse>
+                        <name>EKU_ENFORCEMENT_EN</name>
+                        <description>When this fuse is blown will enable enforcement of the EKU field in the certificate.</description>
+                        <bits>30</bits>
+                    </fuse>
+                    <fuse>
+                        <name>DISABLE_RSA</name>
+                        <description>When this bit is 0 and signed image type is SHA384 + RSA/ECC is 0 =&gt; RSA OPERATION_x000D_
+When this bit is 0 and signed image type is SHA384 + RSA/ECC IS 1=&gt; ECC OPERATION USING PKA IP_x000D_
+When this bit is 1 and signed image type is SHA384 + RSA/ECC is 0 =&gt; Error_x000D_
+When this bit is 1 and signed image type is SHA384 + RSA/ECC IS 1=&gt; ECC OPERATION USING PKA IP.</description>
+                        <bits>31</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_HW_ID</name>
+                        <description>The OEM hardware ID. Bits 15:0.</description>
+                        <bits>47:32</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_PRODUCT_ID</name>
+                        <description>The OEM product ID. Bits 15:0.</description>
+                        <bits>63:48</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700078">
+                    <fuse>
+                        <name>PERIPH_PID</name>
+                        <description>Bits 15:0 of the PID.</description>
+                        <bits>15:0</bits>
+                    </fuse>
+                    <fuse>
+                        <name>PERIPH_VID</name>
+                        <description>Bits 15:0 of the VID.</description>
+                        <bits>31:16</bits>
+                    </fuse>
+                    <fuse>
+                        <name>ANTI_ROLLBACK_FEATURE_EN</name>
+                        <description>Bit 0 - SAIL_HYP_ANTI_ROLLBACK_EN
+Bit 1 - SAIL_SW_ANTI_ROLLBACK_EN.</description>
+                        <bits>33:32</bits>
+                    </fuse>
+                </fuse_row>
+            </fuse_region>
+            <fuse_region id="PK_HASH_0">
+                <fuse_row address="0xf8700140">
+                    <fuse>
+                        <name>PK_HASH_0</name>
+                        <description>Hash of OEM Root certificate.</description>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700148">
+                    <fuse>
+                        <name>PK_HASH_0</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700150">
+                    <fuse>
+                        <name>PK_HASH_0</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700158">
+                    <fuse>
+                        <name>PK_HASH_0</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700160">
+                    <fuse>
+                        <name>PK_HASH_0</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700168">
+                    <fuse>
+                        <name>PK_HASH_0</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700170">
+                    <fuse>
+                        <name>PK_HASH_0</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700178">
+                    <fuse>
+                        <name>PK_HASH_0</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+            </fuse_region>
+            <fuse_region id="OEM_SECURE_BOOT">
+                <fuse_row address="0xf8700978">
+                    <fuse>
+                        <name>OEM_SECURE_BOOT1_ROM_PK_HASH_IDX0</name>
+                        <description>Boot Segment for Apps &amp; other peripheral images.</description>
+                        <bits>0</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT1_ROM_PK_HASH_IDX1</name>
+                        <description>Boot Segment for Apps &amp; other peripheral images.</description>
+                        <bits>1</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT1_ROM_PK_HASH_IDX2</name>
+                        <description>Boot Segment for Apps &amp; other peripheral images.</description>
+                        <bits>2</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT1_ROM_PK_HASH_IDX3</name>
+                        <description>Boot Segment for Apps &amp; other peripheral images.</description>
+                        <bits>3</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT1_PK_HASH_IN_FUSE</name>
+                        <description>Boot Segment for Apps &amp; other peripheral images.</description>
+                        <bits>4</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT1_AUTH_EN</name>
+                        <description>Boot Segment for Apps &amp; other peripheral images.</description>
+                        <bits>5</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT1_USE_SERIAL_NUM</name>
+                        <description>Boot Segment for Apps &amp; other peripheral images.</description>
+                        <bits>6</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT2_ROM_PK_HASH_IDX0</name>
+                        <description>Boot segment for MBA image.</description>
+                        <bits>8</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT2_ROM_PK_HASH_IDX1</name>
+                        <description>Boot segment for MBA image.</description>
+                        <bits>9</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT2_ROM_PK_HASH_IDX2</name>
+                        <description>Boot segment for MBA image.</description>
+                        <bits>10</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT2_ROM_PK_HASH_IDX3</name>
+                        <description>Boot segment for MBA image.</description>
+                        <bits>11</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT2_PK_HASH_IN_FUSE</name>
+                        <description>Boot segment for MBA image.</description>
+                        <bits>12</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT2_AUTH_EN</name>
+                        <description>Boot segment for MBA image.</description>
+                        <bits>13</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT2_USE_SERIAL_NUM</name>
+                        <description>Boot segment for MBA image.</description>
+                        <bits>14</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT3_ROM_PK_HASH_IDX0</name>
+                        <description>Boot segment for Modem image.</description>
+                        <bits>16</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT3_ROM_PK_HASH_IDX1</name>
+                        <description>Boot segment for Modem image.</description>
+                        <bits>17</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT3_ROM_PK_HASH_IDX2</name>
+                        <description>Boot segment for Modem image.</description>
+                        <bits>18</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT3_ROM_PK_HASH_IDX3</name>
+                        <description>Boot segment for Modem image.</description>
+                        <bits>19</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT3_PK_HASH_IN_FUSE</name>
+                        <description>Boot segment for Modem image.</description>
+                        <bits>20</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT3_AUTH_EN</name>
+                        <description>Boot segment for Modem image.</description>
+                        <bits>21</bits>
+                    </fuse>
+                    <fuse>
+                        <name>OEM_SECURE_BOOT3_USE_SERIAL_NUM</name>
+                        <description>Boot segment for Modem image.</description>
+                        <bits>22</bits>
+                    </fuse>
+                    <fuse>
+                        <name>FEC_189</name>
+                        <description>FEC autocalculated based on 56 bits in the row.</description>
+                        <bits>62:56</bits>
+                    </fuse>
+                </fuse_row>
+            </fuse_region>
+            <fuse_region id="OEM_SPARE_30">
+                <fuse_row address="0xf8700bb0">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700bb8">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700bc0">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700bc8">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700bd0">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700bd8">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700be0">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700be8">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700bf0">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700bf8">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c00">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c08">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c10">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c18">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c20">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c28">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c30">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c38">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c40">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c48">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c50">
+                    <fuse>
+                        <name>OEM_SPARE_30</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+            </fuse_region>
+            <fuse_region id="OEM_SPARE_REGION_31">
+                <fuse_row address="0xf8700c58">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c60">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c68">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c70">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c78">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c80">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c88">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c90">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700c98">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700ca0">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700ca8">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700cb0">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700cb8">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700cc0">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700cc8">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700cd0">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700cd8">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700ce0">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700ce8">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700cf0">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+                <fuse_row address="0xf8700cf8">
+                    <fuse>
+                        <name>OEM_SPARE_31</name>
+                        <bits>63:0</bits>
+                    </fuse>
+                </fuse_row>
+            </fuse_region>
+            <fuse_region id="QC_SPARE_20">
+                <fuse_row address="0xf87002f0">
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_FUSE_ENABLE</name>
+                        <description>SAIL_TGB_AGING_MARKER_FUSE_ENABLE.</description>
+                        <bits>0</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_0</name>
+                        <description>SAIL_TGB_AGING_MARKER_0.</description>
+                        <bits>1</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_1</name>
+                        <description>SAIL_TGB_AGING_MARKER_1.</description>
+                        <bits>2</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_2</name>
+                        <description>SAIL_TGB_AGING_MARKER_2.</description>
+                        <bits>3</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_3</name>
+                        <description>SAIL_TGB_AGING_MARKER_3.</description>
+                        <bits>4</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_4</name>
+                        <description>SAIL_TGB_AGING_MARKER_4.</description>
+                        <bits>5</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_5</name>
+                        <description>SAIL_TGB_AGING_MARKER_5.</description>
+                        <bits>6</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_6</name>
+                        <description>SAIL_TGB_AGING_MARKER_6.</description>
+                        <bits>7</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_7</name>
+                        <description>SAIL_TGB_AGING_MARKER_7.</description>
+                        <bits>8</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_8</name>
+                        <description>SAIL_TGB_AGING_MARKER_8.</description>
+                        <bits>9</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_9</name>
+                        <description>SAIL_TGB_AGING_MARKER_9.</description>
+                        <bits>10</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_10</name>
+                        <description>SAIL_TGB_AGING_MARKER_10.</description>
+                        <bits>11</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_11</name>
+                        <description>SAIL_TGB_AGING_MARKER_11.</description>
+                        <bits>12</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_12</name>
+                        <description>SAIL_TGB_AGING_MARKER_12.</description>
+                        <bits>13</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_13</name>
+                        <description>SAIL_TGB_AGING_MARKER_13.</description>
+                        <bits>14</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_14</name>
+                        <description>SAIL_TGB_AGING_MARKER_14.</description>
+                        <bits>15</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_15</name>
+                        <description>SAIL_TGB_AGING_MARKER_15.</description>
+                        <bits>16</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_16</name>
+                        <description>SAIL_TGB_AGING_MARKER_16.</description>
+                        <bits>17</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_17</name>
+                        <description>SAIL_TGB_AGING_MARKER_17.</description>
+                        <bits>18</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_18</name>
+                        <description>SAIL_TGB_AGING_MARKER_18.</description>
+                        <bits>19</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_MARKER_19</name>
+                        <description>SAIL_TGB_AGING_MARKER_19.</description>
+                        <bits>20</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_CANCEL_0</name>
+                        <description>SAIL_TGB_AGING_CANCEL_0.</description>
+                        <bits>21</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_CANCEL_1</name>
+                        <description>SAIL_TGB_AGING_CANCEL_1.</description>
+                        <bits>22</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_CANCEL_2</name>
+                        <description>SAIL_TGB_AGING_CANCEL_2.</description>
+                        <bits>23</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_CANCEL_3</name>
+                        <description>SAIL_TGB_AGING_CANCEL_3.</description>
+                        <bits>24</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_CANCEL_4</name>
+                        <description>SAIL_TGB_AGING_CANCEL_4.</description>
+                        <bits>25</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_CANCEL_5</name>
+                        <description>SAIL_TGB_AGING_CANCEL_5.</description>
+                        <bits>26</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_CANCEL_6</name>
+                        <description>SAIL_TGB_AGING_CANCEL_6.</description>
+                        <bits>27</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_CANCEL_7</name>
+                        <description>SAIL_TGB_AGING_CANCEL_7.</description>
+                        <bits>28</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_CANCEL_8</name>
+                        <description>SAIL_TGB_AGING_CANCEL_8.</description>
+                        <bits>29</bits>
+                    </fuse>
+                    <fuse>
+                        <name>SAIL_TGB_AGING_CANCEL_9</name>
+                        <description>SAIL_TGB_AGING_CANCEL_9.</description>
+                        <bits>30</bits>
+                    </fuse>
+                </fuse_row>
+            </fuse_region>
+        </fuse_regions>
+        <sec_elf_properties>
+            <elf_class>
+                <default_elf_class>32</default_elf_class>
+                <supported_elf_classes>
+                    <value>32</value>
+                    <value>64</value>
+                </supported_elf_classes>
+            </elf_class>
+            <phy_addr>0x00000000082ff000</phy_addr>
+            <sec_dat_segment_versions>
+                <default_sec_dat_segment_version>2</default_sec_dat_segment_version>
+                <supported_sec_dat_segment_versions>
+                    <value>1</value>
+                    <value>2</value>
+                    <value>3</value>
+                </supported_sec_dat_segment_versions>
+            </sec_dat_segment_versions>
+            <sec_dat_segment_placements>
+                <default_sec_dat_segment_placement>START</default_sec_dat_segment_placement>
+                <supported_sec_dat_segment_placements>
+                    <value>START</value>
+                    <value>END</value>
+                </supported_sec_dat_segment_placements>
+            </sec_dat_segment_placements>
+            <sec_dat_segment_alignment>0x0000000000001000</sec_dat_segment_alignment>
+        </sec_elf_properties>
+    </fuse_blowing>
+</tns:profile>

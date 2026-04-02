@@ -1,0 +1,248 @@
+LR_3 0x20000000  0x10000/* ATCM Memory Core 0 Cluster -0 */ 
+{
+    lnkATCM_UNPRIVStartAddr +0 ALIGN 64 EMPTY 0 {}
+    ATCM_UNPRIV_ROM +0
+    {
+         bootcode.o
+         *( clock_func )
+         *( syscall_func )
+         *( exception_func )
+         *( el1main_func )
+         *( cpu_runtimestats_func )
+         *( cpu_custom_utilization_func )
+         *( boot_func )
+         *( ipcc_func )
+         *( isd_func )
+         *( chipinfo_func )
+         *( pmic_func )
+         *( spinor_func )
+         *( pwr_controller_func )
+         *( crashdbg_func )
+         *( tsens_func )
+         *( trusens_func )
+         *( vsens_func )
+         *( crc_func )
+         *( crc_ro )
+    }
+    lnkATCM_UNPRIVEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    PADDING +0 ALIGN 256 EMPTY 0 {}
+    syscall_table  +0 ;0x1000 0x1000       ;Syscall table for SVC framework.
+    {   
+        *(_sail_syscall)
+    }
+    
+     /* ISD */
+     lnkISDDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    ISD_DATA +0
+    {
+        * ( isd_data )  ; ISD driver data section
+    }
+    lnkISDDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    /* tsens */
+	lnkTSENSDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    TSENS_DATA +0
+    {
+        * ( tsens_data )  ; tsens driver data section
+    }
+    lnkTSENSDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    /* vsens */
+	lnkVSENSDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    VSENS_DATA +0
+    {
+        * ( vsens_data )  ; vsens driver data section
+    }
+    lnkVSENSDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+}
+LR_4 0x20010000 0x8000/* BTCM Memory Core 0 Cluster -0 */
+{
+    PRIV_ROM +0x0 ALIGN 64
+    {
+       vectors.o
+       *( privileged_functions )  ; FreeRTOS kernel functions
+    }    
+
+    PRIV_RAM +0 ALIGN 256
+    {   
+        *( privileged_data )
+    }
+}
+LR_5 0x20018000 0x8000/* CTCM Memory Core 0 Cluster -0 */
+{
+    lnkCTCM_UNPRIVStartAddr +0 ALIGN 64 EMPTY 0 {}
+    CTCM_UNPRIV_ROM +0
+    {
+       *(fdt_func)
+       *( mailbox_int_func )
+       *( mailbox_ext_func )
+       *(wdt_func)
+    }
+    lnkCTCM_UNPRIVEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    
+    UNPRIV_ROM +0 ALIGN 256
+    {
+        *( freertos_system_calls )    ; All RO sections go into this region
+    }
+    
+    WDT_KERNEL_DATA +0 +0
+    {
+        * (wdt_kernel_data) ; All Wdt Kernel Object Buffers Like Semaphores/Mutexes/Queues/Stack
+    }
+    
+    lnkWDTDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    WDT_DATA +0
+    {
+        * ( wdt_data )  ; wdt driver data section
+        * ( wdt_const ) ; wdt driver const data section
+    }
+    lnkWDTDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    	/* mailbox internal and external */
+	lnkMBCOREDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    MBCOREDATA +0
+    {
+		* ( ebr ); mailbox r+ section
+		* ( ibr ); mailbox r+ section
+		* ( ebrw ); mailbox w+ section
+		* ( ibrw ); mailbox w+ section
+    }
+    lnkMBCOREDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+} 
+
+LR_1 0x20020000 0x58000     ; Define the load region name as LR_1
+                            ; the region starts at 0x080C8000.
+                            ; the size is 400kb 
+{
+    lnkUSERUNPRIVCODEStartAddr +0 ALIGN 64 EMPTY 0 {}
+    ER_R1 +0 ALIGN 256
+    {
+	    anon$$obj.o
+        * (+RO)   ; All RO sections go into this region    
+    }   
+    lnkUSERUNPRIVCODEEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    ER_RW +0
+    {
+        * (+RW)   ; All RW sections go into this region, they are placed
+                  ; consecutively.
+    }
+    /* dma_crc */
+	lnkDMACRCDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    DMACRC_DATA +0
+    {
+        * ( dmacrc_data )  ; dma_crc driver data section
+    }
+    lnkDMACRCDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    /* trusens */
+    lnkTRUSENSDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    TRUSENS_DATA +0
+    {
+        * ( trusens_data )  ; trusens driver data section
+    }
+    lnkTRUSENSDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    lnkSMAPPDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    SM_APP_DATA +0
+    {
+        * ( sm_app_data )  ;  sm app data section
+    }
+    lnkSMAPPDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    lnkBSP_GLOBAL_DATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    BSP_GLOBAL_DATA +0
+    {
+        * ( bsp_global_data )  ;  bsp global data section
+    }
+    lnkBSPGLOBALDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    lnkBSP_PRIV_DATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    BSP_PRIV_DATA +0
+    {
+        * ( bsp_priv_data )  ;  bsp priv data section
+    }
+    lnkBSP_PRIV_DATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    /* Uart data*/
+    lnkUARTDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    UART_DATA +0
+    {
+        * ( uart_data )  ; uart driver data section
+    }
+    lnkUARTDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    lnkEMAC0DATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    EMAC0_DATA +0
+    {
+        * ( emac0_data )  ; emac0 driver data section
+    }
+    lnkEMAC0DATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+
+    lnkTSCDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    TSC_DATA +0
+    {
+        * ( tsc_data )  ; tsc driver data section
+    }
+    lnkTSCDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+
+    ER_ZI +0
+    {
+        *(+ZI)
+    }
+}
+
+LR_2 0x20078000 0x6000
+{
+    ; 16KB, Heap start = 0x20078000, Heap end = 0x2007C000
+    SAILHYP_HEAP 0x20078000 EMPTY 0x4000  
+    {
+    } 
+
+    ; Stack defined at the bottom. We define headp right above this section.
+    ; So both can grow towards each other
+    ARM_LIB_STACK 0x2007E000 EMPTY -0x2000
+    {
+    }
+}
+
+/* This is a shared memory region between Core0 and Core1 meant ONLY for the CPU run time statistics task.*/
+LR_6 0x082DDC00 0x400
+{
+    lnkCPURTSC1DATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    CPURTS_C1_DATA +0
+    {
+        * ( CPURTS_c1_data )  ; CPURTS data section
+    }
+    lnkCPURTSC1DATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+}
+
+/* This is a shared memory region between Core0 and Core2 meant ONLY for the CPU run time statistics task. */
+LR_7 0x082DD800 0x400
+{
+    lnkCPURTSC2DATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    CPURTS_C2_DATA +0
+    {
+        * ( CPURTS_c2_data )  ; CPURTS data section
+    }
+    lnkCPURTSC2DATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+} 
+
+NOINIT_MBOSH 0x082DE000 0x1BC00     
+{
+	; reserved for IB, EB , UART usecase
+	; segment attribute must be No load for SW-N images 
+	; SHR_UART 0x082E0400 0x1000 { }
+	lnkMBOSHStartAddr +0 UNINIT ALIGN 64 0 {}
+	SHR_IBLOCATOR +0 UNINIT 0x10000 { }
+    	SHR_IBMAPVECT +0x10000 UNINIT 0x1000 { } 
+	SHR_IBSTATUS +0x1000 UNINIT ALIGN 8 0x100 { }
+	SHR_EBMAPVECT +0x100 UNINIT ALIGN 8 0x100 { } 
+	SHR_EBSTATUS +0x100 UNINIT ALIGN 8 0x100 { }
+	SHR_EBBCKSTATUS +0x100 UNINIT ALIGN 8 0x200 { }
+    	SHR_ISDCONTEXT +0x200 UNINIT ALIGN 8 0x1000  { }
+    	SHR_COREHEALTH_STATUS +0x1000 UNINIT ALIGN 8 0x4  { }
+	SHR_WDT_TEST_TIMER_START +0x4 UNINIT ALIGN 8 0x8  { }
+	SHR_WDT_TEST_TIMER_END +0x8 UNINIT ALIGN 8 0x8  { }
+	; align not required as its end
+	lnkMBOSHEndAddr 0x082F9C00 UNINIT 0 {}
+}

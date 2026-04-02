@@ -1,0 +1,459 @@
+/*
+ * Copyright (c) 2023-2024 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ * Export of this technology or software is regulated by the U.S. Government.
+ * Diversion contrary to U.S. law prohibited.
+ *
+ * All ideas, data and information contained in or disclosed by
+ * this document are confidential and proprietary information of
+ * Qualcomm Technologies, Inc. and all rights therein are expressly reserved.
+ * By accepting this material the recipient agrees that this material
+ * and the information contained therein are held in confidence and in
+ * trust and will not be used, copied, reproduced in whole or in part,
+ * nor its contents revealed in any manner to others without the express
+ * written permission of Qualcomm Technologies, Inc.
+ */
+
+/dts-v1/;
+
+/ {
+    model = "Qualcomm Technologies, Inc. LeMansAU";
+    compatible = "sail,el2";
+
+	aliases {
+			i2c0 = &se0_i2c;
+			uart0 = &se1_uart;
+			uart1 = &se2_uart;
+			i2c1 = &se3_i2c;
+			spi0 = &se4_spi;
+			ospi0 = &spinor_monaco;
+			ospi1 = &spinor_lemans;
+	};
+	
+	qup {
+		common-addr = <0xf1900000>;
+
+		/*I2C*/
+		se0_i2c: qupv3_se0_i2c {
+			reg-base = <0xF1900000>;
+			slave-addr = <0x28 0x29 0x12 0x11 0x13 0x15 0x17>;
+			clock-name = "sailss_cc_qupv3_wrap0_s0_clk";
+			clock-frequency = <19200000>;
+			interrupt = <402>;
+			pinctrl = &se0_i2c_pinctrl;
+			i2c-mode = <2>;
+ 			addressing-mode = <1 1 1 2 2 2 2>;
+ 			timestamp = <0 0 0 0 0 0 0>;
+			precmd-delay = <0 0 0 0 0 0 0>;
+			access-mode = <0>;
+			status = <1>;
+		};
+		
+		se1_i2c: qupv3_se1_i2c {
+			reg-base = <0xF1904000>;
+			slave-addr = <0x00>;
+			clock-name = "sailss_cc_qupv3_wrap0_s1_clk";
+			clock-frequency = <19200000>;
+			interrupt = <403>;
+			pinctrl = &se1_i2c_pinctrl;
+			i2c-mode = <2>; 
+ 			addressing-mode = <1>; 
+ 			timestamp = <0>;
+			precmd-delay = <0>;
+			access-mode = <0>;
+			status = <1>;
+		};
+		
+		se2_i2c: qupv3_se2_i2c {
+			reg-base = <0xF1908000>;
+			slave-addr = <0x01>;
+			clock-name = "sailss_cc_qupv3_wrap0_s2_clk";
+			clock-frequency = <19200000>;
+			interrupt = <404>;
+			pinctrl = &se2_i2c_pinctrl;
+			i2c-mode = <2>; 
+ 			addressing-mode = <1>; 
+ 			timestamp = <0>;
+			precmd-delay = <0>;
+			access-mode = <0>;
+			status = <1>;
+		};
+		
+		se3_i2c: qupv3_se3_i2c {
+			reg-base = <0xF190C000>;
+			slave-addr = <0x2>;
+			clock-name = "sailss_cc_qupv3_wrap0_s3_clk";
+			clock-frequency = <19200000>;
+			interrupt = <405>;
+			pinctrl = &se3_i2c_pinctrl;
+			i2c-mode = <2>; 
+ 			addressing-mode = <1>;
+ 			timestamp = <0>;
+			precmd-delay = <0>;
+			access-mode = <0>;
+			status = <1>;
+		};
+		
+		se4_i2c: qupv3_se4_i2c {
+			reg-base = <0xF1910000>;
+			slave-addr = <0x1>;
+			clock-name = "sailss_cc_qupv3_wrap0_s4_clk";
+			clock-frequency = <19200000>;
+			interrupt = <406>;
+			pinctrl = &se4_i2c_pinctrl;
+			i2c-mode = <2>;
+ 			addressing-mode = <1>;
+ 			timestamp = <0>;
+			precmd-delay = <0>;
+			access-mode = <0>;
+			status = <1>;
+		};
+		
+		/*UART*/
+		se0_uart: qupv3_se0_uart {
+			reg-base = <0xF1900000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s0_clk";
+			clock-frequency = <100000000>;
+			baudrate = <115200>;
+			interrupt = <402>;
+			pinctrl = &se0_uart_pinctrl;
+			parity = <4>;
+			stop-bit = <0>;
+			access-mode= <2>;
+			loopback  = <0>;
+			status = <1>;
+		};
+		
+		se1_uart: qupv3_se1_uart {
+			reg-base = <0xF1904000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s1_clk";
+			clock-frequency = <100000000>;
+			baudrate = <921600>;
+			interrupt = <403>;
+			pinctrl = &se1_uart_pinctrl;
+			pinctrl-monaco = &se1_uart_pinctrl_monaco;
+			parity = <4>;
+			stop-bit = <0>;
+			access-mode= <2>;
+			loopback  = <0>;
+			status = <1>;
+		};
+		
+		se2_uart: qupv3_se2_uart {
+			reg-base = <0xF1908000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s2_clk";
+			clock-frequency = <19200000>;
+			baudrate = <115200>;
+			interrupt = <404>;
+			pinctrl = &se2_uart_pinctrl;
+			pinctrl-monaco = &se2_uart_pinctrl_monaco;
+			parity = <4>;
+			stop-bit = <0>;
+			access-mode= <2>;
+			loopback  = <0>;
+			status = <1>;
+		};
+		
+		se3_uart: qupv3_se3_uart {
+			reg-base = <0xF190C000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s3_clk";
+			clock-frequency = <100000000>;
+			baudrate = <115200>;
+			interrupt = <405>;
+			pinctrl = &se3_uart_pinctrl;
+			parity = <4>;
+			stop-bit = <0>;
+			access-mode= <2>;
+			loopback  = <0>;
+			status = <1>;
+		};
+	
+		se4_uart: qupv3_se4_uart {
+			reg-base = <0xF1910000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s4_clk";
+			baud-rate = <115200>;
+			interrupt = <406>;
+			pinctrl = &se4_uart_pinctrl;
+			parity = <4>;
+			stop-bit = <0>;
+			access-mode= <2>;
+			loop-back  = <0>;
+			status = <1>;
+		};
+		
+		/*SPI*/	
+		se0_spi: qupv3_se0_spi {
+			reg-base = <0xF1900000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s0_clk";
+			clock-frequency = <100000000>;
+			interrupt = <402>;
+			pinctrl = &se0_spi_pinctrl;
+			slave = <1>;
+			no-of-channels = <1>;
+			loopback  = <0>;
+			access-mode= <2>;
+			status = <1>;
+		};
+		
+		se1_spi: qupv3_se1_spi {
+			reg-base = <0xF1904000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s1_clk";
+			clock-frequency = <100000000>;
+			interrupt = <403>;
+			pinctrl = &se1_spi_pinctrl;
+			slave = <1>;
+			no-of-channels = <1>;
+			loopback  = <0>;
+			access-mode= <0>;
+			status = <1>;
+		};
+		
+		se2_spi: qupv3_se2_spi {
+			reg-base = <0xF1908000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s2_clk";
+			clock-frequency = <100000000>;
+			interrupt = <404>;
+			pinctrl = &se2_spi_pinctrl;
+			slave = <0>;
+			no-of-channels = <1>;
+			loopback  = <0>;
+			access-mode= <2>;
+			status = <1>;
+		};
+		
+		se3_spi: qupv3_se3_spi {
+			reg-base = <0xF190C000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s3_clk";
+			clock-frequency = <100000000>;
+			interrupt = <405>;
+			pinctrl = &se3_spi_pinctrl;
+			slave = <0>;
+			no-of-channels = <1>;
+			loopback  = <0>;
+			access-mode= <2>;
+			status = <1>;
+		};
+		
+		se4_spi: qupv3_se4_spi {
+			reg-base = <0xF1910000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s4_clk";
+			clock-frequency = <100000000>;
+			interrupt = <406>;
+			pinctrl = &se4_spi_pinctrl;
+			slave = <0>;
+			no-of-channels = <2>;
+			loopback  = <0>;
+			access-mode= <2>;
+			status = <1>;
+		};
+	};
+	
+	/*I2C Pincontrol*/
+	se0_i2c_pinctrl: se0_i2c_pin{
+			pins = < 0 1 >; 
+			func = < 1 1>; 
+			drive-strength = < 0 0>; 
+			dir = < 1 1>; 
+			bias = < 3 3>; 	
+	};
+	
+	se1_i2c_pinctrl: se1_i2c_pin{
+			pins = < 2 3 >; 
+			func = < 1 1>; 
+			drive-strength = < 0 0>; 
+			dir = < 1 1>; 
+			bias = < 3 3>; 	
+	};
+	
+	se2_i2c_pinctrl: se2_i2c_pin{
+			pins = < 8 9 >; 
+			func = < 1 1>; 
+			drive-strength = < 0 0>; 
+			dir = < 1 1>; 
+			bias = < 3 3>; 	
+	};
+	
+	se3_i2c_pinctrl: se3_i2c_pin{
+			pins = < 8 9 >; 
+			func = < 1 1>; 
+			drive-strength = < 0 0>; 
+			dir = < 1 1>; 
+			bias = < 3 3>; 	
+	};
+	
+	se4_i2c_pinctrl: se4_i2c_pin{
+			pins = < 10 11 >; 
+			func = < 1 1>; 
+			drive-strength = < 0 0>; 
+			dir = < 1 1>; 
+			bias = < 3 3>; 	
+	};
+	
+	/*UART Pincontrol*/
+	se0_uart_pinctrl: se0_uart_pin{
+			pins = < 6 7 >;
+			func = < 1 1>; 
+			drive-strength = < 2 2>; 
+			dir = < 1 0>; 
+			bias = < 0 0>; 	
+	};
+	
+	se1_uart_pinctrl: se1_uart_pin{
+			pins = < 4 5 >; //tx - rx - cts - rts
+			func = < 1 1>; 
+			drive-strength = < 2 2>; 
+			dir = < 1 0>; 
+			bias = < 0 0>; 	
+	};
+
+	se1_uart_pinctrl_monaco: se1_uart_pin_monaco{
+			pins = < 6 7 >; //tx - rx - cts - rts
+			func = < 1 1>; 
+			drive-strength = < 2 2>; 
+			dir = < 1 0>; 
+			bias = < 0 0>; 	
+	};
+		
+	se2_uart_pinctrl: se2_uart_pin{
+			pins = < 6 7>;
+			func = < 1 1>; 
+			drive-strength = < 2 2>; 
+			dir = < 1 0>; 
+			bias = < 0 0>; 	
+	};
+
+	se2_uart_pinctrl_monaco: se2_uart_pin_monaco{
+			pins = < 8 9>;
+			func = < 1 1>; 
+			drive-strength = < 2 2>; 
+			dir = < 1 0>; 
+			bias = < 0 0>; 	
+	};
+	
+	se3_uart_pinctrl: se3_uart_pin{
+			pins = < 4 5 >;
+			func = < 1 1>; 
+			drive-strength = < 2 2>; 
+			dir = < 1 0>; 
+			bias = < 0 0>; 	
+	};
+	
+	se4_uart_pinctrl: se4_uart_pin{
+			pins = < 12 13 >;
+			func = < 1 1>; 
+			drive-strength = < 2 2>; 
+			dir = < 1 0>; 
+			bias = < 0 0>; 	
+	};
+	
+	/*SPI Pincontrol*/
+	se0_spi_pinctrl: se0_spi_pin{
+			pins = < 0 1 6 7>; //miso mosi sclk cs0
+			func = < 1 1 1 1 >; 
+			drive-strength = < 4 4 4 4 >;
+			dir = < 1 0 0 0 >; 
+			bias = < 0 0 0 0 >; 	
+	};
+	
+	se1_spi_pinctrl: se1_spi_pin{
+			pins = < 2 3 4 5>; //miso mosi sclk cs0
+			func = < 1 1 1 1 >; 
+			drive-strength = < 4 4 4 4 >;
+			dir = < 1 0 0 0 >; 
+			bias = < 0 0 0 0 >; 	
+	};
+	
+	se2_spi_pinctrl: se2_spi_pin{
+			pins = < 8 9 6 7>; //miso mosi sclk cs0
+			func = < 1 1 1 1 >; 
+			drive-strength = < 4 4 4 4 >;
+			dir = < 0 1 1 1 >; 
+			bias = < 0 0 0 0 >; 	
+	};
+	
+	se3_spi_pinctrl: se3_spi_pin{
+			pins = < 8 9 4 5>; //miso mosi sclk cs0
+			func = < 1 1 1 1 >; 
+			drive-strength = < 4 4 4 4 >;
+			dir = < 0 1 1 1 >; 
+			bias = < 0 0 0 0 >; 	
+	};
+	
+	se4_spi_pinctrl: se4_spi_pin{
+			pins = < 10 11 12 13 14>; //miso mosi sclk cs0 cs1
+			func = < 1 1 1 1 1>; 
+			drive-strength = < 4 4 4 4 4>; 
+			dir = < 0 1 1 1 1>; 
+			bias = < 0 0 0 0 0>;		
+	};
+
+    spinor {
+        profile_x10_tbl_wa_en    = <1>; //Enable Workaround for missing profile x1.0 Table
+		read_timeout_us          = <0xFFFFFFF>;
+		write_timeout_us         = <0xFFFFFFF>;
+		erase_timeout_us         = <0xFFFFFFF>;
+		read_reg_timeout_us      = <5000000>;
+
+        spinor_monaco: spinor_gpio_pinctrl_monaco {
+                            //clk cs_0 d0 d1 d2 d3 d4 d5 d6 d7 dqs
+            pins =           < 59 56 60 61 62 63 64 65 66 67 57 >;
+            func =           < 1  1  1  1  1  1  1  1  1  1  1 >;
+            mux_func =       < 2  2  2  2  2  2  2  2  2  2  2 >;
+            drive-strength = < 3  3  3  3  3  3  3  3  3  3  3 >;
+            dir =            < 0  0  0  0  0  0  0  0  0  0  0 >;
+            bias =           < 0  0  1  1  1  1  1  1  1  1  1 >;
+            };
+
+        spinor_lemans: spinor_gpio_pinctrl_lemans {
+                            //clk cs_0 d0 d1 d2 d3 d4 d5 d6 d7 dqs
+            pins =           < 70 67 71 72 73 74 75 76 77 78 68 >;
+            func =           < 1  1  1  1  1  1  1  1  1  1  1 >;
+            mux_func =       < 2  2  2  2  2  2  2  2  2  2  2 >;
+            drive-strength = < 3  3  3  3  3  3  3  3  3  3  3 >;
+            dir =            < 0  0  0  0  0  0  0  0  0  0  0 >;
+            bias =           < 0  0  1  1  1  1  1  1  1  1  1 >;
+            };
+    };
+
+	
+    sailUpdater {
+        fastboot_enable    = <1>;
+        fastboot_gpio_num  = <5>;
+        fastboot_gpio_drv  = <0>;
+        fastboot_gpio_func = <0>;
+        fastboot_gpio_pull = <1>;
+        fastboot_gpio_dir  = <0>;
+        fastboot_gpio_val  = <0>;
+		
+        devprgm_enable    = <1>;
+        devprgm_gpio_num  = <62>;
+        devprgm_gpio_drv  = <0>;
+        devprgm_gpio_func = <0>;
+        devprgm_gpio_pull = <1>;
+        devprgm_gpio_dir  = <0>;
+        devprgm_gpio_val  = <1>;
+    };
+	
+	/*Boot Status*/
+	BootStatus{
+		module_id = <0>;
+		error_id  = <0>;
+	};
+	
+    /* ROOT_CERT_ACTIVATIOM_LIST & ROOT_CERT_REVOCATION_LIST mask */
+    /* This is 4 bit mask to get Root Cert List */
+    security_mrc {
+        OEM_MRC_activation_list = <0>;
+        OEM_MRC_revocation_list = <0>;
+    };
+	
+	
+    /* place this test entry at the last of DTS file for perf test */
+    test_entry {
+        test_value1 = <0 1 2 3>;
+        test_value2 = <0 1 2 3>;
+    };
+	
+};

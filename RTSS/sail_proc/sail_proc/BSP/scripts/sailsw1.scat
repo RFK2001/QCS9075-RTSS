@@ -1,0 +1,343 @@
+;EL1 - SRAM Memory Map
+
+LR_1 0x080FA000  0x196800    /* SRAM Memory for all Cores  */
+                            ; Define the load region name as LR_1
+                            ; the region starts at 0x080FA000.
+                            ; the size is 1.6MB
+{
+
+    
+    PRIV_RAM +0 ALIGN 256
+    {   
+        *( privileged_data )
+    }
+    UNPRIV_ROM +0 ALIGN 256
+    {
+          bootcode.o
+         *( clock_func )
+         *( syscall_func )
+         *( exception_func )
+         *( el1main_func )
+         *( cpu_runtimestats_func )
+         *( cpu_custom_utilization_func )
+         *( boot_func )
+         *( ipcc_func )
+         *( isd_func )
+         *( chipinfo_func )
+         *( pmic_func )
+         *( spinor_func )
+         *( pwr_controller_func )
+         *( crashdbg_func )
+         *( noc_func )
+         *( tsens_func )
+         *( trusens_func )
+         *( vsens_func )
+         *( crc_func )
+         *( crc_ro )
+         *(fdt_func)
+         *( mailbox_int_func )
+         *( mailbox_ext_func )
+         *(wdt_func)
+         *( spi_func )
+         *( spi_ro )
+         *( mailbox_int_func )
+         *( mailbox_ext_func )
+         *( spinor_func )
+         *( freertos_system_calls )    ; All RO sections go into this region       
+    }
+    PADDING +0 ALIGN 256 EMPTY 0 {}
+    syscall_table  +0 ;0x1000 0x1000       ;Syscall table for SVC framework.
+    {   
+        *(_sail_syscall)
+    }
+     /* ISD */
+     lnkISDDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    ISD_DATA +0
+    {
+        * ( isd_data )  ; ISD driver data section
+    }
+    lnkISDDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    /* tsens */
+    lnkTSENSDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    TSENS_DATA +0
+    {
+        * ( tsens_data )  ; tsens driver data section
+    }
+    lnkTSENSDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    /* pmu data */
+    lnkPMUDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    PMU_DATA +0
+    {
+        * ( pmu_data )  ; pmu data section
+    }
+    lnkPMUDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    /* corehandshake data */
+    lnkCOREHSDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    COREHS_DATA +0
+    {
+        * ( corehandshake_data )  ; corehandshake data section
+    }
+    lnkCOREHSDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    /* vsens */
+    lnkVSENSDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    VSENS_DATA +0
+    {
+        * ( vsens_data )  ; vsens driver data section
+    }
+    lnkVSENSDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    WDT_KERNEL_DATA +0 +0
+    {
+        * (wdt_kernel_data) ; All Wdt Kernel Object Buffers Like Semaphores/Mutexes/Queues/Stack
+    }
+    
+    lnkWDTDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    WDT_DATA +0
+    {
+        * ( wdt_data )  ; wdt driver data section
+        * ( wdt_const ) ; wdt driver const data section
+    }
+    lnkWDTDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+
+    /* PMIC data*/
+    lnkPMICDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    PMIC_DATA +0
+    {
+        * ( pmic_data )  ; pmic driver data section
+    }
+    lnkPMICDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+
+    /* PSAIL data*/
+    lnkPSAILDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    PSAIL_DATA +0
+    {
+        * ( psail_data )  ; psail driver data section
+    }
+    lnkPSAILDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+
+    /* Fault Handler data*/
+    lnkFAULTHANDLERDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    FAULT_HANDLER_DATA +0
+    {
+        * ( faulthandler_data )  ; FaultHandler driver data section
+    }
+    lnkFAULTHANDLERDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    /* mailbox internal and external */
+    lnkMBCOREDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    MBCOREDATA +0
+    {
+		* ( ebr ); mailbox r+ section
+		* ( ibr ); mailbox r+ section
+		* ( ebrw ); mailbox w+ section
+		* ( ibrw ); mailbox w+ section
+    }
+    lnkMBCOREDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+
+    lnkUSERUNPRIVCODEStartAddr +0 ALIGN 64 EMPTY 0 {}
+    ER_RO1 +0 ALIGN 256
+    {
+        *(gpttimer_api)
+         anon$$obj.o
+    }
+    ER_RO2 +0 ALIGN 256      ; SWx Image Reclaimable memory execution region
+    {
+        * (test_func)   ; Test RO section
+        * (fusereader_func)   ; FuseReader RO section
+    }	
+    lnkUSERUNPRIVCODEEndAddr +0 ALIGN 64 EMPTY 0 {}
+
+    lnkGPTTIMERStartAddr +0 ALIGN 64 EMPTY 0 {}
+    GPTTIMER +0
+    {
+        * ( gpttimer_ro )  ; gpttimer r+ section
+        * ( gpttimer_rw )  ; gpttimer w+ section
+    }
+    lnkGPTTIMEREndAddr +0 ALIGN 64 EMPTY 0 {}
+
+    /* dma_crc */
+    lnkDMACRCDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    DMACRC_DATA +0
+    {
+        * ( dmacrc_data )  ; dma_crc driver data section
+    }
+    lnkDMACRCDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    /* sailbsp_heap_region */
+    lnkSAILBSP_HEAPDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    SAILBSP_HEAP_DATA +0
+    {
+        * ( sailbsp_heap_data )  ; sailbsp_heap data section
+    }
+    lnkSAILBSP_HEAPDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    /* trusens */
+    lnkTRUSENSDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    TRUSENS_DATA +0
+    {
+        * ( trusens_data )  ; trusens driver data section
+    }
+    lnkTRUSENSDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    lnkSMAPPDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    SM_APP_DATA +0
+    {
+        * ( sm_app_data )  ;  sm app data section
+    }
+    lnkSMAPPDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    lnkBSP_GLOBAL_DATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    BSP_GLOBAL_DATA +0
+    {
+        * ( bsp_global_data )  ;  bsp global data section
+    }
+    lnkBSP_GLOBAL_DATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    lnkBSP_PRIV_DATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    BSP_PRIV_DATA +0
+    {
+        * ( bsp_priv_data )  ;  bsp priv data section
+    }
+    lnkBSP_PRIV_DATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    /* Uart data*/
+    lnkUARTDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    UART_DATA +0
+    {
+        * ( uart_data )  ; uart driver data section
+    }
+    lnkUARTDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    /* Spi data*/
+    lnkSPIDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    SPI_DATA +0
+    {
+        * ( spi_data )  ; spi driver data section
+    }
+    lnkSPIDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    
+    /* CAN data*/
+    lnkCANStartAdd +0 ALIGN 64 EMPTY 0 {}
+    CAN_DATA +0
+    {
+        * ( can_data )  ; CAN driver data section
+    }
+    
+    lnkCANEndAddr +0 ALIGN 64 EMPTY 0 {}
+    lnkEMAC0DATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    EMAC0_DATA +0
+    {
+        * ( emac0_data )  ; emac0 driver data section
+    }
+    lnkEMAC0DATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+
+    lnkTSCDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    TSC_DATA +0
+    {
+        * ( tsc_data )  ; tsc driver data section
+    }
+    lnkTSCDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+
+    lnkGPIOTSDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    GPIO_TS_DATA +0
+    {
+        * ( gpio_ts_data )  ; gpio time sync app data section
+    }
+    lnkGPIOTSDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+
+    /* ICB data*/
+    lnkICBDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    ICB_DATA +0
+    {
+        * ( icb_data )  ; icb driver data section
+    }
+    lnkICBDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    lnkRECLAIMDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    RECLAIM_DATA +0
+    {
+       * (test_data)
+       * (test_bss)
+       * (fusereader_data)
+       * (fusereader_bss)
+    }
+    lnkRECLAIMDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+
+    lnkCPURTSC1DATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    CPURTS_C1_DATA +0
+    {
+        * ( CPURTS_c1_data )  ; CPURTS data section
+    }
+    lnkCPURTSC1DATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    lnkCPURTSC2DATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    CPURTS_C2_DATA +0
+    {
+        * ( CPURTS_c2_data )  ; CPURTS data section
+    }
+    lnkCPURTSC2DATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    
+    PRIV_ROM +0x0 ALIGN 64
+    {
+       vectors.o
+       *( privileged_functions )  ; FreeRTOS kernel functions
+    }    
+    
+    
+    ER_RO3 +0 ALIGN 256
+    {
+        * (+RO)   ; All RO sections go into this region    
+    }   
+
+    ER_RW +0
+    {
+        * (+RW)   ; All RW sections go into this region, they are placed
+                  ; consecutively.
+    }    
+
+    ER_ZI +0
+    {
+        *(+ZI)
+    }
+
+}
+
+LR_2 0x08290800 0xC000
+{
+    ; Stack defined at the bottom.
+    ARM_LIB_STACK 0x0829C800 EMPTY -0xC000
+    {
+    }
+}
+
+NOINIT_MBOSH 0x082E0C00 0x14400
+{
+	; reserved for IB, EB , UART usecase
+	; segment attribute must be No load for SW-N images 
+	; SHR_UART 0x082E0400 0x1000 { }
+	lnkMBOSHStartAddr +0 UNINIT ALIGN 64 0 {}
+	SHR_IBLOCATOR +0 UNINIT 0xCAAC { }
+    	SHR_IBMAPVECT +0xCAAC UNINIT 0x1000 { } 
+	SHR_IBSTATUS +0x1000 UNINIT ALIGN 8 0x100 { }
+	SHR_EBMAPVECT +0x100 UNINIT ALIGN 8 0x100 { } 
+	SHR_EBSTATUS +0x100 UNINIT ALIGN 8 0x100 { }
+	SHR_EBBCKSTATUS +0x100 UNINIT ALIGN 8 0x200 { }
+        SHR_CDTCONTEXT +0x200 UNINIT ALIGN 8 0x100  { }
+    	SHR_ISDCONTEXT +0x100 UNINIT ALIGN 8 0x1000  { }
+    	SHR_COREHEALTH_STATUS +0x1000 UNINIT ALIGN 8 0x4  { }
+	SHR_WDT_TEST_TIMER_START +0x4 UNINIT ALIGN 8 0x8  { }
+	SHR_WDT_TEST_TIMER_END +0x8 UNINIT ALIGN 8 0x8  { }
+        SHR_CDBGSTATUS +0x8 UNINIT ALIGN 8 0x4  { }
+    SHR_SAILSW1_TASKHISTORY +0x4 UNINIT ALIGN 8 0x1000  { }
+    SHR_SAILSW2_TASKHISTORY +0x1000 UNINIT ALIGN 8 0x1000  { }
+    SHR_SAILSW3_TASKHISTORY +0x1000 UNINIT ALIGN 8 0x1000  { }
+    SHR_SAILSW4_TASKHISTORY +0x1000 UNINIT ALIGN 8 0x1000  { }
+    SHR_SAIL_GICINTSTAT +0x1000 UNINIT ALIGN 8 0x1000  { }
+	lnkMBOSHEndAddr +0x1000 UNINIT ALIGN 64 0 {}
+    SHR_GPIO_TS_SYNC_STATE +0x8 UNINIT ALIGN 8 0x08  { }
+    SHR_GPIO_TS_SYNC_SAFE_STATE +0x8 UNINIT ALIGN 8 0x08  { }
+    SHR_GPIO_TS_PTP_SAFE_STATE +0x8 UNINIT ALIGN 8 0x08  { }
+    lnkMBOSHGPIOEndAddr +0 UNINIT ALIGN 64 0 {}
+
+}

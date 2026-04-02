@@ -1,0 +1,104 @@
+//=============================================================================
+//
+// FILE:        HALvmidmtData.xml
+//
+// DESCRIPTION: This file contains the HAL XML properties for the VMIDMT driver.
+//
+//=============================================================================
+//
+//                             Edit History
+//
+// $Header:  $
+// $DateTime: $
+// $Author: $
+// $Change: $
+//
+// when         who     what, where, why
+// ----------   ---     -------------------------------------------------------
+// 12/07/2016   ps      Updated for 845
+// 01/15/2016   dh      Updated for 8998
+// 07/14/2014   sc      Updated for 8996
+// 09/10/2013   sc      Initial revision
+//
+//=============================================================================
+// Copyright (c) 2013, 2014
+// Qualcomm Incorporated.
+// All Rights Reserved.
+// Qualcomm Confidential and Proprietary
+//=============================================================================
+#include "HALvmidmt.h"
+#include "HALvmidmtInfoImpl.h"
+#include <HALhwio.h>
+#include "HALvmidmtHWIOTarget.h"
+
+<driver name="NULL">
+
+  <device id="/dev/vmidmt">
+    <props id=HAL_VMIDMT_CRYPTO0_CRYPTO type="HAL_vmidmt_InfoType">
+      {HWIO_ADDR(CRYPTO0_CRYPTO_BAM_VMIDMT_SCR0), {17, 0, 0, 0, 0, FALSE}}
+    </props>
+	<!--
+	This file will be modified manually in future. Currently It's been configured for Crypto access control
+    <props id=HAL_VMIDMT_QUPV3_0 type="HAL_vmidmt_InfoType">
+      {HWIO_ADDR(QUPV3_0_VMIDMT_SCR0), {48, 0, 0, 0, 0, FALSE}}
+    </props>
+
+    <props id=HAL_VMIDMT_QUPV3_1 type="HAL_vmidmt_InfoType">
+      {HWIO_ADDR(QUPV3_1_VMIDMT_SCR0), {48, 0, 0, 0, 0, FALSE}}
+    </props>
+
+    <props id=HAL_VMIDMT_QUPV3_2 type="HAL_vmidmt_InfoType">
+      {HWIO_ADDR(QUPV3_2_VMIDMT_SCR0), {48, 0, 0, 0, 0, FALSE}}
+    </props>
+    
+    <props id=VMIDMT_QDSS_VMIDDAP type="HAL_vmidmt_InfoType">
+      {HWIO_ADDR(QDSS_QDSS_VMIDDAP_VMIDMT_SCR0), {2, 0, 0, 0, 0, FALSE}}
+    </props>
+
+    <props id=VMIDMT_QDSS_VMIDETR type="HAL_vmidmt_InfoType">
+      {HWIO_ADDR(QDSS_QDSS_VMIDETR_VMIDMT_SCR0), {2, 0, 0, 0, 0, FALSE}}
+    </props>
+
+    <props id=HAL_VMIDMT_AOP type="HAL_vmidmt_InfoType">
+      {HWIO_ADDR(AOP_VMIDMT_SCR0), {1, 0, 0, 0, 0, FALSE}}
+    </props>
+
+    <props id=HAL_VMIDMT_SSC_QUPV3 type="HAL_vmidmt_InfoType">
+      {HWIO_ADDR(SSC_QUPV3_VMIDMT_SCR0), {48, 0, 0, 0, 0, FALSE}}
+    </props>
+
+    <props id=HAL_VMIDMT_IPA type="HAL_vmidmt_InfoType">
+      {HWIO_ADDR(IPA_0_IPA_VMIDMT_SCR0), {40, 0, 0, 0, 0, FALSE}}
+    </props>
+
+    <props id=VMIDMT_SSC_SDC type="HAL_vmidmt_InfoType">
+      {HWIO_ADDR(SSC_SDC_VMIDMT_SCR0), {1, 0, 0, 0, 0, FALSE}}
+    </props>
+
+    <props id=HAL_VMIDMT_QSPI type="HAL_vmidmt_InfoType">
+      {HWIO_ADDR(QSPI_VMIDMT_SCR0), {1, 0, 0, 0, 0, FALSE}}
+    </props>
+
+    <props id=HAL_VMIDMT_LPASS_RXTX type="HAL_vmidmt_InfoType">
+      {HWIO_ADDR(LPASS_RXTX_VMIDMT_SCR0), {14, 0, 0, 0, 0, FALSE}}
+    </props>
+
+    <props id=HAL_VMIDMT_LPASS_WSA type="HAL_vmidmt_InfoType">
+      {HWIO_ADDR(LPASS_WSA_VMIDMT_SCR0), {5, 0, 0, 0, 0, FALSE}}
+    </props>
+
+    <props id=HAL_VMIDMT_LPASS_VA type="HAL_vmidmt_InfoType">
+      {HWIO_ADDR(LPASS_VA_VMIDMT_SCR0), {4, 0, 0, 0, 0, FALSE}}
+    </props>
+
+    <props id=HAL_VMIDMT_LPASS_AUD type="HAL_vmidmt_InfoType">
+      {HWIO_ADDR(LPASS_AUD_VMIDMT_SCR0), {4, 0, 0, 0, 0, FALSE}}
+    </props>
+
+    <props id=HAL_VMIDMT_SMSS_QUPV3 type="HAL_vmidmt_InfoType">
+      {HWIO_ADDR(SMSS_QUPV3_VMIDMT_SCR0), {48, 0, 0, 0, 0, FALSE}}
+    </props>
+	-->
+  </device>
+
+</driver>

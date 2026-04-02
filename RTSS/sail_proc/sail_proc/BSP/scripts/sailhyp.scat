@@ -1,0 +1,238 @@
+LR_3 0x0801D000 0x400      ; Define the load region name as LR_3
+{
+    lnkSDIDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    ; Stack grows downwards, Stack start =  0x080213F0 & Stack end = 0x08021000
+    ; SDI is System Debug Interface, data here is used for crashdump purposes
+    ; Refer & update Crashdbg_sdientry.s file for exact stack pointer location
+    SDI_DATA +0
+    {
+    }
+    lnkSDIDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+}
+
+LR_1 0x0801D400  0xA9C00    ; Define the load region name as LR_1
+                            ; the region starts at 0x08021400. After DTB and SDI.
+                            ; the first 100kb is allocated to PBL image/EL1 Reuse.
+{
+    ER_RO1 +0     ; First execution region is called ER_RO1, region starts at end of
+                  ; previous region. Because there is no previous region, the
+                  ; address is 0x000000.
+    {
+        vectors.o
+    }
+    syscall_table  +0 ;0x1000 0x1000       ;Execution region for the HVC calls.
+    {   
+        *(_sail_syscall)
+    }
+    ER_RO3 +0      ; Subsequent execution regions are called ER_ROn, region starts at end of
+                  ; previous region. 
+    {
+        * (+RO)   ; All RO sections go into this region
+    }
+	/* PRNG FIPS Hybrid Module TEXT */
+    /* Need keep at the top of this section to avoid the code location changes */
+    /* Function names are explicitly listed here to avoid the chance of re-ordering by the linker */	
+    PRNG_INTEGRITY_TEXT_MARKER +0 
+    {
+        *prngFipsHybridModule.o(.text.prng_fips.prngFipsHybridModule)
+        *prngFipsHybridModule.o(.text.prng_fips.prngFips_integrity_check)
+        *prngFipsHybridModule.o(.text.prng_fips.prngFips_hash_kat)
+        *prngFipsHybridModule.o(.text.prng_fips.prngFips_init)
+        *prngFipsHybridModule.o(.text.prng_fips.prngFipsHybridGetVersionHash)
+        *prngFipsHybridModule.o(.text.prng_fips.prng_fips_memcmp)
+        *prngFipsHybridModule.o(.text.prng_fips.prng_fips_memcpy)
+        *prngFipsHybridModule.o(.text.prng_fips.prng_fips_memscpy)
+        *prngFipsHybridModule.o(.text.prng_fips.prng_fips_memset)
+        *prngFipsHybridModule.o(.text.prng_fips.prngFips_busywait)
+        *sha256.o(.text.prng_fips.sha256)
+    }
+    ; PRNG FIPS Hybrid Module RODATA 
+    ; The rodata variable names are explicitly listed here to avoid the possibility of re-ordering by the linker 	
+    PRNG_INTEGRITY_RODATA_MARKER +0
+    {
+        *prngFipsHybridModule.o(.rodata.prng_fips.sha256_iv)
+        *prngFipsHybridModule.o(.rodata.prng_fips.K256)
+		*prngFipsHybridModule.o(.rodata.prng_fips.sha256_msg)
+        *prngFipsHybridModule.o(.rodata.prng_fips.sha256_digest)
+    }
+	
+	
+	PRNG_INTEGRITY_TEXT_HASH +0 
+	{
+			*prngFipsHybridModule.o(.rodata.prng_fips.text_hash)
+	}
+    PRNG_INTEGRITY_RODATA_HASH +0 
+	{ 
+		*prngFipsHybridModule.o(.rodata.prng_fips.rodata_hash)
+	}
+	lnkEL2ROEndAddr +0 ALIGN 64 EMPTY 0 {}
+    ER_RW +0
+    {
+        * (+RW)   ; All RW sections go into this region, they are placed
+                  ; consecutively.
+    }
+	/* mailbox internal and external */
+	lnkMBCOREDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    MBCOREDATA +0
+    {
+        * ( ebr )   ; mailbox r+ section
+        * ( ibr )   ; mailbox r+ section
+        * ( ebrw )  ; mailbox w+ section
+        * ( ibrw )  ; mailbox w+ section
+    }
+    lnkMBCOREDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+	
+    lnkGPTTIMERStartAddr +0 ALIGN 64 EMPTY 0 {}
+    GPTTIMER +0
+    {
+        * ( gpttimer_ro )   ; mailbox r+ section
+        * ( gpttimer_rw )   ; mailbox w+ section
+    }
+    lnkGPTTIMEREndAddr +0 ALIGN 64 EMPTY 0 {}
+    
+    /* Uart data*/
+    lnkUARTDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    UART_DATA +0
+    {
+        * ( uart_data )  ; uart driver data section
+    }
+    lnkUARTDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+
+    SBIST_VECTOR_StartAddr +0 ALIGN 8 EMPTY 0 {}
+    SBIST_VECTOR +0 0x400
+    {
+        kite_sbist_global_handlers_port.o(.text)
+        kite_sbist_global_handlers_port.o(sbist_global_handlers)
+    }
+    ; SBIST VECTOR table end address has to be 64 byte aligned.
+    ; Because STL will program a EL2 MPU region for STL vector table.
+    ; The minimum size for a region is 64 bytes.
+    SBIST_VECTOR_EndAddr +0 ALIGN 64 EMPTY 0 {}
+
+    SBIST_StartAddr +0 ALIGN 64
+    {
+      *(.sbist_start_addr)
+    }
+    SBIST_ALIGN +0 ALIGN 64 EMPTY 0 {}
+    SBIST + 0
+    {
+        kite_sbist_*.o
+        kite_sbist_scheduler.o(.bss.parts_max)
+        kite_sbist_scheduler.o(.bss.sbist_sched_last_inum)
+        kite_sbist_scheduler.o(.bss.sbist_sched_last_pnum)
+        kite_sbist_scheduler_tests_table.o(.data.tests_attrs)
+    }
+    SBIST_EndAddr +0 ALIGN 64
+    {
+      *(.sbist_end_addr)
+    }
+
+    ER_ZI +0
+    {
+        *(+ZI)
+    }
+
+    ;RESERVED 0x080AD000 EMPTY 0x3000
+    ;{
+    ;}
+}
+
+LR_SBIST_CONFIG 0x080C7000 0x800 
+{
+    ; SBIST scratch pad region.
+    SBIST_config_start_addr +0 ALIGN 8
+    {
+      *(.sbist_config_start_addr)
+    }
+    SBIST_config +0 {}
+    SBIST_config_end_addr +0 ALIGN 8 EMPTY 0 {}
+}
+
+LR_2 0x080C7800 0xC000      ; Define the load region name as LR_2
+{
+    ; Stack defined at the bottom.
+    ; IMPORTANT NOTE: EL2 stack size 0xC000 i.e 48KB needed to support RSA 2K and 4K crypto
+    ARM_LIB_STACK 0x080D3800 EMPTY -0xC000 
+    {
+    }
+}
+
+LR_5 0x080D3800 0x26800 ; Define the load region name as LR_5
+{
+    ER_RO2 +0      ; SWx Image Reclaimable memory execution region
+    {
+        * (md_bist_func)   ; BIST RO section
+        * (qbfw_func)   ; QBFW RO section
+        * (cpr_func)   ; CPR RO section
+		* (test_func)   ; Test RO section
+		* (tsens_func)  ; TSENS RO section
+        * (sw4_mpu_func)
+    }
+
+	lnkRECLAIMDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+	RECLAIM_DATA +0
+	{
+	    * (md_bist_data)
+	    * (qbfw_data)
+	    * (cpr_data)
+		* (test_data)
+		* (test_bss)
+        * (sw4_mpu)
+	}
+	lnkRECLAIMDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+}
+
+LR_4 0x082FB000 0x1000      ; Define the load region name as LR_4
+{
+    lnkELSHAREDDATAStartAddr +0 ALIGN 64 EMPTY 0 {}
+    EL_SHARED_AREA +0
+    {
+    }
+    lnkELSHAREDDATAEndAddr +0 ALIGN 64 EMPTY 0 {}
+}
+
+NOINIT_MBOSH 0x082E0C00 0x14400
+{
+	; reserved for IB, EB , UART usecase
+	; segment attribute must be No load for SW-N images 
+	; SHR_UART 0x082E0400 0x1000 { }
+	lnkMBOSHStartAddr +0 UNINIT ALIGN 64 0 {}
+	SHR_IBLOCATOR +0 UNINIT 0xCAAC { }
+    	SHR_IBMAPVECT +0xCAAC UNINIT 0x1000 { } 
+	SHR_IBSTATUS +0x1000 UNINIT ALIGN 8 0x100 { }
+	SHR_EBMAPVECT +0x100 UNINIT ALIGN 8 0x100 { } 
+	SHR_EBSTATUS +0x100 UNINIT ALIGN 8 0x100 { }
+	SHR_EBBCKSTATUS +0x100 UNINIT ALIGN 8 0x200 { }
+	SHR_CDTCONTEXT +0x200 UNINIT ALIGN 8 0x100  { }
+    	SHR_ISDCONTEXT +0x100 UNINIT ALIGN 8 0x1000  { }
+        SHR_COREHEALTH_STATUS +0x1000 UNINIT ALIGN 8 0x4  { }
+	SHR_WDT_TEST_TIMER_START +0x4 UNINIT ALIGN 8 0x8  { }
+	SHR_WDT_TEST_TIMER_END +0x8 UNINIT ALIGN 8 0x8  { }
+        SHR_CDBGSTATUS +0x8 UNINIT ALIGN 8 0x4  { }
+    SHR_SAILSW1_TASKHISTORY +0x4 UNINIT ALIGN 8 0x1000  { }
+    SHR_SAILSW2_TASKHISTORY +0x1000 UNINIT ALIGN 8 0x1000  { }
+    SHR_SAILSW3_TASKHISTORY +0x1000 UNINIT ALIGN 8 0x1000  { }
+    SHR_SAILSW4_TASKHISTORY +0x1000 UNINIT ALIGN 8 0x1000  { }
+    SHR_SAIL_GICINTSTAT +0x1000 UNINIT ALIGN 8 0x1000  { }
+	lnkMBOSHEndAddr +0x1000 UNINIT ALIGN 64 0 {}
+    SHR_GPIO_TS_SYNC_STATE +0x8 UNINIT ALIGN 8 0x08  { }
+    SHR_GPIO_TS_SYNC_SAFE_STATE +0x8 UNINIT ALIGN 8 0x08  { }
+    SHR_GPIO_TS_PTP_SAFE_STATE +0x8 UNINIT ALIGN 8 0x08  { }
+    lnkMBOSHGPIOEndAddr +0 UNINIT ALIGN 64 0 {}
+}
+
+;LR_2 0x02000000     
+;{
+; Cortex-R52 optionally provides three Tightly-Coupled Memory (TCM) blocks (ATCM, BTCM and CTCM)
+; Use these regions to place code and/or data in TCM:
+;    ATCM 0x02000000 EMPTY 0x4000 
+;    { 
+;    }
+;    BTCM 0x02004000 EMPTY 0x4000 
+;    { 
+;    }
+;    CTCM 0x02008000 EMPTY 0x4000 
+;    { 
+;    }
+; Scatterloading can be used to copy code and/or data into the TCMs
+;}

@@ -1,0 +1,742 @@
+/*
+ * Copyright (c) Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+ *
+ * Export of this technology or software is regulated by the U.S. Government.
+ * Diversion contrary to U.S. law prohibited.
+ *
+ * All ideas, data and information contained in or disclosed by
+ * this document are confidential and proprietary information of
+ * Qualcomm Technologies, Inc. and all rights therein are expressly reserved.
+ * By accepting this material the recipient agrees that this material
+ * and the information contained therein are held in confidence and in
+ * trust and will not be used, copied, reproduced in whole or in part,
+ * nor its contents revealed in any manner to others without the express
+ * written permission of Qualcomm Technologies, Inc.
+ */
+
+/dts-v1/;
+
+/ {
+    model = "Qualcomm Technologies, Inc. LeMansAU";
+    compatible = "sail,el2";
+
+	aliases {
+			i2c0 = &se0_i2c;
+			uart0 = &se1_uart;
+			uart1 = &se2_uart;
+			i2c1 = &se3_i2c;
+			spi0 = &se4_spi;
+			ospi0 = &spinor_monaco;
+			ospi1 = &spinor_lemans;
+	};
+	
+	/*EL2 boot configuration*/
+	EL2_boot_configuration{
+		initSMP_enable = <0x1>; // enable init SMP
+		wdt_enable = <0x0>; // enable el2 wdt
+		secondarycore_wfi_enable = <0x0>; // For freertos - Put secondary cores in WFI
+		warminit_loadelf_enable = <0x0>; // Disable EL1 image load for freertos
+		icb_el2_init_core = <0x0>; // Icb init core
+		SMP_os_image_mask = <0x1>; // SMP OS image mask: 0x0-SMP_Unsupported, 0x1-1_SMP_IMG_SUPPORTED for all active cores, 0x3-2_SMP_IMG_SUPPORTED for both cluster
+        /* EL1 phy Timer kernel access config: 0x203 : spare channel open access to PL0/1 - SW */
+        /* EL1 vrt Timer kernel access config: 0x103 : allocated to OS dont open access to lower pri run SW */
+        /* EL1 vrt+phy Timer kernel access config: 0x303 :  both channel open to PL0/1 SW - do not config this only for testing */
+        TimerKConfig = <0x203>;
+    };
+
+	el1_mem_map {
+		sailsw1_mem_map {
+			Node_1 {
+				start-addr = <0x080FA000>;
+				size = <0x1A2800>;
+				non-executable = <0>; // disable // enable
+				access-permission = <1>; // read/write EL2 // read/write any // read only EL2 // read only
+				shareable = <2>; // 0 non shareable // 2 outer shareable // 3 inner shareable
+				attribute = <3>; // nGnRnE // nGnRE // GRE // normal // normal non cache
+				region-enable = <1>; // 0 region disable // 1 region enable
+			};
+			Node_2 {
+				start-addr = <0x2000000>;
+				size = <0x010000>;
+				non-executable = <0>; // disable
+				access-permission = <1>; // read/write any
+				shareable = <0>; // 0 non shareable
+				attribute = <3>; // normal
+				region-enable = <1>; // 0 region disable // 1 region enable
+			};
+			Node_3 {
+				start-addr = <0x8000000>;
+				size = <0x19000>;
+				non-executable = <0>; // disable // enable
+				access-permission = <1>; // read/write EL2 // read/write any // read only EL2 // read only
+				shareable = <0>; // 0 non shareable // 2 outer shareable // 3 inner shareable
+				attribute = <3>; // nGnRnE // nGnRE // GRE // normal // normal non cache
+				el1-node = <1>;
+				region-enable = <1>; // 0 region disable // 1 region enable
+			};
+			Node_4 {
+				start-addr = <0x2100000>;
+				size = <0x008000>;
+				non-executable = <0>; // disable
+				access-permission = <1>; // read/write any
+				shareable = <0>; // 0 non shareable
+				attribute = <3>; // normal
+				region-enable = <1>; // 0 region disable // 1 region enable
+			};
+			Node_5 {
+				start-addr = <0x2200000>;
+				size = <0x008000>;
+				non-executable = <0>; // disable
+				access-permission = <1>; // read/write any
+				shareable = <0>; // 0 non shareable
+				attribute = <3>; // normal
+				region-enable = <1>; // 0 region disable // 1 region enable
+			};
+		};
+		sailsw2_mem_map {
+			Node_1 {
+				start-addr = <0x2400000>;
+				size = <0x010000>;
+				non-executable = <0>; // disable
+				access-permission = <1>; // read/write any
+				shareable = <0>; // 0 non shareable
+				attribute = <3>; // normal
+				region-enable = <1>; // 0 region disable // 1 region enable
+			};
+			Node_2 {
+				start-addr = <0x2500000>;
+				size = <0x008000>;
+				non-executable = <0>; // disable
+				access-permission = <1>; // read/write any
+				shareable = <0>; // 0 non shareable
+				attribute = <3>; // normal
+				region-enable = <1>; // 0 region disable // 1 region enable
+			};
+			Node_3 {
+				start-addr = <0x2600000>;
+				size = <0x008000>;
+				non-executable = <0>; // disable
+				access-permission = <1>; // read/write any
+				shareable = <0>; // 0 non shareable
+				attribute = <3>; // normal
+				region-enable = <1>; // 0 region disable // 1 region enable
+			};
+		};
+		sailsw3_mem_map {
+			Node_1 {
+				start-addr = <0x3000000>;
+				size = <0x010000>;
+				non-executable = <0>; // disable
+				access-permission = <1>; // read/write any
+				shareable = <0>; // 0 non shareable
+				attribute = <3>; // normal
+				region-enable = <1>; // 0 region disable // 1 region enable
+			};
+			Node_2 {
+				start-addr = <0x3100000>;
+				size = <0x008000>;
+				non-executable = <0>; // disable
+				access-permission = <1>; // read/write any
+				shareable = <0>; // 0 non shareable
+				attribute = <3>; // normal
+				region-enable = <1>; // 0 region disable // 1 region enable
+			};
+			Node_3 {
+				start-addr = <0x3200000>;
+				size = <0x008000>;
+				non-executable = <0>; // disable
+				access-permission = <1>; // read/write any
+				shareable = <0>; // 0 non shareable
+				attribute = <3>; // normal
+				region-enable = <1>; // 0 region disable // 1 region enable
+			};
+		};
+		
+		sailsw4_mem_map {
+			Node_1 {
+				start-addr = <0x3400000>;
+				size = <0x208000>;
+				non-executable = <0>; // disable
+				access-permission = <1>; // read/write any
+				shareable = <0>; // 0 non shareable
+				attribute = <3>; // normal
+				region-enable = <1>; // 0 region disable // 1 region enable
+			};
+ 		};
+		
+		el1_shared_mem_map {
+			Node_1 {
+				start-addr = <0x082D6400>;
+				size = <0x029C00>;
+				non-executable = <1>; // enable
+				access-permission = <1>; // read/write any
+				shareable = <2>; // 2 outer shareable
+				attribute = <3>; // normal
+				region-enable = <1>; // 0 region disable // 1 region enable
+			};
+			Node_2 {
+				start-addr = <0x20000000>;
+				size = <0x10000000>;
+				non-executable = <0>; // disable
+				access-permission = <1>; // read/write any
+				shareable = <2>; // 2 outer shareable
+				attribute = <3>; // normal
+				region-enable = <1>; // 0 region disable // 1 region enable
+				srv1-board= <0>; // 0 non srv1 entry // 1 srv1 entry
+			};
+			Node_3 {
+				start-addr = <0x30C00000>;
+				size = <0x900000>;
+				non-executable = <0>; // disable
+				access-permission = <1>; // read/write any
+				shareable = <2>; // 2 outer shareable
+				attribute = <3>; // normal
+				region-enable = <1>; // 0 region disable // 1 region enable
+				srv1-board= <0>; // 0 non srv1 entry // 1 srv1 entry
+			};
+			Node_4 {
+				start-addr = <0x2D000000>;
+				size = <0x3000000>;
+				non-executable = <0>; // disable
+				access-permission = <1>; // read/write any
+				shareable = <2>; // 2 outer shareable
+				attribute = <3>; // normal
+				region-enable = <1>; // 0 region disable // 1 region enable
+				srv1-board= <1>; // 0 non srv1 entry // 1 srv1 entry
+			};
+			Node_5 {
+				start-addr = <0x30C00000>;
+				size = <0x900000>;
+				non-executable = <0>; // disable
+				access-permission = <1>; // read/write any
+				shareable = <2>; // 2 outer shareable
+				attribute = <3>; // normal
+				region-enable = <1>; // 0 region disable // 1 region enable
+				srv1-board= <1>; // 0 non srv1 entry // 1 srv1 entry
+			};
+		};
+		el2_mem_map {
+			Node_1 {
+				start-addr = <0x8019000>;
+				size = <0xE1000>;
+				non-executable = <0>; // disable
+				access-permission = <0>; // read/write EL2
+				shareable = <2>; // 2 outer shareable
+				attribute = <3>; // normal
+				region-enable = <1>; // 0 region disable // 1 region enable
+			};
+		};
+	};
+	/*ac_map {
+		internal_xpu {
+			Node_1 {For reference Only- Should be deleted
+				start-addr = <0x00000000>; // Start Address
+				end-addr = <0x00000000>;  // End Address
+				read_perms = <0x00000000>;  // Read Permissions, each bit for DMA/Ch
+				write_perms = <0x00000000>; // write Permissions, each bit for DMA/Ch
+				idx = <0>;  // RG Number to match exactly from IPCAT
+			};
+		};
+		external_xpu {
+		};
+		r52dma_xpu {
+		};
+	};*/
+	qup {
+		common-addr = <0xf1900000>;
+
+		/*I2C*/
+		se0_i2c: qupv3_se0_i2c {
+			reg-base = <0xF1900000>;
+			slave-addr = <0x28 0x29 0x12 0x11 0x13 0x15 0x17>;
+			clock-name = "sailss_cc_qupv3_wrap0_s0_clk";
+			clock-frequency = <19200000>;
+			interrupt = <402>;
+			pinctrl = &se0_i2c_pinctrl;
+			i2c-mode = <2>;
+ 			addressing-mode = <1 1 1 2 2 2 2>;
+ 			timestamp = <0 0 0 0 0 0 0>;
+			precmd-delay = <0 0 0 0 0 0 0>;
+			access-mode = <0>;
+			status = <1>;
+		};
+		
+		se1_i2c: qupv3_se1_i2c {
+			reg-base = <0xF1904000>;
+			slave-addr = <0x00>;
+			clock-name = "sailss_cc_qupv3_wrap0_s1_clk";
+			clock-frequency = <19200000>;
+			interrupt = <403>;
+			pinctrl = &se1_i2c_pinctrl;
+			i2c-mode = <2>; 
+ 			addressing-mode = <1>; 
+ 			timestamp = <0>;
+			precmd-delay = <0>;
+			access-mode = <0>;
+			status = <1>;
+		};
+		
+		se2_i2c: qupv3_se2_i2c {
+			reg-base = <0xF1908000>;
+			slave-addr = <0x01>;
+			clock-name = "sailss_cc_qupv3_wrap0_s2_clk";
+			clock-frequency = <19200000>;
+			interrupt = <404>;
+			pinctrl = &se2_i2c_pinctrl;
+			i2c-mode = <2>; 
+ 			addressing-mode = <1>; 
+ 			timestamp = <0>;
+			precmd-delay = <0>;
+			access-mode = <0>;
+			status = <1>;
+		};
+		
+		se3_i2c: qupv3_se3_i2c {
+			reg-base = <0xF190C000>;
+			slave-addr = <0x2>;
+			clock-name = "sailss_cc_qupv3_wrap0_s3_clk";
+			clock-frequency = <19200000>;
+			interrupt = <405>;
+			pinctrl = &se3_i2c_pinctrl;
+			i2c-mode = <2>; 
+ 			addressing-mode = <1>;
+ 			timestamp = <0>;
+			precmd-delay = <0>;
+			access-mode = <0>;
+			status = <1>;
+		};
+		
+		se4_i2c: qupv3_se4_i2c {
+			reg-base = <0xF1910000>;
+			slave-addr = <0x1>;
+			clock-name = "sailss_cc_qupv3_wrap0_s4_clk";
+			clock-frequency = <19200000>;
+			interrupt = <406>;
+			pinctrl = &se4_i2c_pinctrl;
+			i2c-mode = <2>;
+ 			addressing-mode = <1>;
+ 			timestamp = <0>;
+			precmd-delay = <0>;
+			access-mode = <0>;
+			status = <1>;
+		};
+		
+		/*UART*/
+		se0_uart: qupv3_se0_uart {
+			reg-base = <0xF1900000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s0_clk";
+			clock-frequency = <100000000>;
+			baudrate = <115200>;
+			interrupt = <402>;
+			pinctrl = &se0_uart_pinctrl;
+			parity = <4>;
+			stop-bit = <0>;
+			access-mode= <2>;
+			loopback  = <0>;
+			status = <1>;
+		};
+		
+		se1_uart: qupv3_se1_uart {
+			reg-base = <0xF1904000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s1_clk";
+			clock-frequency = <14745600>;
+			baudrate = <921600>;
+			interrupt = <403>;
+			pinctrl = &se1_uart_pinctrl;
+			pinctrl-monaco = &se1_uart_pinctrl_monaco;
+			parity = <4>;
+			stop-bit = <0>;
+			access-mode= <1>;
+			loopback  = <0>;
+			status = <1>;
+		};
+		
+		se2_uart: qupv3_se2_uart {
+			reg-base = <0xF1908000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s2_clk";
+			clock-frequency = <7372800>;
+			baudrate = <115200>;
+			interrupt = <404>;
+			pinctrl = &se2_uart_pinctrl;
+			pinctrl-monaco = &se2_uart_pinctrl_monaco;
+			parity = <4>;
+			stop-bit = <0>;
+			access-mode= <2>;
+			loopback  = <0>;
+			status = <1>;
+		};
+		
+		se3_uart: qupv3_se3_uart {
+			reg-base = <0xF190C000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s3_clk";
+			clock-frequency = <100000000>;
+			baudrate = <115200>;
+			interrupt = <405>;
+			pinctrl = &se3_uart_pinctrl;
+			parity = <4>;
+			stop-bit = <0>;
+			access-mode= <2>;
+			loopback  = <0>;
+			status = <1>;
+		};
+	
+		se4_uart: qupv3_se4_uart {
+			reg-base = <0xF1910000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s4_clk";
+			baud-rate = <115200>;
+			interrupt = <406>;
+			pinctrl = &se4_uart_pinctrl;
+			parity = <4>;
+			stop-bit = <0>;
+			access-mode= <2>;
+			loop-back  = <0>;
+			status = <1>;
+		};
+		
+		/*SPI*/	
+		se0_spi: qupv3_se0_spi {
+			reg-base = <0xF1900000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s0_clk";
+			clock-frequency = <100000000>;
+			interrupt = <402>;
+			pinctrl = &se0_spi_pinctrl;
+			slave = <1>;
+			no-of-channels = <1>;
+			loopback  = <0>;
+			access-mode= <1>;
+			status = <1>;
+		};
+		
+		se1_spi: qupv3_se1_spi {
+			reg-base = <0xF1904000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s1_clk";
+			clock-frequency = <100000000>;
+			interrupt = <403>;
+			pinctrl = &se1_spi_pinctrl;
+			slave = <1>;
+			no-of-channels = <1>;
+			loopback  = <0>;
+			access-mode= <1>;
+			status = <1>;
+		};
+		
+		se2_spi: qupv3_se2_spi {
+			reg-base = <0xF1908000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s2_clk";
+			clock-frequency = <100000000>;
+			interrupt = <404>;
+			pinctrl = &se2_spi_pinctrl;
+			slave = <0>;
+			no-of-channels = <1>;
+			loopback  = <0>;
+			access-mode= <1>;
+			status = <1>;
+		};
+		
+		se3_spi: qupv3_se3_spi {
+			reg-base = <0xF190C000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s3_clk";
+			clock-frequency = <100000000>;
+			interrupt = <405>;
+			pinctrl = &se3_spi_pinctrl;
+			slave = <0>;
+			no-of-channels = <1>;
+			loopback  = <0>;
+			access-mode= <1>;
+			status = <1>;
+		};
+		
+		se4_spi: qupv3_se4_spi {
+			reg-base = <0xF1910000>;
+			clock-name = "sailss_cc_qupv3_wrap0_s4_clk";
+			clock-frequency = <100000000>;
+			interrupt = <406>;
+			pinctrl = &se4_spi_pinctrl;
+			slave = <0>;
+			no-of-channels = <2>;
+			loopback  = <0>;
+			access-mode= <1>;
+			status = <1>;
+		};
+	};
+	
+	/*I2C Pincontrol*/
+	se0_i2c_pinctrl: se0_i2c_pin{
+			pins = < 0 1 >; 
+			func = < 1 1>; 
+			drive-strength = < 0 0>; 
+			dir = < 1 1>; 
+			bias = < 3 3>; 	
+	};
+	
+	se1_i2c_pinctrl: se1_i2c_pin{
+			pins = < 2 3 >; 
+			func = < 1 1>; 
+			drive-strength = < 0 0>; 
+			dir = < 1 1>; 
+			bias = < 3 3>; 	
+	};
+	
+	se2_i2c_pinctrl: se2_i2c_pin{
+			pins = < 8 9 >; 
+			func = < 1 1>; 
+			drive-strength = < 0 0>; 
+			dir = < 1 1>; 
+			bias = < 3 3>; 	
+	};
+	
+	se3_i2c_pinctrl: se3_i2c_pin{
+			pins = < 8 9 >; 
+			func = < 1 1>; 
+			drive-strength = < 0 0>; 
+			dir = < 1 1>; 
+			bias = < 3 3>; 	
+	};
+	
+	se4_i2c_pinctrl: se4_i2c_pin{
+			pins = < 10 11 >; 
+			func = < 1 1>; 
+			drive-strength = < 0 0>; 
+			dir = < 1 1>; 
+			bias = < 3 3>; 	
+	};
+	
+	/*UART Pincontrol*/
+	se0_uart_pinctrl: se0_uart_pin{
+			pins = < 6 7 >;
+			func = < 1 1>; 
+			drive-strength = < 2 2>; 
+			dir = < 1 0>; 
+			bias = < 0 0>; 	
+	};
+	
+	se1_uart_pinctrl: se1_uart_pin{
+			pins = < 4 5 >; //tx - rx - cts - rts
+			func = < 1 1>; 
+			drive-strength = < 2 2>; 
+			dir = < 1 0>; 
+			bias = < 0 0>; 	
+	};
+
+	se1_uart_pinctrl_monaco: se1_uart_pin_monaco{
+			pins = < 6 7 >; //tx - rx - cts - rts
+			func = < 1 1>; 
+			drive-strength = < 2 2>; 
+			dir = < 1 0>; 
+			bias = < 0 0>; 	
+	};
+		
+	se2_uart_pinctrl: se2_uart_pin{
+			pins = < 6 7>;
+			func = < 1 1>; 
+			drive-strength = < 2 2>; 
+			dir = < 1 0>; 
+			bias = < 0 0>; 	
+	};
+
+	se2_uart_pinctrl_monaco: se2_uart_pin_monaco{
+			pins = < 8 9>;
+			func = < 1 1>; 
+			drive-strength = < 2 2>; 
+			dir = < 1 0>; 
+			bias = < 0 0>; 	
+	};
+	
+	se3_uart_pinctrl: se3_uart_pin{
+			pins = < 4 5 >;
+			func = < 1 1>; 
+			drive-strength = < 2 2>; 
+			dir = < 1 0>; 
+			bias = < 0 0>; 	
+	};
+	
+	se4_uart_pinctrl: se4_uart_pin{
+			pins = < 12 13 >;
+			func = < 1 1>; 
+			drive-strength = < 2 2>; 
+			dir = < 1 0>; 
+			bias = < 0 0>; 	
+	};
+	
+	/*SPI Pincontrol*/
+	se0_spi_pinctrl: se0_spi_pin{
+			pins = < 0 1 6 7>; //miso mosi sclk cs0
+			func = < 1 1 1 1 >; 
+			drive-strength = < 4 4 4 4 >;
+			dir = < 1 0 0 0 >; 
+			bias = < 0 0 0 0 >; 	
+	};
+	
+	se1_spi_pinctrl: se1_spi_pin{
+			pins = < 2 3 4 5>; //miso mosi sclk cs0
+			func = < 1 1 1 1 >; 
+			drive-strength = < 4 4 4 4 >;
+			dir = < 1 0 0 0 >; 
+			bias = < 0 0 0 0 >; 	
+	};
+	
+	se2_spi_pinctrl: se2_spi_pin{
+			pins = < 8 9 6 7>; //miso mosi sclk cs0
+			func = < 1 1 1 1 >; 
+			drive-strength = < 4 4 4 4 >;
+			dir = < 0 1 1 1 >; 
+			bias = < 0 0 0 0 >; 	
+	};
+	
+	se3_spi_pinctrl: se3_spi_pin{
+			pins = < 8 9 4 5>; //miso mosi sclk cs0
+			func = < 1 1 1 1 >; 
+			drive-strength = < 4 4 4 4 >;
+			dir = < 0 1 1 1 >; 
+			bias = < 0 0 0 0 >; 	
+	};
+	
+	se4_spi_pinctrl: se4_spi_pin{
+			pins = < 10 11 12 13 14>; //miso mosi sclk cs0 cs1
+			func = < 1 1 1 1 1>; 
+			drive-strength = < 4 4 4 4 4>; 
+			dir = < 0 1 1 1 1>; 
+			bias = < 0 0 0 0 0>;		
+	};
+
+    spinor {
+        read_timeout_us          = <1000000>;
+        write_timeout_us         = <1000000>;
+        erase_timeout_us         = <5000000>;
+        read_reg_timeout_us      = <5000000>;
+        disable_timeouts         = <0>;
+
+        spinor_monaco: spinor_gpio_pinctrl_monaco {
+                            //clk cs_0 d0 d1 d2 d3 d4 d5 d6 d7 dqs
+            pins =           < 59 56 60 61 62 63 64 65 66 67 57 >;
+            func =           < 1  1  1  1  1  1  1  1  1  1  1 >;
+            mux_func =       < 2  2  2  2  2  2  2  2  2  2  2 >;
+            sleep_func =     < 0  0  0  0  0  0  0  0  0  0  0 >;
+            drive-strength = < 3  3  3  3  3  3  3  3  3  3  3 >;
+            dir =            < 0  0  0  0  0  0  0  0  0  0  0 >;
+            bias =           < 0  0  1  1  1  1  1  1  1  1  1 >;
+            sleep_bias =     < 0  0  1  1  1  3  1  1  1  1  1 >;
+            };
+
+        spinor_lemans: spinor_gpio_pinctrl_lemans {
+                            //clk cs_0 d0 d1 d2 d3 d4 d5 d6 d7 dqs
+            pins =           < 70 67 71 72 73 74 75 76 77 78 68 >;
+            func =           < 1  1  1  1  1  1  1  1  1  1  1 >;
+            mux_func =       < 2  2  2  2  2  2  2  2  2  2  2 >;
+            sleep_func =     < 0  0  0  0  0  0  0  0  0  0  0 >;
+            drive-strength = < 3  3  3  3  3  3  3  3  3  3  3 >;
+            dir =            < 0  0  0  0  0  0  0  0  0  0  0 >;
+            bias =           < 0  0  1  1  1  1  1  1  1  1  1 >;
+            sleep_bias =     < 0  0  1  1  1  3  1  1  1  1  1 >;
+            };
+    };
+
+    secure_storage {
+        enable_arb = <0>; // Enable (1) or disable (0) anti roll back support
+    };
+
+
+    sailUpdater {
+	    fastboot_enable    = <0>;
+	    fastboot_gpio_num  = <37>;
+	    fastboot_gpio_drv  = <0>;
+	    fastboot_gpio_func = <0>;
+	    fastboot_gpio_pull = <3>;
+	    fastboot_gpio_dir  = <0>;
+	    fastboot_gpio_val  = <1>;
+
+	    devprgm_enable    = <1>;
+	    devprgm_gpio_num  = <62>;
+	    devprgm_gpio_drv  = <0>;
+	    devprgm_gpio_func = <0>;
+	    devprgm_gpio_pull = <1>;
+	    devprgm_gpio_dir  = <0>;
+	    devprgm_gpio_val  = <1>;
+
+	    bookkeeping_enable = <1>;
+	    max_retry          = <5>;
+	    rollback_enable    = <1>;
+	    reboot_after_fixgpt= <1>;
+	    sailupdatertestCMDID = <0>;
+	    eraseBookBeforeWrite = <0>; //Erase bookkeeping partition everytime before write
+    };
+
+	/*Boot Status*/
+	BootStatus{
+		module_id = <0>;
+		error_id  = <0>;
+	};
+	
+    /* ROOT_CERT_ACTIVATIOM_LIST & ROOT_CERT_REVOCATION_LIST mask */
+    /* This is 4 bit mask to get Root Cert List */
+    security_mrc {
+        OEM_MRC_activation_list = <0>;
+        OEM_MRC_revocation_list = <0>;
+    };
+	
+	
+	imageLoadToDDR {
+		wait-for-DDR = <0>;
+	};
+	
+	/*BIST SW Fault Injection*/
+	bistErrorInjection {
+		SAIL-MBIST-ERR = <0>;
+		SAIL-LBIST-ERR = <0>;
+		MD-PH1-MBIST-ERR = <0>;
+		MD-PH1-LBIST-ERR = <0>;
+		MD-PH2-MBIST-ERR = <0>;
+		MD-PH2-LBIST-ERR = <0>;
+	};
+	
+	/*BIST execution core config*/
+	BistExecutionCore {
+		SAIL_CORE = <1>;
+	};	
+	
+	/* Set desired EL2 UART log level,supported log levels are below  
+		LOG_NONE        = 0,
+		LOG_ERROR       = 1,
+		LOG_WARNING     = 2,
+		LOG_INFO        = 3,
+		LOG_DEBUG       = 4,
+		LOG_NOUART      = 5
+	Default log level is LOG_WARNING */
+	
+	setUARTloglevel {
+		newUARTloglevel = <2>;
+	};
+
+	 UARTconfig{
+
+		UART_REQUIRED = <1>; //1->UART Init and detection required 0-> Uart Init disabled from top level 
+	 }; 
+	 sailGpioConfig{
+		sleep_en_gpio = <0>; // Config to enable sleep_en gpio control
+	 };
+	
+		
+
+        ipnext_config {
+                ipnext_check_enable = <0>; // By Default ipnext BWM Check is disabled
+                tic_gpio_num     = <47>;
+                tic_gpio_drv     = <0>;
+                tic_gpio_func    = <0>;
+                tic_gpio_pull    = <3>;
+                tic_gpio_dir     = <0>;
+                tic_gpio_val     = <0>;
+        };
+	
+    /* place this test entry at the last of DTS file for perf test */
+    test_entry {
+        test_value1 = <0 1 2 3>;
+        test_value2 = <0 1 2 3>;
+    };
+	
+};
+
+#ifdef CONFIG1
+/include/ "config1.dtsi"
+#endif /* CONFIG1 */
